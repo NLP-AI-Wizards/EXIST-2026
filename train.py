@@ -1,10 +1,12 @@
 import logging
 from logging import Logger
 from datetime import datetime
+from typing import Optional
 
 import torch
 from torchvision import transforms
 import pytorch_lightning as pl
+from pytorch_lightning.callbacks import Callback
 from pytorch_lightning.loggers import TensorBoardLogger, WandbLogger
 from pytorch_lightning.callbacks.model_checkpoint import ModelCheckpoint
 
@@ -19,11 +21,13 @@ torch.set_float32_matmul_precision("high")
 def train(
     model_name: str = "discern_tiny",
     epochs: int = 10,
-    n_samples: int = None,
+    n_samples: Optional[int] = None,
     batch_size: int = 16,
     num_workers: int = 4,
+    use_sensorial: Optional[bool] = None,
     wandb_project: str = "EXIST2026",
     use_wandb: bool = False,
+    wandb_entity: Optional[str] = None,
 ):
     date_format = "%d_%m_%H-%M"
 
@@ -35,7 +39,7 @@ def train(
         name="EXIST2026",
         version=version,
     )
-    loggers = [tb_logger]
+    loggers: list = [tb_logger]
 
     if use_wandb:
         wandb_logger = WandbLogger(
@@ -43,8 +47,15 @@ def train(
             name=version,
             log_model="all",
             save_dir="wandb",
+            entity=wandb_entity,
         )
         loggers.append(wandb_logger)
+
+    if use_sensorial is None:
+        use_sensorial = model_name != "siglip"
+
+    if model_name != "siglip" and not use_sensorial:
+        raise ValueError("DISCERN variants require sensorial data. Use --model_name siglip for text-image only runs.")
 
     # DataLoader
     print("===> Loading datasets")
@@ -52,15 +63,14 @@ def train(
         dataset=EXISTDataset(
             json_path=r"data/EXIST 2026 Memes Dataset/training/EXIST2026_training.json",
             img_dir=r"data/EXIST 2026 Memes Dataset/training/memes",
-            use_sensorial=True,
+            use_sensorial=use_sensorial,
             use_annotator_metadata=True,
             transform=transforms.Compose(
                 [
-                    transforms.Resize((224, 224)),
+                    transforms.Resize((256, 256)),
                     transforms.ToTensor(),
-                    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
-                    ]
-                ),
+                ]
+            ),
             n_samples=n_samples,
         ),
         batch_size=batch_size,
@@ -71,6 +81,8 @@ def train(
     print("===> Start building model")
     model = EXISTModel(model_name=model_name)
     print(model)
+    #if use_wandb:
+    #    wandb_logger.watch(model, log="all")
 
     model_checkpoint = ModelCheckpoint(
         dirpath=f"checkpoints/{version}",
@@ -82,7 +94,7 @@ def train(
     )
 
     model_summary = pl.callbacks.ModelSummary(max_depth=4)
-    callbacks = [model_checkpoint, model_summary]
+    callbacks: list[Callback] = [model_checkpoint, model_summary]
 
     # Trainer
     print("===> Instantiate trainer")
@@ -112,14 +124,21 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Train EXIST2026 Model")
-    parser.add_argument("--model_name", type=str, default="discern_tiny", help="Model variant to train (discern_tiny, discern_base, discern_large)")
+    parser.add_argument(
+        "--model_name",
+        type=str,
+        default="siglip",
+        help="Model variant to train (discern_tiny, discern_base, discern_large, siglip)",
+    )
     parser.add_argument("--epochs", type=int, default=10, help="Number of training epochs")
     parser.add_argument("--n_samples", type=int, default=None, help="Number of samples to use from the dataset for training (for quick testing)")
-    parser.add_argument("--batch_size", type=int, default=16, help="Batch size for training")
+    parser.add_argument("--batch_size", type=int, default=4, help="Batch size for training")
     parser.add_argument("--num_workers", type=int, default=8, help="Number of workers for data loading")
+    parser.add_argument("--no_sensorial", action="store_true", help="Disable physiological modality regardless of model")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")
-    parser.add_argument("--wandb_project", type=str, default="EXIST2026", help="Weights & Biases project name for logging")
     parser.add_argument("--wandb", action="store_true", help="Whether to use Weights & Biases for logging")
+    parser.add_argument("--wandb_project", type=str, default="EXIST2026", help="Weights & Biases project name for logging")
+    parser.add_argument("--wandb_entity", type=str, default=None, help="Weights & Biases entity (team) name for logging")
     args = parser.parse_args()
 
     pl.seed_everything(args.seed)
@@ -130,6 +149,8 @@ if __name__ == "__main__":
         n_samples=args.n_samples,
         batch_size=args.batch_size,
         num_workers=args.num_workers,
-        wandb_project=args.wandb_project,
+        use_sensorial=False if args.no_sensorial else None,
         use_wandb=args.wandb,
+        wandb_project=args.wandb_project,
+        wandb_entity=args.wandb_entity,
     )

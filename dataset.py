@@ -4,6 +4,7 @@ import torch
 from torch.utils.data import Dataset
 from PIL import Image
 import numpy as np
+from typing import Optional
 
 TASK_2_3_CLASSES = [
     "IDEOLOGICAL-INEQUALITY",
@@ -23,7 +24,7 @@ class EXISTDataset(Dataset):
         use_annotator_metadata: bool = False,
         transform=None,
         max_subjects: int = 4,
-        n_samples: int = None,
+        n_samples: Optional[int] = None,
         physio_dim: int = 108,
     ):
         """

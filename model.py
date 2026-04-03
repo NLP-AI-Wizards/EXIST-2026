@@ -10,7 +10,8 @@ from torchmetrics.classification import (
 )
 from torchmetrics.regression import MeanAbsoluteError
 
-from architecture import discern_tiny, discern_base, discern_large
+from models.DISCERN import discern_tiny, discern_base, discern_large
+from models.SigLIP import SigLIP
 from loss import DISCERNLoss
 
 class EXISTModel(pl.LightningModule):
@@ -18,8 +19,8 @@ class EXISTModel(pl.LightningModule):
         self,
         model_name: str = "discern_tiny",
         lr: float = 1e-4,
-        weight_decay: float = 1e-5,
-        betas: tuple[float, float] = (0.9, 0.98),
+        weight_decay: float = 1e-2,
+        betas: tuple[float, float] = (0.9, 0.999),
     ):
         super().__init__()
 
@@ -29,6 +30,8 @@ class EXISTModel(pl.LightningModule):
             self.model = discern_base()
         elif model_name == "discern_large":
             self.model = discern_large()
+        elif model_name == "siglip":
+            self.model = SigLIP()
         else:
             raise ValueError(f"Unknown model name: {model_name}")
 
@@ -70,17 +73,21 @@ class EXISTModel(pl.LightningModule):
             postfix="_2_3",
         )
 
-    def forward(self, image, text, physio=None):
-        return self.model(image, text, physio)
+    def forward(self, image, text, physio_features=None, physio_mask=None):
+        if physio_features is None or physio_mask is None:
+            return self.model(image, text)
+        return self.model(image, text, physio_features, physio_mask)
 
     def _step(self, batch, batch_idx):
         image = batch["image"]
         text = batch["text"]
-        physio_features = batch["physio_features"]
+        physio_features = batch.get("physio_features", None)
+        physio_mask = batch.get("physio_mask", None)
 
-        outputs = self.model(
-            image=image, text=text, physio_features=physio_features, physio_mask=batch["physio_mask"]
-        )
+        if physio_features is not None and physio_mask is not None:
+            outputs = self.model(image, text, physio_features, physio_mask)
+        else:
+            outputs = self.model(image, text)
 
         targets = {
             "t_2_1": batch["target_2_1"],
@@ -90,7 +97,7 @@ class EXISTModel(pl.LightningModule):
 
         masks = {
             "cond_mask": batch["mask_conditional"],
-            "physio_mask": batch["physio_mask"],
+            "physio_mask": physio_mask,
         }
 
         return outputs, targets, masks
@@ -224,7 +231,7 @@ class EXISTModel(pl.LightningModule):
         scheduler = torch.optim.lr_scheduler.OneCycleLR(
             optimizer,
             max_lr=self.lr,
-            total_steps=self.trainer.estimated_stepping_batches,
+            total_steps=int(self.trainer.estimated_stepping_batches),
             pct_start=0.1,
             anneal_strategy="cos",
         )
