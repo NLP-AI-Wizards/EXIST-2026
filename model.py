@@ -20,6 +20,7 @@ class EXISTModel(pl.LightningModule):
         lr: float = 1e-4,
         weight_decay: float = 1e-2,
         betas: tuple[float, float] = (0.9, 0.999),
+        warmup_ratio: float = 0.3,
     ):
         super().__init__()
 
@@ -39,33 +40,34 @@ class EXISTModel(pl.LightningModule):
         self.lr = lr
         self.weight_decay = weight_decay
         self.betas = betas
+        self.warmup_ratio = warmup_ratio
         self.criterion = CustomLoss()
 
         self.save_hyperparameters(ignore=["model"])
 
-        # EXIST TRACKS:
-        # F1 Score handles the "Hard" Majority-Vote Track
-        # MAE handles the "Soft" Probabilistic Track
-
         self.metrics_2_1 = MetricCollection(
             {
-                "f1": BinaryF1Score(),
+                "f1": BinaryF1Score(threshold=0.5),
                 "mae": MeanAbsoluteError(),
             },
             postfix="_2_1",
         )
 
+        # Task 2.2: Highly subjective (Intention). Lower threshold to catch soft predictions.
         self.metrics_2_2 = MetricCollection(
             {
-                "f1": BinaryF1Score(),
+                "f1": BinaryF1Score(threshold=0.35),
                 "mae": MeanAbsoluteError(),
             },
             postfix="_2_2",
         )
 
+        # Task 2.3: Rare classes (Sexual Violence, etc.). Lower threshold.
         self.metrics_2_3 = MetricCollection(
             {
-                "f1_macro": MultilabelF1Score(num_labels=5, average="macro"),
+                "f1_macro": MultilabelF1Score(
+                    num_labels=5, average="macro", threshold=0.3
+                ),
                 "mae": MeanAbsoluteError(),
             },
             postfix="_2_3",
@@ -103,11 +105,7 @@ class EXISTModel(pl.LightningModule):
         return outputs, targets, masks
 
     def compute_metrics(self, outputs, targets, masks):
-        # ----------------------------------------
-        # METRIC UPDATES
-        # ----------------------------------------
-
-        # Convert logits to probabilities for metric calculation
+        # Convert logits to probabilities
         preds_2_1_prob = torch.sigmoid(outputs["logits_2_1"])
         preds_2_2_prob = torch.sigmoid(outputs["logits_2_2"])
         preds_2_3_prob = torch.sigmoid(outputs["logits_2_3"])
@@ -117,18 +115,17 @@ class EXISTModel(pl.LightningModule):
         t_2_3 = targets["t_2_3"]
 
         # --- Task 2.1 (Always Evaluated) ---
-        hard_t_2_1 = (t_2_1 >= 0.5).int()  # Majority vote threshold
-        self.metrics_2_1.update(preds_2_1_prob, hard_t_2_1)
-        # Update MAE directly with soft probabilities
-        self.metrics_2_1["mae_2_1"].update(preds_2_1_prob, t_2_1)
+        hard_t_2_1 = (t_2_1 >= 0.5).int()
+
+        # FIX: Update metrics INDIVIDUALLY by key to avoid broadcasting the wrong targets!
+        self.metrics_2_1["f1"].update(preds_2_1_prob, hard_t_2_1)
+        self.metrics_2_1["mae"].update(preds_2_1_prob, t_2_1)
 
         # --- Extract Conditional Mask (Only look at sexist memes) ---
-        # Squeeze to 1D boolean array
         valid_mask = masks["cond_mask"].squeeze().bool()
 
         # Only evaluate 2.2 and 2.3 if there is at least one sexist meme in the batch
         if valid_mask.any():
-            # Filter the tensors
             valid_preds_2_2 = preds_2_2_prob[valid_mask]
             valid_targets_2_2 = t_2_2[valid_mask]
 
@@ -137,20 +134,20 @@ class EXISTModel(pl.LightningModule):
 
             # --- Task 2.2 ---
             hard_t_2_2 = (valid_targets_2_2 >= 0.5).int()
-            self.metrics_2_2.update(valid_preds_2_2, hard_t_2_2)
-            self.metrics_2_2["mae_2_2"].update(valid_preds_2_2, valid_targets_2_2)
+            self.metrics_2_2["f1"].update(valid_preds_2_2, hard_t_2_2)
+            self.metrics_2_2["mae"].update(valid_preds_2_2, valid_targets_2_2)
 
             # --- Task 2.3 ---
             hard_t_2_3 = (valid_targets_2_3 >= 0.5).int()
-            self.metrics_2_3.update(valid_preds_2_3, hard_t_2_3)
-            self.metrics_2_3["mae_2_3"].update(valid_preds_2_3, valid_targets_2_3)
+            self.metrics_2_3["f1_macro"].update(valid_preds_2_3, hard_t_2_3)
+            self.metrics_2_3["mae"].update(valid_preds_2_3, valid_targets_2_3)
 
     def training_step(self, batch, batch_idx):
         outputs, targets, masks = self._step(batch, batch_idx)
         loss_dict = self.criterion(outputs, targets, masks)
         self.log_dict(
             {f"train/{k}": v for k, v in loss_dict.items()},
-            on_step=True,
+            on_step=False,
             on_epoch=True,
             prog_bar=True,
             logger=True
@@ -174,17 +171,7 @@ class EXISTModel(pl.LightningModule):
     def test_step(self, batch, batch_idx):
         outputs, targets, masks = self._step(batch, batch_idx)
         loss_dict = self.criterion(outputs, targets, masks)
-        self.log_dict(
-            {f"test/{k}": v for k, v in loss_dict.items()},
-            on_step=False,
-            on_epoch=True,
-            prog_bar=False,
-            logger=True,
-        )
         self.compute_metrics(outputs, targets, masks)
-        self.log_dict(self.metrics_2_1, on_step=False, on_epoch=True)
-        self.log_dict(self.metrics_2_2, on_step=False, on_epoch=True)
-        self.log_dict(self.metrics_2_3, on_step=False, on_epoch=True)
 
         return loss_dict["total_loss"]
 
@@ -210,6 +197,24 @@ class EXISTModel(pl.LightningModule):
             self.metrics_2_2.reset()
             self.metrics_2_3.reset()
 
+    def on_test_epoch_end(self):
+        self.log_dict({f"test/{k}": v for k, v in self.metrics_2_1.compute().items()})
+        self.metrics_2_1.reset()
+
+        # Handle tasks 2.2 and 2.3 safely (in case no sexist memes were in the test set)
+        try:
+            self.log_dict(
+                {f"test/{k}": v for k, v in self.metrics_2_2.compute().items()}
+            )
+            self.log_dict(
+                {f"test/{k}": v for k, v in self.metrics_2_3.compute().items()}
+            )
+        except Exception:
+            pass
+        finally:
+            self.metrics_2_2.reset()
+            self.metrics_2_3.reset()
+
     def configure_optimizers(self):
         optimizer = torch.optim.AdamW(
             self.parameters(),
@@ -221,7 +226,7 @@ class EXISTModel(pl.LightningModule):
             optimizer,
             max_lr=self.lr,
             total_steps=int(self.trainer.estimated_stepping_batches),
-            pct_start=0.1,
+            pct_start=self.warmup_ratio,
             anneal_strategy="cos",
         )
 

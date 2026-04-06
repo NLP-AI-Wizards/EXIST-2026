@@ -4,11 +4,11 @@ from datetime import datetime
 from typing import Optional
 
 import torch
-from torchvision import transforms
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import Callback
 from pytorch_lightning.loggers import TensorBoardLogger, WandbLogger
 from pytorch_lightning.callbacks.model_checkpoint import ModelCheckpoint
+from pytorch_lightning.callbacks import LearningRateMonitor
 
 from dataset import EXISTDataset
 from datamodule import EXISTDataModule
@@ -61,15 +61,22 @@ def train(
             json_path=r"data/EXIST 2026 Memes Dataset/training/EXIST2026_training.json",
             img_dir=r"data/EXIST 2026 Memes Dataset/training/memes",
             use_sensorial=use_sensorial,
-            n_samples=n_samples,
         ),
         batch_size=batch_size,
         num_workers=num_workers,
+        seed=args.seed,
+        n_samples=n_samples,
     )
 
     # Pytorch Lightning module
     print("===> Start building model")
-    model = EXISTModel(model_name=model_name)
+    model = EXISTModel(
+        model_name=model_name,
+        lr=1e-5,
+        weight_decay=1e-2,
+        betas=(0.9, 0.999),
+        warmup_ratio=0.3,
+    )
     print(model)
     # model = torch.compile(model) # Comment out to save VRAM on some setups
     #if use_wandb:
@@ -83,7 +90,12 @@ def train(
         monitor="val/total_loss",
         mode="min",
     )
-    callbacks: list[Callback] = [model_checkpoint]
+    lr_monitor = LearningRateMonitor(
+        logging_interval="step",
+        log_momentum=True,
+        log_weight_decay=True,
+    )
+    callbacks: list[Callback] = [model_checkpoint, lr_monitor]
 
     # Trainer
     print("===> Instantiate trainer")
@@ -93,7 +105,7 @@ def train(
         max_epochs=epochs,
         accelerator="auto",
         devices="auto",
-        precision="bf16-mixed" if torch.cuda.is_available() else "32",
+        precision="bf16-mixed",
     )
 
     print("===> Start training")
@@ -120,8 +132,8 @@ if __name__ == "__main__":
     )
     parser.add_argument("--epochs", type=int, default=10, help="Number of training epochs")
     parser.add_argument("--n_samples", type=int, default=None, help="Number of samples to use from the dataset for training (for quick testing)")
-    parser.add_argument("--batch_size", type=int, default=2, help="Batch size for training")
-    parser.add_argument("--num_workers", type=int, default=4, help="Number of workers for data loading")
+    parser.add_argument("--batch_size", type=int, default=8, help="Batch size for training")
+    parser.add_argument("--num_workers", type=int, default=8, help="Number of workers for data loading")
     parser.add_argument("--no_sensorial", action="store_true", help="Disable physiological modality regardless of model")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")
     parser.add_argument("--wandb", action="store_true", help="Whether to use Weights & Biases for logging")

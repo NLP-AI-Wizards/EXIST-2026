@@ -23,60 +23,54 @@ class EXISTDataset(Dataset):
         use_sensorial: bool = False,
         use_annotator_metadata: bool = False,
         max_subjects: int = 4,
-        n_samples: Optional[int] = None,
         physio_dim: int = 108,
     ):
-        """
-        Args:
-            json_path (str): Path to the EXIST2026 JSON file.
-            img_dir (str): Base directory containing the meme images.
-            use_sensorial (bool): If True, extracts and pads physiological data.
-            use_annotator_metadata (bool): If True, returns annotator demographics.
-            max_subjects (int): Maximum number of physiological subjects to pad to (4 per guidelines).
-            n_samples (int, optional): Number of samples to use from the dataset. If None, uses the entire dataset.
-            physio_dim (int): Total number of physiological features (24 ET + 4 HR + 80 EEG = 108).
-        """
         # Load the JSON data
         self.data = pd.read_json(json_path, orient="index")
+
+        # Reset index just in case the JSON keys aren't perfectly sequential
+        self.data = self.data.reset_index(drop=True)
 
         self.img_dir = img_dir
         self.use_sensorial = use_sensorial
         self.use_annotator_metadata = use_annotator_metadata
         self.max_subjects = max_subjects
-        self.n_samples = n_samples
         self.physio_dim = physio_dim
 
     def __len__(self):
-        if self.n_samples is not None:
-            return min(self.n_samples, len(self.data))
         return len(self.data)
 
     def _compute_marginals(self, item):
-        """
-        Computes the targets (Marginal Probabilities) based on annotator disagreement.
-        """
-        labels_2_1 = item["labels_task2_1"]
-        labels_2_2 = item["labels_task2_2"]
-        labels_2_3 = item["labels_task2_3"]
+        labels_2_1 = item.get("labels_task2_1", [])
+        labels_2_2 = item.get("labels_task2_2", [])
+        labels_2_3 = item.get("labels_task2_3", [])
 
-        # Task 2.1: Sexist Identification
-        yes_count = labels_2_1.count("YES")
-        t_2_1 = yes_count / len(labels_2_1)
+        # --- Task 2.1: Sexist Identification ---
+        # Filter out "UNKNOWN" before counting
+        valid_2_1 = [l for l in labels_2_1 if l in ["YES", "NO"]]
+        t_2_1 = valid_2_1.count("YES") / len(valid_2_1) if len(valid_2_1) > 0 else 0.0
 
-        judg_count = labels_2_2.count("JUDGEMENTAL")
-        t_2_2 = judg_count / len(labels_2_2)
+        # --- Task 2.2: Source Intention ---
+        # Filter out "-" and "UNKNOWN"
+        valid_2_2 = [l for l in labels_2_2 if l in ["DIRECT", "JUDGEMENTAL"]]
+        t_2_2 = (
+            valid_2_2.count("JUDGEMENTAL") / len(valid_2_2)
+            if len(valid_2_2) > 0
+            else 0.0
+        )
 
-        # Task 2.3: Sexism Categorization (Multi-Label)
+        # --- Task 2.3: Sexism Categorization (Multi-Label) ---
         t_2_3 = np.zeros(len(TASK_2_3_CLASSES), dtype=np.float32)
         valid_2_3_annotators = 0
 
         for annotator_labels in labels_2_3:
-            # Filter out the "-" and "UNKNOWN" labels
+            # Filter out "-" and "UNKNOWN"
             valid_labels = [l for l in annotator_labels if l in TASK_2_3_CLASSES]
-            valid_2_3_annotators += 1
-            for label in valid_labels:
-                idx = TASK_2_3_CLASSES.index(label)
-                t_2_3[idx] += 1.0
+            if len(valid_labels) > 0:
+                valid_2_3_annotators += 1
+                for label in valid_labels:
+                    idx = TASK_2_3_CLASSES.index(label)
+                    t_2_3[idx] += 1.0
 
         if valid_2_3_annotators > 0:
             t_2_3 = t_2_3 / valid_2_3_annotators
@@ -88,36 +82,30 @@ class EXISTDataset(Dataset):
         )
 
     def _extract_physio(self, item):
-        """
-        Extracts physiological data, handling missing modalities per subject
-        and padding up to `max_subjects` (4).
-        """
         physio_features = np.zeros(
             (self.max_subjects, self.physio_dim), dtype=np.float32
         )
-        physio_mask = np.zeros(
-            self.max_subjects, dtype=bool
-        )  # True if subject data exists
+        physio_mask = np.zeros(self.max_subjects, dtype=bool)
 
-        sensorial = item["sensorial"]
-        users = sensorial["users"]
-        modalities = sensorial["modalities"]
+        # Safely extract sensorial data (handles Pandas NaN behavior)
+        sensorial = item.get("sensorial", {})
+        if pd.isna(sensorial):
+            sensorial = {}
+
+        users = sensorial.get("users", [])
+        modalities = sensorial.get("modalities", {})
 
         for i, user in enumerate(users[: self.max_subjects]):
             physio_mask[i] = True
             user_features = []
 
-            # We iterate through ET, HR, EEG and flatten their dictionaries.
             for mod in ["ET", "HR", "EEG"]:
                 mod_data = modalities.get(mod, {}).get("by_user", {}).get(user, {})
 
-                # Sort keys to ensure deterministic feature order
                 sorted_keys = sorted(mod_data.keys())
                 features = [mod_data[k] for k in sorted_keys]
                 user_features.extend(features)
 
-            # If the vector length doesn't match 108 exactly due to missing
-            # modalities, we pad or truncate to self.physio_dim to prevent tensor shape errors.
             feat_len = len(user_features)
             if feat_len > 0:
                 copy_len = min(feat_len, self.physio_dim)
@@ -128,15 +116,12 @@ class EXISTDataset(Dataset):
         )
 
     def _extract_annotators(self, item):
-        """
-        Extracts demographic data of the annotators who labeled this meme.
-        """
         return {
-            "gender": item["gender_annotators"],
-            "age": item["age_annotators"],
-            "country": item["countries_annotators"],
-            "study_level": item["study_levels_annotators"],
-            "ethnicity": item["ethnicities_annotators"],
+            "gender": item.get("gender_annotators", []),
+            "age": item.get("age_annotators", []),
+            "country": item.get("countries_annotators", []),
+            "study_level": item.get("study_levels_annotators", []),
+            "ethnicity": item.get("ethnicities_annotators", []),
         }
 
     def __getitem__(self, idx):
@@ -145,24 +130,32 @@ class EXISTDataset(Dataset):
         # Image
         img_filename = item["path_memes"].split("/")[-1].split("\\")[-1]
         img_path = os.path.join(self.img_dir, img_filename)
-        img_array = np.array(Image.open(img_path).convert("RGB"))
 
-        # Text
-        text = item["text"]
+        # Convert image to RGB array (handle missing image gracefully if needed)
+        try:
+            img_array = np.array(Image.open(img_path).convert("RGB"))
+        except FileNotFoundError:
+            # Fallback to black image if file is missing
+            img_array = np.zeros((224, 224, 3), dtype=np.uint8)
 
-        # Targets (Marginal probabilities)
+        text = item.get("text", "")
+
         t_2_1, t_2_2, t_2_3 = self._compute_marginals(item)
 
         # Build output dictionary
         sample = {
+            "id": item.get("id_EXIST", f"idx_{idx}"),
             "image": img_array,
             "text": text,
             "target_2_1": t_2_1,
             "target_2_2": t_2_2,
             "target_2_3": t_2_3,
+            "mask_conditional": torch.tensor(
+                [1.0 if t_2_1.item() > 0.0 else 0.0], dtype=torch.float32
+            ),
         }
 
-        # Sensorial (Physiological) Data
+        # Sensorial Data
         if self.use_sensorial:
             physio_features, physio_mask = self._extract_physio(item)
             sample["physio_features"] = physio_features
@@ -176,7 +169,6 @@ class EXISTDataset(Dataset):
 
 
 if __name__ == "__main__":
-    # Instantiate dataset with ALL modalities toggled ON
     dataset = EXISTDataset(
         json_path=r"data/EXIST 2026 Memes Dataset/training/EXIST2026_training.json",
         img_dir=r"data/EXIST 2026 Memes Dataset/training/memes",
@@ -190,7 +182,7 @@ if __name__ == "__main__":
         sample = dataset[0]
         print(f"\nSample ID: {sample['id']}")
         print(f"Text: {sample['text'][:50]}...")
-        print(f"Image Path: {sample['image']}")
+        print(f"Image Array Shape: {sample['image'].shape}")
 
         print("\nTargets:")
         print(f"  Task 2.1 (YES prob): {sample['target_2_1'].item():.4f}")
@@ -201,6 +193,3 @@ if __name__ == "__main__":
         if "physio_features" in sample:
             print(f"\nPhysiological Features Shape: {sample['physio_features'].shape}")
             print(f"Physiological Mask: {sample['physio_mask'].numpy()}")
-
-        if "annotator_metadata" in sample:
-            print(f"\nAnnotator Metadata: {sample['annotator_metadata']}")
