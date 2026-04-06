@@ -54,9 +54,6 @@ def train(
     if use_sensorial is None:
         use_sensorial = model_name != "siglip"
 
-    if model_name != "siglip" and not use_sensorial:
-        raise ValueError("DISCERN variants require sensorial data. Use --model_name siglip for text-image only runs.")
-
     # DataLoader
     print("===> Loading datasets")
     datamodule = EXISTDataModule(
@@ -64,13 +61,6 @@ def train(
             json_path=r"data/EXIST 2026 Memes Dataset/training/EXIST2026_training.json",
             img_dir=r"data/EXIST 2026 Memes Dataset/training/memes",
             use_sensorial=use_sensorial,
-            use_annotator_metadata=True,
-            transform=transforms.Compose(
-                [
-                    transforms.Resize((256, 256)),
-                    transforms.ToTensor(),
-                ]
-            ),
             n_samples=n_samples,
         ),
         batch_size=batch_size,
@@ -81,6 +71,7 @@ def train(
     print("===> Start building model")
     model = EXISTModel(model_name=model_name)
     print(model)
+    # model = torch.compile(model) # Comment out to save VRAM on some setups
     #if use_wandb:
     #    wandb_logger.watch(model, log="all")
 
@@ -92,9 +83,7 @@ def train(
         monitor="val/total_loss",
         mode="min",
     )
-
-    model_summary = pl.callbacks.ModelSummary(max_depth=4)
-    callbacks: list[Callback] = [model_checkpoint, model_summary]
+    callbacks: list[Callback] = [model_checkpoint]
 
     # Trainer
     print("===> Instantiate trainer")
@@ -104,8 +93,7 @@ def train(
         max_epochs=epochs,
         accelerator="auto",
         devices="auto",
-        precision="bf16" if torch.cuda.is_available() else "32",
-        gradient_clip_val=1.0,
+        precision="bf16-mixed" if torch.cuda.is_available() else "32",
     )
 
     print("===> Start training")
@@ -128,12 +116,12 @@ if __name__ == "__main__":
         "--model_name",
         type=str,
         default="siglip",
-        help="Model variant to train (discern_tiny, discern_base, discern_large, siglip)",
+        help="Model variant to train (discern_tiny, discern_base, discern_large, siglip, qwen)",
     )
     parser.add_argument("--epochs", type=int, default=10, help="Number of training epochs")
     parser.add_argument("--n_samples", type=int, default=None, help="Number of samples to use from the dataset for training (for quick testing)")
-    parser.add_argument("--batch_size", type=int, default=4, help="Batch size for training")
-    parser.add_argument("--num_workers", type=int, default=8, help="Number of workers for data loading")
+    parser.add_argument("--batch_size", type=int, default=2, help="Batch size for training")
+    parser.add_argument("--num_workers", type=int, default=4, help="Number of workers for data loading")
     parser.add_argument("--no_sensorial", action="store_true", help="Disable physiological modality regardless of model")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")
     parser.add_argument("--wandb", action="store_true", help="Whether to use Weights & Biases for logging")

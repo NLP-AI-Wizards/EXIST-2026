@@ -1,6 +1,8 @@
+from PIL import Image
+import numpy as np
 import torch
 import torch.nn as nn
-from transformers import AutoProcessor, SiglipModel, SiglipConfig
+from transformers import AutoProcessor, SiglipModel
 
 
 class ClassificationHead(nn.Module):
@@ -15,27 +17,18 @@ class ClassificationHead(nn.Module):
 class SigLIP(nn.Module):
     def __init__(
         self,
-        model_name: str = "google/siglip-base-patch16-256-multilingual",
-        max_length: int = 128,
+        model_name: str = "google/siglip-base-patch16-224",
         freeze_backbone: bool = True,
     ):
         super().__init__()
 
-        self.max_length = max_length
         self.processor = AutoProcessor.from_pretrained(model_name)
-        config = SiglipConfig.from_pretrained(model_name)
-        config.text_config.max_position_embeddings = max_length
-
         self.siglip = SiglipModel.from_pretrained(
             model_name,
-            config=config,
-            ignore_mismatched_sizes=True,
+            device_map="auto",
+            dtype="bfloat16" if torch.cuda.is_available() else torch.float32,
         )
-
-        self._resize_position_embeddings(max_length)
-
         embed_dim = 768
-
         self.head_2_1 = ClassificationHead(embed_dim * 2, 1)
         self.head_2_2 = ClassificationHead(embed_dim * 2, 1)
         self.head_2_3 = ClassificationHead(embed_dim * 2, 5)
@@ -44,52 +37,34 @@ class SigLIP(nn.Module):
             for param in self.siglip.parameters():
                 param.requires_grad = False
 
-    def _resize_position_embeddings(self, new_max_len: int):
-        """Resize text positional embeddings safely"""
-        old_embed = self.siglip.text_model.embeddings.position_embedding
-        old_len, dim = old_embed.weight.shape
-
-        if new_max_len <= old_len:
-            return  # nothing to do
-
-        new_embed = nn.Embedding(new_max_len, dim)
-
-        # copy pretrained weights
-        new_embed.weight.data[:old_len] = old_embed.weight.data
-
-        # initialize extra positions (mean is more stable than repeat)
-        mean_vec = old_embed.weight.data.mean(dim=0, keepdim=True)
-        new_embed.weight.data[old_len:] = mean_vec.repeat(new_max_len - old_len, 1)
-
-        self.siglip.text_model.embeddings.position_embedding = new_embed
-
-    def forward(self, image, text):
+    def forward(self, image: np.ndarray, text: list[str]):
         device = next(self.parameters()).device
 
         inputs = self.processor(
             text=text,
-            images=image,
+            images=[Image.fromarray(image[i]) for i in range(len(image))],
             return_tensors="pt",
             padding="max_length",
             truncation=True,
-            max_length=self.max_length,
+            max_length=64,
         )
 
         inputs = {k: v.to(device) for k, v in inputs.items()}
 
-        outputs = self.siglip(**inputs, interpolate_pos_encoding=True)
+        outputs = self.siglip(**inputs)
 
         text_embeds = outputs.text_embeds
         image_embeds = outputs.image_embeds
 
         combined = torch.cat([text_embeds, image_embeds], dim=1)
 
-        preds_2_1 = torch.sigmoid(self.head_2_1(combined))
-        preds_2_2 = torch.sigmoid(self.head_2_2(combined))
-        preds_2_3 = self.head_2_3(combined)
+        # Output raw logits for BCEWithLogitsLoss
+        logits_2_1 = self.head_2_1(combined)
+        logits_2_2 = self.head_2_2(combined)
+        logits_2_3 = self.head_2_3(combined)
 
         return {
-            "preds_2_1": preds_2_1,
-            "preds_2_2": preds_2_2,
-            "preds_2_3": preds_2_3,
+            "logits_2_1": logits_2_1,
+            "logits_2_2": logits_2_2,
+            "logits_2_3": logits_2_3,
         }

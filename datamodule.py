@@ -1,7 +1,29 @@
 import pytorch_lightning as pl
+import torch
 from torch.utils.data import DataLoader, random_split
 
 from dataset import EXISTDataset
+
+def collate_fn(batch):
+    images = [item['image'] for item in batch]
+    texts = [item['text'] for item in batch]
+    target_2_1 = torch.stack([item['target_2_1'] for item in batch])
+    target_2_2 = torch.stack([item['target_2_2'] for item in batch])
+    target_2_3 = torch.stack([item['target_2_3'] for item in batch])
+
+    collated_batch = {
+        "image": images,
+        "text": texts,
+        "target_2_1": target_2_1,
+        "target_2_2": target_2_2,
+        "target_2_3": target_2_3,
+    }
+
+    if 'physio_features' in batch[0]:
+        collated_batch['physio_features'] = torch.stack([item['physio_features'] for item in batch])
+        collated_batch['physio_mask'] = torch.stack([item['physio_mask'] for item in batch])
+
+    return collated_batch
 
 class EXISTDataModule(pl.LightningDataModule):
     def __init__(
@@ -36,6 +58,7 @@ class EXISTDataModule(pl.LightningDataModule):
             batch_size=self.batch_size,
             shuffle=True,
             num_workers=self.num_workers,
+            collate_fn=collate_fn,
         )
 
     def val_dataloader(self):
@@ -44,6 +67,7 @@ class EXISTDataModule(pl.LightningDataModule):
             batch_size=self.batch_size,
             shuffle=False,
             num_workers=self.num_workers,
+            collate_fn=collate_fn,
         )
 
     def test_dataloader(self):
@@ -52,6 +76,7 @@ class EXISTDataModule(pl.LightningDataModule):
             batch_size=self.batch_size,
             shuffle=False,
             num_workers=self.num_workers,
+            collate_fn=collate_fn,
         )
 
     def predict_dataloader(self):
@@ -60,30 +85,5 @@ class EXISTDataModule(pl.LightningDataModule):
             batch_size=self.batch_size,
             shuffle=False,
             num_workers=self.num_workers,
+            collate_fn=collate_fn,
         )
-
-if __name__ == "__main__":
-    from torchvision import transforms
-
-    # Define standard image transformation for testing
-    transform = transforms.Compose(
-        [transforms.Resize((224, 224)), transforms.ToTensor()]
-    )
-
-    # Instantiate dataset with ALL modalities toggled ON
-    dataset = EXISTDataset(
-        json_path=r"data/EXIST 2026 Memes Dataset/training/EXIST2026_training.json",
-        img_dir=r"data/EXIST 2026 Memes Dataset/training/memes",
-        use_sensorial=True,
-        use_annotator_metadata=True,
-        transform=transform,
-    )
-
-    data_module = EXISTDataModule(dataset=dataset, batch_size=4, num_workers=0)
-    data_module.setup("fit")
-
-    train_loader = data_module.train_dataloader()
-    val_loader = data_module.val_dataloader()
-
-    print(f"Number of training batches: {len(train_loader)}")
-    print(f"Number of validation batches: {len(val_loader)}")
