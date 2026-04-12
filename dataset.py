@@ -144,7 +144,7 @@ class EXISTDataset(Dataset):
 
         # Build output dictionary
         sample = {
-            "id": item.get("id_EXIST", f"idx_{idx}"),
+            "id": item["id_EXIST"],
             "image": img_array,
             "text": text,
             "target_2_1": t_2_1,

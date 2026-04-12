@@ -6,9 +6,6 @@ from torchmetrics.classification import (
     BinaryF1Score,
     MultilabelF1Score,
 )
-from torchmetrics.regression import MeanAbsoluteError
-
-from models.DISCERN import discern_tiny, discern_base, discern_large
 from models.SigLIP import SigLIP
 from models.Qwen import Qwen
 from loss import CustomLoss
@@ -16,21 +13,14 @@ from loss import CustomLoss
 class EXISTModel(pl.LightningModule):
     def __init__(
         self,
-        model_name: str = "discern_tiny",
+        model_name: str = "qwen",
         lr: float = 1e-4,
         weight_decay: float = 1e-2,
-        betas: tuple[float, float] = (0.9, 0.999),
-        warmup_ratio: float = 0.3,
+        warmup_ratio: float = 0.1,
     ):
         super().__init__()
 
-        if model_name == "discern_tiny":
-            self.model = discern_tiny()
-        elif model_name == "discern_base":
-            self.model = discern_base()
-        elif model_name == "discern_large":
-            self.model = discern_large()
-        elif model_name == "siglip":
+        if model_name == "siglip":
             self.model = SigLIP()
         elif model_name == "qwen":
             self.model = Qwen()
@@ -39,7 +29,6 @@ class EXISTModel(pl.LightningModule):
 
         self.lr = lr
         self.weight_decay = weight_decay
-        self.betas = betas
         self.warmup_ratio = warmup_ratio
         self.criterion = CustomLoss()
 
@@ -48,7 +37,6 @@ class EXISTModel(pl.LightningModule):
         self.metrics_2_1 = MetricCollection(
             {
                 "f1": BinaryF1Score(threshold=0.5),
-                "mae": MeanAbsoluteError(),
             },
             postfix="_2_1",
         )
@@ -57,7 +45,6 @@ class EXISTModel(pl.LightningModule):
         self.metrics_2_2 = MetricCollection(
             {
                 "f1": BinaryF1Score(threshold=0.35),
-                "mae": MeanAbsoluteError(),
             },
             postfix="_2_2",
         )
@@ -68,7 +55,6 @@ class EXISTModel(pl.LightningModule):
                 "f1_macro": MultilabelF1Score(
                     num_labels=5, average="macro", threshold=0.3
                 ),
-                "mae": MeanAbsoluteError(),
             },
             postfix="_2_3",
         )
@@ -119,7 +105,6 @@ class EXISTModel(pl.LightningModule):
 
         # FIX: Update metrics INDIVIDUALLY by key to avoid broadcasting the wrong targets!
         self.metrics_2_1["f1"].update(preds_2_1_prob, hard_t_2_1)
-        self.metrics_2_1["mae"].update(preds_2_1_prob, t_2_1)
 
         # --- Extract Conditional Mask (Only look at sexist memes) ---
         valid_mask = masks["cond_mask"].squeeze().bool()
@@ -135,12 +120,10 @@ class EXISTModel(pl.LightningModule):
             # --- Task 2.2 ---
             hard_t_2_2 = (valid_targets_2_2 >= 0.5).int()
             self.metrics_2_2["f1"].update(valid_preds_2_2, hard_t_2_2)
-            self.metrics_2_2["mae"].update(valid_preds_2_2, valid_targets_2_2)
 
             # --- Task 2.3 ---
             hard_t_2_3 = (valid_targets_2_3 >= 0.5).int()
             self.metrics_2_3["f1_macro"].update(valid_preds_2_3, hard_t_2_3)
-            self.metrics_2_3["mae"].update(valid_preds_2_3, valid_targets_2_3)
 
     def training_step(self, batch, batch_idx):
         outputs, targets, masks = self._step(batch, batch_idx)
@@ -168,15 +151,9 @@ class EXISTModel(pl.LightningModule):
 
         return loss_dict["total_loss"]
 
-    def test_step(self, batch, batch_idx):
-        outputs, targets, masks = self._step(batch, batch_idx)
-        loss_dict = self.criterion(outputs, targets, masks)
-        self.compute_metrics(outputs, targets, masks)
-
-        return loss_dict["total_loss"]
-
     def predict_step(self, batch, batch_idx):
         outputs, _, _ = self._step(batch, batch_idx)
+        outputs["id"] = batch["id"]
         return outputs
 
     def on_validation_epoch_end(self):
@@ -197,30 +174,11 @@ class EXISTModel(pl.LightningModule):
             self.metrics_2_2.reset()
             self.metrics_2_3.reset()
 
-    def on_test_epoch_end(self):
-        self.log_dict({f"test/{k}": v for k, v in self.metrics_2_1.compute().items()})
-        self.metrics_2_1.reset()
-
-        # Handle tasks 2.2 and 2.3 safely (in case no sexist memes were in the test set)
-        try:
-            self.log_dict(
-                {f"test/{k}": v for k, v in self.metrics_2_2.compute().items()}
-            )
-            self.log_dict(
-                {f"test/{k}": v for k, v in self.metrics_2_3.compute().items()}
-            )
-        except Exception:
-            pass
-        finally:
-            self.metrics_2_2.reset()
-            self.metrics_2_3.reset()
-
     def configure_optimizers(self):
         optimizer = torch.optim.AdamW(
             self.parameters(),
             lr=self.lr,
             weight_decay=self.weight_decay,
-            betas=self.betas,
         )
         scheduler = torch.optim.lr_scheduler.OneCycleLR(
             optimizer,

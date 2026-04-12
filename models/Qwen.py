@@ -18,7 +18,10 @@ class Qwen(nn.Module):
         freeze_backbone: bool = True,
     ):
         super().__init__()
-        self.backbone = Qwen3VLEmbedder(model_name_or_path=model_name)
+        self.backbone = Qwen3VLEmbedder(
+            model_name_or_path=model_name,
+            default_instruction="You are an Artificial Intelligence for sexism detection and classification in social media contents."
+        )
 
         embed_dim = 2048
         self.head_2_1 = ClassificationHead(embed_dim, 1)
@@ -30,23 +33,15 @@ class Qwen(nn.Module):
                 param.requires_grad = False
 
     def forward(self, image, text):
-        # Get multimodal embeddings from Qwen3-VL-Embedding
-        texts = [
-            {"text": text[i]} for i in range(text.shape[0])
+        inputs = [
+            {"image": image[i], "text": text[i]} for i in range(len(text))
         ]
-        imgs = [
-            {"image": image[i]} for i in range(image.shape[0])
-        ]
-        inputs = texts + imgs
         embeddings = self.backbone.process(inputs)
 
-        similarity_scores = embeddings[:text.shape[0]] @ embeddings[text.shape[0]:].T
-        print(similarity_scores.tolist())
-
         # Output raw logits for BCEWithLogitsLoss
-        logits_2_1 = self.head_2_1(embeddings[:text.shape[0]])
-        logits_2_2 = self.head_2_2(embeddings[:text.shape[0]])
-        logits_2_3 = self.head_2_3(embeddings[:text.shape[0]])
+        logits_2_1 = self.head_2_1(embeddings)
+        logits_2_2 = self.head_2_2(embeddings)
+        logits_2_3 = self.head_2_3(embeddings)
 
         return {
             "logits_2_1": logits_2_1,

@@ -1,17 +1,11 @@
 import torch
 import torch.nn as nn
 from transformers import AutoProcessor, SiglipModel
+
 class ClassificationHead(nn.Module):
     def __init__(self, input_dim: int, num_classes: int):
         super().__init__()
-        hidden_dim = input_dim // 2
-        self.classifier = nn.Sequential(
-            nn.Dropout(0.1),
-            nn.Linear(input_dim, hidden_dim),
-            nn.GELU(),
-            nn.LayerNorm(hidden_dim),
-            nn.Linear(hidden_dim, num_classes),
-        )
+        self.classifier = nn.Linear(input_dim, num_classes)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.classifier(x)
@@ -21,7 +15,6 @@ class SigLIP(nn.Module):
     def __init__(
         self,
         model_name: str = "google/siglip2-base-patch16-224",
-        adapt_backbone: bool = False,
     ):
         super().__init__()
 
@@ -35,12 +28,6 @@ class SigLIP(nn.Module):
 
         for param in self.siglip.parameters():
             param.requires_grad = False
-
-        if adapt_backbone:
-            for param in self.siglip.vision_model.head.parameters():
-                param.requires_grad = True
-            for param in self.siglip.text_model.head.parameters():
-                param.requires_grad = True
 
     def forward(self, image: torch.Tensor, text: list[str]):
         """
