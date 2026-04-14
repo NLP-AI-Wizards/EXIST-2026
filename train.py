@@ -8,6 +8,7 @@ from typing import Optional
 import torch
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import Callback
+from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks.model_checkpoint import ModelCheckpoint
 from pytorch_lightning.callbacks import LearningRateMonitor
@@ -117,7 +118,9 @@ def train(
     date_format = "%d_%m_%H-%M"
     version = f"{model_name}_{datetime.now().strftime(date_format)}"
 
-    loggers: list =[]
+    loggers: list = []
+    tb_logger = TensorBoardLogger(save_dir="tb_logs", name=version)
+    loggers.append(tb_logger)
 
     if use_wandb:
         wandb_logger = WandbLogger(
@@ -212,13 +215,13 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model_name",
         type=str,
-        default="siglip",
+        required=True,
         choices=["siglip", "qwen", "gemma4"],
         help="Model variant to train with",
     )
     parser.add_argument("--epochs", type=int, default=5, help="Number of training epochs")
     parser.add_argument("--n_samples", type=int, default=None, help="Number of samples to use from the dataset for quick testing")
-    parser.add_argument("--batch_size", type=int, default=8, help="Batch size for training")
+    parser.add_argument("--batch_size", type=int, default=4, help="Batch size for training")
     parser.add_argument("--num_workers", type=int, default=8, help="Number of workers for data loading")
     parser.add_argument("--no_sensorial", action="store_true", help="Disable physiological modality regardless of model")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for reproducibility")

@@ -26,7 +26,7 @@ class EXISTModel(pl.LightningModule):
         elif model_name == "qwen":
             self.model = Qwen()
         elif model_name == "gemma4":
-            self.model = Gemma4()
+            self.model = Gemma4(freeze_backbone=True)
         else:
             raise ValueError(f"Unknown model name: {model_name}")
 
@@ -119,6 +119,8 @@ class EXISTModel(pl.LightningModule):
 
             valid_preds_2_3 = preds_2_3_prob[valid_mask]
             valid_targets_2_3 = t_2_3[valid_mask]
+            valid_preds_2_3 = valid_preds_2_3.reshape(-1, 5)
+            valid_targets_2_3 = valid_targets_2_3.reshape(-1, 5)
 
             # --- Task 2.2 ---
             hard_t_2_2 = (valid_targets_2_2 >= 0.5).int()
@@ -180,15 +182,14 @@ class EXISTModel(pl.LightningModule):
     def configure_optimizers(self):
         optimizer = torch.optim.AdamW(
             self.parameters(),
-            lr=self.lr,
+            lr=5e-4,
             weight_decay=self.weight_decay,
         )
-        scheduler = torch.optim.lr_scheduler.OneCycleLR(
+        total_steps = int(self.trainer.estimated_stepping_batches)
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
             optimizer,
-            max_lr=self.lr,
-            total_steps=int(self.trainer.estimated_stepping_batches),
-            pct_start=self.warmup_ratio,
-            anneal_strategy="cos",
+            T_max=max(1, total_steps),
+            eta_min=5e-6,
         )
 
         print(f"Optimizer: {optimizer}")

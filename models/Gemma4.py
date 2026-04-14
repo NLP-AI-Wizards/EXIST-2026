@@ -21,17 +21,19 @@ class Gemma4(nn.Module):
     ):
         super().__init__()
 
-        self.processor = AutoProcessor.from_pretrained(model_name)
+        self.processor = AutoProcessor.from_pretrained(
+            model_name,
+            trust_remote_code=True,
+        )
         self.model = AutoModelForMultimodalLM.from_pretrained(
             model_name,
             dtype="auto",
             device_map="auto",
+            trust_remote_code=True,
         )
         self.max_length = max_length
 
-        embed_dim = getattr(self.model.config, "hidden_size", None)
-        if embed_dim is None:
-            embed_dim = self.model.config.text_config.hidden_size
+        embed_dim = self.model.config.text_config.hidden_size
         self.head_2_1 = ClassificationHead(embed_dim, 1)
         self.head_2_2 = ClassificationHead(embed_dim, 1)
         self.head_2_3 = ClassificationHead(embed_dim, 5)
@@ -97,6 +99,13 @@ class Gemma4(nn.Module):
         logits_2_1 = self.head_2_1(pooled)
         logits_2_2 = self.head_2_2(pooled)
         logits_2_3 = self.head_2_3(pooled)
+
+        if logits_2_1.ndim == 3 and logits_2_1.shape[1] == 1:
+            logits_2_1 = logits_2_1.squeeze(1)
+        if logits_2_2.ndim == 3 and logits_2_2.shape[1] == 1:
+            logits_2_2 = logits_2_2.squeeze(1)
+        if logits_2_3.ndim == 3 and logits_2_3.shape[1] == 1:
+            logits_2_3 = logits_2_3.squeeze(1)
 
         return {
             "logits_2_1": logits_2_1,
