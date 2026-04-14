@@ -131,7 +131,7 @@ def train(
     if use_sensorial is None:
         use_sensorial = model_name != "siglip"
 
-    if model_name == "qwen":
+    if model_name in {"qwen", "gemma4"}:
         use_sensorial = False
 
     # DataLoader
@@ -213,7 +213,7 @@ if __name__ == "__main__":
         "--model_name",
         type=str,
         default="siglip",
-        choices=["siglip", "qwen"],
+        choices=["siglip", "qwen", "gemma4"],
         help="Model variant to train with",
     )
     parser.add_argument("--epochs", type=int, default=5, help="Number of training epochs")

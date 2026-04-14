@@ -8,6 +8,7 @@ from torchmetrics.classification import (
 )
 from models.SigLIP import SigLIP
 from models.Qwen import Qwen
+from models.Gemma4 import Gemma4
 from loss import CustomLoss
 
 class EXISTModel(pl.LightningModule):
@@ -24,6 +25,8 @@ class EXISTModel(pl.LightningModule):
             self.model = SigLIP()
         elif model_name == "qwen":
             self.model = Qwen()
+        elif model_name == "gemma4":
+            self.model = Gemma4()
         else:
             raise ValueError(f"Unknown model name: {model_name}")
 
