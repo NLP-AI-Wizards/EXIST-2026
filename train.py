@@ -251,8 +251,9 @@ def train(
     print("===> Start building model")
     model = EXISTModel(
         model_name=model_name,
-        lr=5e-4,
-        weight_decay=1e-4,
+        lr=1e-4,
+        weight_decay=1e-2,
+        warmup_ratio=0.3,
     )
 
     model_checkpoint = ModelCheckpoint(
@@ -312,7 +313,7 @@ if __name__ == "__main__":
         help="Model variant to train with",
     )
     parser.add_argument(
-        "--epochs", type=int, default=5, help="Number of training epochs"
+        "--epochs", type=int, default=15, help="Number of training epochs"
     )
     parser.add_argument(
         "--n_samples",

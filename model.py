@@ -240,6 +240,5 @@ class EXISTModel(pl.LightningModule):
                 "scheduler": scheduler,
                 "interval": "step",
                 "frequency": 1,
-                "monitor": "val/total_loss",
             },
         }

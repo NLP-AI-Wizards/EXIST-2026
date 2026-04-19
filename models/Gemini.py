@@ -3,7 +3,7 @@ import torch.nn as nn
 import numpy as np
 from safetensors.torch import load_file
 
-from models.model_head.mlp import ClassificationHead
+from models.model_head.mlp import ClassificationHead, SwiGLU
 
 
 def get_embeddings():
@@ -24,6 +24,24 @@ def get_embeddings():
     return all_embeddings, all_ids, id_to_embedding_idx
 
 
+class ExpansionBlock(nn.Module):
+    def __init__(self, dim_in, expansion_factor=2, dropout=0.1):
+        super().__init__()
+        self.norm = nn.LayerNorm(dim_in, eps=1e-6)
+        hidden_dim = dim_in * expansion_factor
+        self.swiglu = SwiGLU(dim_in, hidden_dim)
+        self.out_proj = nn.Linear(hidden_dim, dim_in, bias=False)
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, x):
+        residual = x
+        x = self.norm(x)
+        x = self.swiglu(x)
+        x = self.out_proj(x)
+        x = self.dropout(x)
+        return x + residual
+
+
 class Gemini(nn.Module):
     def __init__(self, dropout: float = 0.2):
         super().__init__()
@@ -35,12 +53,14 @@ class Gemini(nn.Module):
 
         # Using a shared projection layer for potentially better feature alignment
         self.shared_proj = nn.Sequential(
-            nn.Linear(embed_dim, 512), nn.LayerNorm(512), nn.GELU(), nn.Dropout(dropout)
+            ExpansionBlock(embed_dim, expansion_factor=2, dropout=dropout),
+            ExpansionBlock(embed_dim, expansion_factor=2, dropout=dropout),
+            nn.LayerNorm(embed_dim),
         )
 
-        self.head_2_1 = ClassificationHead(512, 1)
-        self.head_2_2 = ClassificationHead(512, 1)
-        self.head_2_3 = ClassificationHead(512, 5)
+        self.head_2_1 = ClassificationHead(embed_dim, 1)
+        self.head_2_2 = ClassificationHead(embed_dim, 1)
+        self.head_2_3 = ClassificationHead(embed_dim, 5)
 
     def forward(self, ids: list[int]):
         """
