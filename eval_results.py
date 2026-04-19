@@ -1,26 +1,33 @@
 from pyevall.evaluation import PyEvALLEvaluation
 from pyevall.utils.utils import PyEvALLUtils
 
+
 def evaluate(
     predictions_path: str,
     gold_path: str = "data/evaluation/golds/EXIST2025_training_task2_1_gold_hard.json",
     task: str = "2.1",
-    mode: str = "hard",
+    verbose: bool = True,
 ):
     test = PyEvALLEvaluation()
     params = dict()
 
+    # Infer mode from filename convention
+    if "hard" in predictions_path.lower() and "hard" in gold_path.lower():
+        mode = "hard"
+    elif "soft" in predictions_path.lower() and "soft" in gold_path.lower():
+        mode = "soft"
+    else:
+        raise ValueError(
+            "Could not infer evaluation mode from file names. Please ensure both predictions and gold files contain 'hard' or 'soft' in their names."
+        )
+
     if mode == "hard":
-        # HARD eval
-        if task == "2.1":
-            params[PyEvALLUtils.PARAM_REPORT] = PyEvALLUtils.PARAM_OPTION_REPORT_EMBEDDED
-            metrics = ["ICM", "ICMNorm", "FMeasure"]
-        elif task == "2.2":
-            metrics = ["ICM", "ICMNorm", "FMeasure"]
+        params[PyEvALLUtils.PARAM_REPORT] = PyEvALLUtils.PARAM_OPTION_REPORT_EMBEDDED
+        metrics = ["ICM", "ICMNorm", "FMeasure"]
+        if task == "2.2":
             TASK2_2_HIERARCHY = {"YES": ["DIRECT", "JUDGEMENTAL"], "NO": []}
             params[PyEvALLUtils.PARAM_HIERARCHY] = TASK2_2_HIERARCHY
         elif task == "2.3":
-            metrics = ["ICM", "ICMNorm", "FMeasure"]
             TASK2_3_HIERARCHY = {
                 "YES": [
                     "IDEOLOGICAL-INEQUALITY",
@@ -33,17 +40,11 @@ def evaluate(
             }
             params[PyEvALLUtils.PARAM_HIERARCHY] = TASK2_3_HIERARCHY
         report = test.evaluate(predictions_path, gold_path, metrics, **params)
-        report.print_report()
 
     else:
-        # Soft eval
-        if task == "2.1":
-            params[PyEvALLUtils.PARAM_REPORT] = (
-                PyEvALLUtils.PARAM_OPTION_REPORT_EMBEDDED
-            )
-            metrics = ["ICMSoft", "ICMSoftNorm", "CrossEntropy"]
-        elif task == "2.2":
-            metrics = ["ICMSoft", "ICMSoftNorm", "CrossEntropy"]
+        params[PyEvALLUtils.PARAM_REPORT] = PyEvALLUtils.PARAM_OPTION_REPORT_EMBEDDED
+        metrics = ["ICMSoft", "ICMSoftNorm", "CrossEntropy"]
+        if task == "2.2":
             TASK2_2_HIERARCHY = {"YES": ["DIRECT", "JUDGEMENTAL"], "NO": []}
             params[PyEvALLUtils.PARAM_HIERARCHY] = TASK2_2_HIERARCHY
         elif task == "2.3":
@@ -60,14 +61,17 @@ def evaluate(
             }
             params[PyEvALLUtils.PARAM_HIERARCHY] = TASK2_3_HIERARCHY
         report = test.evaluate(predictions_path, gold_path, metrics, **params)
+
+    if verbose:
         report.print_report()
 
-    return
 
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Evaluate predictions against gold labels.")
+    parser = argparse.ArgumentParser(
+        description="Evaluate predictions against gold labels."
+    )
     parser.add_argument(
         "predictions_path", type=str, help="Path to the predictions file (JSON format)."
     )
@@ -82,14 +86,7 @@ if __name__ == "__main__":
         type=str,
         choices=["2.1", "2.2", "2.3"],
         required=True,
-        help="Task identifier (default: 2.1).",
-    )
-    parser.add_argument(
-        "--mode",
-        type=str,
-        choices=["hard", "soft"],
-        required=True,
-        help="Evaluation mode (default: hard).",
+        help="Task identifier.",
     )
     args = parser.parse_args()
-    evaluate(args.predictions_path, args.gold_path, args.task, args.mode)
+    evaluate(args.predictions_path, args.gold_path, args.task, verbose=True)

@@ -9,7 +9,9 @@ from torchmetrics.classification import (
 from models.SigLIP import SigLIP
 from models.Qwen import Qwen
 from models.Gemma4 import Gemma4
+from models.Gemini import Gemini
 from loss import CustomLoss
+
 
 class EXISTModel(pl.LightningModule):
     def __init__(
@@ -20,6 +22,7 @@ class EXISTModel(pl.LightningModule):
         warmup_ratio: float = 0.1,
     ):
         super().__init__()
+        self.validation_step_outputs = []
 
         if model_name == "siglip":
             self.model = SigLIP()
@@ -27,6 +30,8 @@ class EXISTModel(pl.LightningModule):
             self.model = Qwen()
         elif model_name == "gemma4":
             self.model = Gemma4(freeze_backbone=True)
+        elif model_name == "gemini":
+            self.model = Gemini()
         else:
             raise ValueError(f"Unknown model name: {model_name}")
 
@@ -62,18 +67,25 @@ class EXISTModel(pl.LightningModule):
             postfix="_2_3",
         )
 
-    def forward(self, image, text, physio_features=None, physio_mask=None):
+    def forward(
+        self, image=None, text=None, ids=None, physio_features=None, physio_mask=None
+    ):
+        if isinstance(self.model, Gemini):
+            return self.model(ids)
         if physio_features is None or physio_mask is None:
             return self.model(image, text)
         return self.model(image, text, physio_features, physio_mask)
 
     def _step(self, batch, batch_idx):
-        image = batch["image"]
-        text = batch["text"]
+        image = batch.get("image", None)
+        text = batch.get("text", None)
+        ids = batch.get("id", None)
         physio_features = batch.get("physio_features", None)
         physio_mask = batch.get("physio_mask", None)
 
-        if physio_features is not None and physio_mask is not None:
+        if isinstance(self.model, Gemini):
+            outputs = self.model(ids)
+        elif physio_features is not None and physio_mask is not None:
             outputs = self.model(image, text, physio_features, physio_mask)
         else:
             outputs = self.model(image, text)
@@ -137,8 +149,8 @@ class EXISTModel(pl.LightningModule):
             {f"train/{k}": v for k, v in loss_dict.items()},
             on_step=False,
             on_epoch=True,
-            prog_bar=True,
-            logger=True
+            prog_bar=False,
+            logger=True,
         )
         return loss_dict["total_loss"]
 
@@ -150,28 +162,39 @@ class EXISTModel(pl.LightningModule):
             on_step=False,
             on_epoch=True,
             prog_bar=True,
-            logger=True
+            logger=True,
         )
         self.compute_metrics(outputs, targets, masks)
 
-        return loss_dict["total_loss"]
-
-    def predict_step(self, batch, batch_idx):
-        outputs, _, _ = self._step(batch, batch_idx)
-        outputs["id"] = batch["id"]
-        return outputs
+        step_output = {
+            "loss": loss_dict["total_loss"],
+            "id": batch["id"],
+            "logits_2_1": outputs["logits_2_1"].detach(),
+            "logits_2_2": outputs["logits_2_2"].detach(),
+            "logits_2_3": outputs["logits_2_3"].detach(),
+        }
+        self.validation_step_outputs.append(step_output)
+        return step_output
 
     def on_validation_epoch_end(self):
-        self.log_dict({f"val/{k}": v for k, v in self.metrics_2_1.compute().items()})
+        # Log aggregated standard metrics and reset
+        self.log_dict(
+            {f"val/{k}": v for k, v in self.metrics_2_1.compute().items()},
+            logger=True,
+            prog_bar=False,
+        )
         self.metrics_2_1.reset()
 
-        # Handle tasks 2.2 and 2.3 safely (in case no sexist memes were in the val set)
         try:
             self.log_dict(
-                {f"val/{k}": v for k, v in self.metrics_2_2.compute().items()}
+                {f"val/{k}": v for k, v in self.metrics_2_2.compute().items()},
+                logger=True,
+                prog_bar=False,
             )
             self.log_dict(
-                {f"val/{k}": v for k, v in self.metrics_2_3.compute().items()}
+                {f"val/{k}": v for k, v in self.metrics_2_3.compute().items()},
+                logger=True,
+                prog_bar=False,
             )
         except Exception:
             pass
@@ -179,17 +202,33 @@ class EXISTModel(pl.LightningModule):
             self.metrics_2_2.reset()
             self.metrics_2_3.reset()
 
+        # Clear step outputs to avoid memory bloat, since we're not using them for PyEvALL here
+        self.validation_step_outputs = []
+
+    def predict_step(self, batch, batch_idx):
+        outputs, _, _ = self._step(batch, batch_idx)
+        # Ensure we return floats for JSON serialization
+        results = {
+            "id": batch["id"],
+            "logits_2_1": outputs["logits_2_1"].float(),
+            "logits_2_2": outputs["logits_2_2"].float(),
+            "logits_2_3": outputs["logits_2_3"].float(),
+        }
+        return results
+
     def configure_optimizers(self):
         optimizer = torch.optim.AdamW(
             self.parameters(),
-            lr=5e-4,
+            lr=self.lr,
             weight_decay=self.weight_decay,
         )
         total_steps = int(self.trainer.estimated_stepping_batches)
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+        scheduler = torch.optim.lr_scheduler.OneCycleLR(
             optimizer,
-            T_max=max(1, total_steps),
-            eta_min=5e-6,
+            total_steps=total_steps,
+            pct_start=self.warmup_ratio,
+            max_lr=self.lr,
+            anneal_strategy="cos",
         )
 
         print(f"Optimizer: {optimizer}")

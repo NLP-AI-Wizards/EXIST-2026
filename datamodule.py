@@ -117,4 +117,17 @@ class EXISTDataModule(pl.LightningDataModule):
         )
 
     def predict_dataloader(self):
-        return self.train_dataloader()
+        # We need to make sure the dataset is actually populated,
+        # which normally happens during trainer.fit() via setup().
+        if self.train_dataset is None:
+            self.setup(stage="predict")
+
+        # HACK: train set to test against 2025 golds
+        return DataLoader(
+            self.train_dataset,
+            batch_size=self.batch_size,
+            shuffle=False,
+            num_workers=self.num_workers,
+            collate_fn=collate_fn,
+            pin_memory=True,
+        )
