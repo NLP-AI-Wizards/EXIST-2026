@@ -209,4 +209,5 @@ __marimo__/
 # Data
 data/
 checkpoints/
-logs/
+tb_logs/
+*.zip

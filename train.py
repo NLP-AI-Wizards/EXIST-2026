@@ -3,7 +3,6 @@ import json
 import os
 from logging import Logger
 from datetime import datetime
-from typing import Optional
 
 import torch
 import pytorch_lightning as pl
@@ -75,7 +74,7 @@ def _build_task2_3_json_entries(ids, cat_probs, hard: bool):
     return entries
 
 
-def _run_task2_1_eval(
+def _run_eval(
     trainer: pl.Trainer,
     model: pl.LightningModule,
     datamodule: EXISTDataModule,
@@ -117,14 +116,22 @@ def _run_task2_1_eval(
         all_probs_2_2.extend(probs_2_2)
         all_probs_2_3.extend(probs_2_3)
 
-    # 3. Build prediction entries
+    # 3. Zip all data together and sort by ID (numeric sort for string IDs)
+    # We use key=lambda x: int(x[0]) because sample IDs are strings of integers
+    combined = list(zip(all_ids, all_probs_2_1, all_probs_2_2, all_probs_2_3))
+    combined.sort(key=lambda x: int(x[0]))
+
+    # Unpack sorted data
+    sorted_ids, sorted_probs_2_1, sorted_probs_2_2, sorted_probs_2_3 = zip(*combined)
+
+    # 4. Build prediction entries
     for task_name, probs_list, build_fn in [
-        ("task2_1", all_probs_2_1, _build_task2_1_json_entries),
-        ("task2_2", all_probs_2_2, _build_task2_2_json_entries),
-        ("task2_3", all_probs_2_3, _build_task2_3_json_entries),
+        ("task2_1", sorted_probs_2_1, _build_task2_1_json_entries),
+        ("task2_2", sorted_probs_2_2, _build_task2_2_json_entries),
+        ("task2_3", sorted_probs_2_3, _build_task2_3_json_entries),
     ]:
-        hard_entries = build_fn(all_ids, probs_list, hard=True)
-        soft_entries = build_fn(all_ids, probs_list, hard=False)
+        hard_entries = build_fn(sorted_ids, probs_list, hard=True)
+        soft_entries = build_fn(sorted_ids, probs_list, hard=False)
 
         hard_path = os.path.join(output_dir, version, f"{task_name}_hard.json")
         soft_path = os.path.join(output_dir, version, f"{task_name}_soft.json")
@@ -141,92 +148,21 @@ def _run_task2_1_eval(
     print(f"Saved SOFT predictions to: {soft_path}")
 
 
-def predict(
-    model_name: str,
-    ckpt_path: str,
-    n_samples: Optional[int] = None,
-    batch_size: int = 8,
-    num_workers: int = 4,
-    use_sensorial: Optional[bool] = None,
-):
-    print(f"===> Loading model from: {ckpt_path}")
-
-    if use_sensorial is None:
-        use_sensorial = model_name != "siglip"
-
-    if model_name in {"qwen", "gemma4"}:
-        use_sensorial = False
-
-    datamodule = EXISTDataModule(
-        train_dataset=EXISTDataset(
-            json_path=r"data/EXIST 2026 Memes Dataset/training/EXIST2026_training.json",
-            img_dir=r"data/EXIST 2026 Memes Dataset/training/memes",
-            use_sensorial=use_sensorial,
-        ),
-        test_dataset=EXISTDataset(
-            json_path=r"data/EXIST 2026 Memes Dataset/test/EXIST2026_test_clean.json",
-            img_dir=r"data/EXIST 2026 Memes Dataset/test/memes",
-            use_sensorial=use_sensorial,
-        ),
-        batch_size=batch_size,
-        num_workers=num_workers,
-        n_samples=n_samples,
-    )
-
-    trainer = pl.Trainer(
-        accelerator="auto",
-        devices="auto",
-        precision="bf16-mixed",
-        logger=False,
-    )
-
-    model = EXISTModel(model_name=model_name)
-
-    model_dir = os.path.dirname(ckpt_path)
-    version = os.path.basename(model_dir)
-
-    _run_task2_1_eval(
-        trainer=trainer,
-        model=model,
-        datamodule=datamodule,
-        best_ckpt=ckpt_path,
-        version=version + "_eval",
-    )
-
-
-def train(
-    model_name: str,
-    epochs: int = 5,
-    n_samples: Optional[int] = None,
-    batch_size: int = 8,
-    num_workers: int = 4,
-    seed: int = 42,
-    use_sensorial: Optional[bool] = None,
-    wandb_project: str = "EXIST2026",
-    use_wandb: bool = False,
-    wandb_entity: Optional[str] = None,
-):
-    date_format = "%d_%m_%H-%M"
-    version = f"{model_name}_{datetime.now().strftime(date_format)}"
+def train():
+    version = f"{args.model_name}_{args.version}"
 
     loggers: list = []
     tb_logger = TensorBoardLogger(save_dir="tb_logs", name=version)
     loggers.append(tb_logger)
 
-    if use_wandb:
+    if args.wandb:
         wandb_logger = WandbLogger(
-            project=wandb_project,
+            project=args.wandb_project,
             name=version,
             save_dir="wandb",
-            entity=wandb_entity,
+            entity=args.wandb_entity,
         )
         loggers.append(wandb_logger)
-
-    if use_sensorial is None:
-        use_sensorial = model_name != "siglip"
-
-    if model_name in {"qwen", "gemma4"}:
-        use_sensorial = False
 
     # DataLoader
     print("===> Loading datasets")
@@ -234,26 +170,28 @@ def train(
         train_dataset=EXISTDataset(
             json_path=r"data/EXIST 2026 Memes Dataset/training/EXIST2026_training.json",
             img_dir=r"data/EXIST 2026 Memes Dataset/training/memes",
-            use_sensorial=use_sensorial,
+            use_sensorial=args.use_sensorial,
         ),
         test_dataset=EXISTDataset(
             json_path=r"data/EXIST 2026 Memes Dataset/test/EXIST2026_test_clean.json",
             img_dir=r"data/EXIST 2026 Memes Dataset/test/memes",
-            use_sensorial=use_sensorial,
+            use_sensorial=args.use_sensorial,
         ),
-        batch_size=batch_size,
-        num_workers=num_workers,
-        seed=seed,
-        n_samples=n_samples,
+        batch_size=args.batch_size,
+        num_workers=args.num_workers,
+        seed=args.seed,
     )
 
     # Pytorch Lightning module
     print("===> Start building model")
     model = EXISTModel(
-        model_name=model_name,
-        lr=1e-4,
-        weight_decay=1e-2,
-        warmup_ratio=0.3,
+        model_name=args.model_name,
+        n_blocks=args.n_blocks,
+        expansion_factor=args.expansion_factor,
+        dropout=args.dropout,
+        lr=args.lr,
+        weight_decay=args.weight_decay,
+        warmup_ratio=args.warmup_ratio,
     )
 
     model_checkpoint = ModelCheckpoint(
@@ -271,14 +209,26 @@ def train(
         logging_interval="step",
     )
 
-    callbacks: list[Callback] = [model_checkpoint, lr_monitor, model_summary]
+    early_stopping = pl.callbacks.EarlyStopping(
+        monitor="val/total_loss",
+        patience=5,
+        mode="min",
+        verbose=True,
+    )
+
+    callbacks: list[Callback] = [
+        model_checkpoint,
+        lr_monitor,
+        model_summary,
+        early_stopping,
+    ]
 
     # Trainer
     print("===> Instantiate trainer")
     trainer = pl.Trainer(
         logger=loggers,
         callbacks=callbacks,
-        max_epochs=epochs,
+        max_epochs=args.epochs,
         accelerator="auto",
         devices="auto",
         precision="bf16-mixed",
@@ -292,7 +242,7 @@ def train(
     print(f"Best checkpoint path: {best_ckpt}")
 
     # Generate the prediction files at the very end
-    _run_task2_1_eval(
+    _run_eval(
         trainer=trainer,
         model=model,
         datamodule=datamodule,
@@ -305,21 +255,60 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Train EXIST2026 Model")
+
+    # MODEL
     parser.add_argument(
         "--model_name",
         type=str,
         required=True,
-        choices=["siglip", "qwen", "gemma4", "gemini"],
+        choices=["gemini"],
         help="Model variant to train with",
     )
     parser.add_argument(
-        "--epochs", type=int, default=15, help="Number of training epochs"
+        "--version",
+        type=str,
+        default=datetime.now().strftime("%d_%m_%H-%M"),
+        help="Version name for logging and checkpointing (default: timestamp)",
     )
     parser.add_argument(
-        "--n_samples",
+        "--n_blocks",
         type=int,
-        default=None,
-        help="Number of samples to use from the dataset for quick testing",
+        default=2,
+        help="Number of expansion blocks in Gemini",
+    )
+    parser.add_argument(
+        "--expansion_factor",
+        type=int,
+        default=2,
+        help="Expansion factor for the Gemini blocks",
+    )
+    parser.add_argument(
+        "--dropout",
+        type=float,
+        default=0.2,
+        help="Dropout rate for the Gemini blocks",
+    )
+
+    # OPTIMIZATION
+    parser.add_argument(
+        "--lr", type=float, default=1e-4, help="Learning rate for the optimizer"
+    )
+    parser.add_argument(
+        "--weight_decay",
+        type=float,
+        default=1e-2,
+        help="Weight decay for the optimizer",
+    )
+    parser.add_argument(
+        "--warmup_ratio",
+        type=float,
+        default=0.3,
+        help="Warmup ratio for learning rate scheduling",
+    )
+
+    # TRAINING
+    parser.add_argument(
+        "--epochs", type=int, default=15, help="Number of training epochs"
     )
     parser.add_argument(
         "--batch_size", type=int, default=8, help="Batch size for training"
@@ -328,13 +317,15 @@ if __name__ == "__main__":
         "--num_workers", type=int, default=4, help="Number of workers for data loading"
     )
     parser.add_argument(
-        "--no_sensorial",
+        "--use_sensorial",
         action="store_true",
-        help="Disable physiological modality regardless of model",
+        help="Enable physiological modality",
     )
     parser.add_argument(
         "--seed", type=int, default=42, help="Random seed for reproducibility"
     )
+
+    # LOGGING
     parser.add_argument(
         "--wandb",
         action="store_true",
@@ -352,42 +343,10 @@ if __name__ == "__main__":
         default=None,
         help="Weights & Biases entity (team) name for logging",
     )
-    parser.add_argument(
-        "--predict",
-        action="store_true",
-        help="Run prediction mode instead of training",
-    )
-    parser.add_argument(
-        "--ckpt_path",
-        type=str,
-        default=None,
-        help="Path to the checkpoint file for prediction",
-    )
     args = parser.parse_args()
 
+    # Set random seed for reproducibility
     pl.seed_everything(args.seed)
 
-    if args.predict:
-        if args.ckpt_path is None:
-            raise ValueError("--ckpt_path must be provided in --predict mode")
-        predict(
-            model_name=args.model_name,
-            ckpt_path=args.ckpt_path,
-            n_samples=args.n_samples,
-            batch_size=args.batch_size,
-            num_workers=args.num_workers,
-            use_sensorial=False if args.no_sensorial else None,
-        )
-    else:
-        train(
-            model_name=args.model_name,
-            epochs=args.epochs,
-            n_samples=args.n_samples,
-            batch_size=args.batch_size,
-            num_workers=args.num_workers,
-            seed=args.seed,
-            use_sensorial=False if args.no_sensorial else None,
-            use_wandb=args.wandb,
-            wandb_project=args.wandb_project,
-            wandb_entity=args.wandb_entity,
-        )
+    # Start training
+    train()

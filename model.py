@@ -6,9 +6,6 @@ from torchmetrics.classification import (
     BinaryF1Score,
     MultilabelF1Score,
 )
-from models.SigLIP import SigLIP
-from models.Qwen import Qwen
-from models.Gemma4 import Gemma4
 from models.Gemini import Gemini
 from loss import CustomLoss
 
@@ -16,7 +13,10 @@ from loss import CustomLoss
 class EXISTModel(pl.LightningModule):
     def __init__(
         self,
-        model_name: str = "qwen",
+        model_name: str = "gemini",
+        n_blocks: int = 2,
+        expansion_factor: int = 2,
+        dropout: float = 0.2,
         lr: float = 1e-4,
         weight_decay: float = 1e-2,
         warmup_ratio: float = 0.1,
@@ -24,14 +24,10 @@ class EXISTModel(pl.LightningModule):
         super().__init__()
         self.validation_step_outputs = []
 
-        if model_name == "siglip":
-            self.model = SigLIP()
-        elif model_name == "qwen":
-            self.model = Qwen()
-        elif model_name == "gemma4":
-            self.model = Gemma4(freeze_backbone=True)
-        elif model_name == "gemini":
-            self.model = Gemini()
+        if model_name == "gemini":
+            self.model = Gemini(
+                n_blocks=n_blocks, expansion_factor=expansion_factor, dropout=dropout
+            )
         else:
             raise ValueError(f"Unknown model name: {model_name}")
 

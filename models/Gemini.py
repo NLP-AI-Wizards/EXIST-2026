@@ -43,7 +43,9 @@ class ExpansionBlock(nn.Module):
 
 
 class Gemini(nn.Module):
-    def __init__(self, dropout: float = 0.2):
+    def __init__(
+        self, n_blocks: int = 2, expansion_factor: int = 2, dropout: float = 0.2
+    ):
         super().__init__()
         embeddings, embedding_ids, id_to_embedding_idx = get_embeddings()
         self.register_buffer("embeddings", embeddings)
@@ -51,10 +53,14 @@ class Gemini(nn.Module):
 
         embed_dim = self.embeddings.shape[1]
 
-        # Using a shared projection layer for potentially better feature alignment
+        # Shared projection layers
         self.shared_proj = nn.Sequential(
-            ExpansionBlock(embed_dim, expansion_factor=2, dropout=dropout),
-            ExpansionBlock(embed_dim, expansion_factor=2, dropout=dropout),
+            *[
+                ExpansionBlock(
+                    embed_dim, expansion_factor=expansion_factor, dropout=dropout
+                )
+                for _ in range(n_blocks)
+            ],
             nn.LayerNorm(embed_dim),
         )
 

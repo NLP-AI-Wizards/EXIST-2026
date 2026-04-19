@@ -1,8 +1,6 @@
-import numpy as np
 import torch
 import pytorch_lightning as pl
-from torch.utils.data import DataLoader, Subset
-from sklearn.model_selection import train_test_split
+from torch.utils.data import DataLoader
 from PIL import Image
 from typing import Optional
 
@@ -44,7 +42,6 @@ class EXISTDataModule(pl.LightningDataModule):
         batch_size: int = 32,
         num_workers: int = 4,
         seed: int = 42,
-        n_samples: Optional[int] = None,
     ):
         super().__init__()
         self.train = train_dataset
@@ -52,7 +49,6 @@ class EXISTDataModule(pl.LightningDataModule):
         self.batch_size = batch_size
         self.num_workers = num_workers
         self.seed = seed
-        self.n_samples = n_samples
 
         self.train_dataset = None
         self.val_dataset = None
@@ -60,31 +56,12 @@ class EXISTDataModule(pl.LightningDataModule):
 
     def setup(self, stage=None):
         if self.train_dataset is None:
-            # Get all indices
-            indices = np.arange(len(self.train))
-            if self.n_samples is not None:
-                indices = np.random.choice(indices, size=self.n_samples, replace=False)
+            # Use full training dataset for training
+            self.train_dataset = self.train
 
-            # Extract labels for stratification from the underlying DataFrame
-            # We binarize Task 2.1 marginals to 0 or 1 for the split logic
-            raw_labels = self.train.data.iloc[indices]["labels_task2_1"]
-            stratify_labels = raw_labels.apply(
-                lambda x: 1 if (x.count("YES") / len(x)) >= 0.5 else 0
-            ).values
-
-            # Split 80% Train | 20% Val
-            train_idx, val_idx = train_test_split(
-                indices,
-                test_size=0.2,
-                random_state=self.seed,
-                stratify=stratify_labels,
-            )
-
-            self.train_dataset = Subset(self.train, train_idx)
-            self.val_dataset = Subset(self.train, val_idx)
-
-        if self.test_dataset is None:
-            self.test_dataset = self.test
+        if self.val_dataset is None:
+            # Use full test dataset for validation
+            self.val_dataset = self.test
 
     def train_dataloader(self):
         return DataLoader(
@@ -106,28 +83,17 @@ class EXISTDataModule(pl.LightningDataModule):
             pin_memory=True,
         )
 
-    def test_dataloader(self):
-        return DataLoader(
-            self.test_dataset,
-            batch_size=self.batch_size,
-            shuffle=False,
-            num_workers=self.num_workers,
-            collate_fn=collate_fn,
-            pin_memory=True,
-        )
-
     def predict_dataloader(self):
-        # We need to make sure the dataset is actually populated,
-        # which normally happens during trainer.fit() via setup().
+        # Ensure setup is called if bypassing training
         if self.train_dataset is None:
             self.setup(stage="predict")
 
-        # HACK: train set to test against 2025 golds
+        # Use full training dataset for predicting/evaluating against golds
         return DataLoader(
             self.train_dataset,
             batch_size=self.batch_size,
             shuffle=False,
             num_workers=self.num_workers,
             collate_fn=collate_fn,
-            pin_memory=True,
+            pin_memory=False,
         )
