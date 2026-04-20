@@ -118,6 +118,9 @@ def _run_eval(
     version: str,
     output_dir: str = "outputs",
 ):
+    if args.paper_run:
+        output_dir = output_dir + "_paper"
+
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs(os.path.join(output_dir, version), exist_ok=True)
 
@@ -200,8 +203,12 @@ def _run_eval(
     print(f"Saved SOFT predictions to: {soft_path}")
 
 
-def train():
-    version = f"{args.model_name}_{args.version}"
+def train(seed):
+    if args.paper_run:
+        version = f"{args.model_name}_{args.version}_seed_{seed}"
+    else:
+        version = f"{args.model_name}_{args.version}"
+
 
     loggers: list = []
     tb_logger = TensorBoardLogger(save_dir="tb_logs", name=version)
@@ -244,6 +251,7 @@ def train():
         lr=args.lr,
         weight_decay=args.weight_decay,
         warmup_ratio=args.warmup_ratio,
+        soft_gating=args.soft_gating
     )
 
     model_checkpoint = ModelCheckpoint(
@@ -341,6 +349,13 @@ if __name__ == "__main__":
         help="Dropout rate for the Gemini blocks",
     )
 
+    parser.add_argument(
+        "--soft_gating",
+        action="store_true",
+        help="Add soft gating to model architecture",
+    )
+
+
     # OPTIMIZATION
     parser.add_argument(
         "--lr", type=float, default=1e-4, help="Learning rate for the optimizer"
@@ -376,6 +391,11 @@ if __name__ == "__main__":
     parser.add_argument(
         "--seed", type=int, default=42, help="Random seed for reproducibility"
     )
+    parser.add_argument(
+        "--paper_run",
+        action="store_true",
+        help="Train the model over five different seeds, then averages the results",
+    )
 
     # LOGGING
     parser.add_argument(
@@ -397,8 +417,15 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    # Set random seed for reproducibility
-    pl.seed_everything(args.seed)
+    seeds = [42,67,89,110,1337]
+    if args.paper_run:
+        for seed in seeds:
+            pl.seed_everything(seed)
+            train(seed)
+    
+    else:
+        # Set random seed for reproducibility
+        pl.seed_everything(args.seed)
 
-    # Start training
-    train()
+        # Start training
+        train(0)

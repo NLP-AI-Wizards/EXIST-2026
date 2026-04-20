@@ -44,12 +44,13 @@ class ExpansionBlock(nn.Module):
 
 class Gemini(nn.Module):
     def __init__(
-        self, n_blocks: int = 2, expansion_factor: int = 2, dropout: float = 0.2
+        self, n_blocks: int = 2, expansion_factor: int = 4, dropout: float = 0.2, soft_gating: bool = False
     ):
         super().__init__()
         embeddings, embedding_ids, id_to_embedding_idx = get_embeddings()
         self.register_buffer("embeddings", embeddings)
         self.id_to_embedding_idx = id_to_embedding_idx
+        self.soft_gating = soft_gating
 
         embed_dim = self.embeddings.shape[1]
 
@@ -84,6 +85,11 @@ class Gemini(nn.Module):
 
         # Output raw logits for BCEWithLogitsLoss
         logits_2_1 = self.head_2_1(shared_features)
+
+        # Added block, soft gating
+        if self.soft_gating:
+            prob_2_1 = torch.sigmoid(logits_2_1.detach())
+            shared_features = shared_features * prob_2_1
 
         # Logits for Task 2.2 and 2.3
         logits_2_2 = self.head_2_2(shared_features)

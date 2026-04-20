@@ -20,13 +20,14 @@ class EXISTModel(pl.LightningModule):
         lr: float = 1e-4,
         weight_decay: float = 1e-2,
         warmup_ratio: float = 0.1,
+        soft_gating: bool = False
     ):
         super().__init__()
         self.validation_step_outputs = []
 
         if model_name == "gemini":
             self.model = Gemini(
-                n_blocks=n_blocks, expansion_factor=expansion_factor, dropout=dropout
+                n_blocks=n_blocks, expansion_factor=expansion_factor, dropout=dropout, soft_gating=soft_gating
             )
         else:
             raise ValueError(f"Unknown model name: {model_name}")
