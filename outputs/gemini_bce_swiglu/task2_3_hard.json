@@ -10,16 +10,14 @@
   {
     "id": "111542",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210277",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -33,7 +31,7 @@
   {
     "id": "110226",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -48,16 +46,14 @@
   {
     "id": "211320",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110147",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -72,7 +68,7 @@
   {
     "id": "111128",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -143,15 +139,14 @@
   {
     "id": "210896",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210345",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -165,15 +160,14 @@
   {
     "id": "211532",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "112030",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -188,7 +182,7 @@
   {
     "id": "212006",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -225,7 +219,7 @@
   {
     "id": "110779",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -241,8 +235,7 @@
   {
     "id": "111054",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -264,22 +257,21 @@
   {
     "id": "111183",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210487",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210248",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -293,16 +285,14 @@
   {
     "id": "110671",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210639",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -317,8 +307,7 @@
   {
     "id": "211128",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -332,16 +321,14 @@
   {
     "id": "210708",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111486",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -356,8 +343,7 @@
   {
     "id": "110347",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -396,30 +382,28 @@
   {
     "id": "110189",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111357",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211843",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111643",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -466,16 +450,14 @@
   {
     "id": "211240",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210667",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -530,25 +512,21 @@
   {
     "id": "210233",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110038",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211400",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -581,15 +559,14 @@
   {
     "id": "210060",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211059",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -603,8 +580,7 @@
   {
     "id": "210406",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -619,7 +595,7 @@
   {
     "id": "111839",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -642,7 +618,7 @@
   {
     "id": "111882",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -657,8 +633,7 @@
   {
     "id": "111637",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -673,7 +648,7 @@
   {
     "id": "211882",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -703,7 +678,7 @@
   {
     "id": "111776",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -718,16 +693,14 @@
   {
     "id": "210358",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "112023",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -742,8 +715,7 @@
   {
     "id": "211515",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -765,16 +737,14 @@
   {
     "id": "111306",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211161",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -805,8 +775,7 @@
   {
     "id": "211321",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -836,8 +805,7 @@
   {
     "id": "211166",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -851,21 +819,22 @@
   },
   {
     "id": "210869",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110368",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210852",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -881,8 +850,7 @@
   {
     "id": "111136",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -905,7 +873,7 @@
   {
     "id": "110003",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -960,7 +928,7 @@
   {
     "id": "211281",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -983,16 +951,14 @@
   {
     "id": "211148",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110582",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1015,14 +981,15 @@
   {
     "id": "110450",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211394",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -1052,8 +1019,7 @@
   {
     "id": "211024",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1092,24 +1058,21 @@
   {
     "id": "111783",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210068",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111742",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1133,7 +1096,7 @@
   {
     "id": "110896",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1172,16 +1135,14 @@
   {
     "id": "211448",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111257",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1213,15 +1174,14 @@
   {
     "id": "110652",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210357",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1252,8 +1212,7 @@
   {
     "id": "211790",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1284,7 +1243,7 @@
   {
     "id": "111813",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1322,8 +1281,7 @@
   {
     "id": "210415",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1442,7 +1400,7 @@
   {
     "id": "211415",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1464,8 +1422,7 @@
   {
     "id": "211730",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1481,9 +1438,7 @@
   {
     "id": "111927",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1498,8 +1453,7 @@
   {
     "id": "111377",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1537,7 +1491,7 @@
   {
     "id": "210310",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1552,7 +1506,7 @@
   {
     "id": "210283",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1573,16 +1527,14 @@
   {
     "id": "111413",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110509",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1596,8 +1548,7 @@
   {
     "id": "211228",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1612,7 +1563,7 @@
   {
     "id": "110364",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1627,16 +1578,14 @@
   {
     "id": "110046",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211675",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1674,22 +1623,21 @@
   {
     "id": "210850",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210275",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210642",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1704,15 +1652,14 @@
   {
     "id": "110642",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211812",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1735,8 +1682,7 @@
   {
     "id": "110729",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1825,7 +1771,7 @@
   {
     "id": "111586",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1856,16 +1802,14 @@
   {
     "id": "110227",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210105",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1903,9 +1847,7 @@
   {
     "id": "111919",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1920,7 +1862,7 @@
   {
     "id": "110256",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1935,8 +1877,7 @@
   {
     "id": "111888",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1973,8 +1914,7 @@
   {
     "id": "211526",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -1997,8 +1937,7 @@
   {
     "id": "110662",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2020,14 +1959,14 @@
   {
     "id": "111815",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110244",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2042,8 +1981,7 @@
   {
     "id": "111188",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2066,8 +2004,7 @@
   {
     "id": "210224",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2098,23 +2035,21 @@
   {
     "id": "211344",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110184",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211848",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2167,15 +2102,14 @@
   {
     "id": "210127",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210506",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2189,8 +2123,7 @@
   {
     "id": "210058",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2229,24 +2162,21 @@
   {
     "id": "110132",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111064",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210779",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2294,9 +2224,7 @@
   {
     "id": "210318",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2311,7 +2239,7 @@
   {
     "id": "111852",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2334,8 +2262,7 @@
   {
     "id": "110497",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2366,8 +2293,7 @@
   {
     "id": "211162",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2415,8 +2341,7 @@
   {
     "id": "110651",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2447,8 +2372,7 @@
   {
     "id": "210798",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2487,8 +2411,7 @@
   {
     "id": "211687",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2535,14 +2458,14 @@
   {
     "id": "110150",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110332",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2557,8 +2480,7 @@
   {
     "id": "210201",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2573,22 +2495,21 @@
   {
     "id": "211337",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110635",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210344",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2602,8 +2523,7 @@
   {
     "id": "110774",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2633,8 +2553,7 @@
   {
     "id": "111640",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2649,7 +2568,7 @@
   {
     "id": "111435",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2687,15 +2606,14 @@
   {
     "id": "211121",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210316",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2719,9 +2637,7 @@
   {
     "id": "111199",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2744,8 +2660,7 @@
   {
     "id": "110477",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2777,16 +2692,14 @@
   {
     "id": "210616",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210414",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2825,8 +2738,7 @@
   {
     "id": "210690",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2849,15 +2761,14 @@
   {
     "id": "210227",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111098",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2896,8 +2807,7 @@
   {
     "id": "211521",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2912,14 +2822,14 @@
   {
     "id": "110125",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "212010",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2934,15 +2844,14 @@
   {
     "id": "110795",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110821",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2957,7 +2866,7 @@
   {
     "id": "110648",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -2986,8 +2895,7 @@
   {
     "id": "210034",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3017,14 +2925,15 @@
   {
     "id": "111784",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210003",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -3045,14 +2954,14 @@
   {
     "id": "111768",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110645",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3075,8 +2984,7 @@
   {
     "id": "210887",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3090,15 +2998,14 @@
   {
     "id": "210163",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110187",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3113,8 +3020,7 @@
   {
     "id": "211236",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3145,7 +3051,7 @@
   {
     "id": "111608",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3192,7 +3098,7 @@
   {
     "id": "210778",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3214,8 +3120,7 @@
   {
     "id": "211352",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3230,15 +3135,14 @@
   {
     "id": "111367",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211558",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3269,8 +3173,7 @@
   {
     "id": "111077",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3307,8 +3210,7 @@
   {
     "id": "210740",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3323,7 +3225,7 @@
   {
     "id": "211994",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3385,16 +3287,14 @@
   {
     "id": "110369",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111491",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3409,17 +3309,14 @@
   {
     "id": "111697",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE",
-      "MISOGYNY-NON-SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210597",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3442,7 +3339,7 @@
   {
     "id": "211353",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3473,15 +3370,14 @@
   {
     "id": "210298",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110614",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3526,8 +3422,7 @@
   {
     "id": "211167",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3542,16 +3437,14 @@
   {
     "id": "210309",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211426",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3566,7 +3459,7 @@
   {
     "id": "211154",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3582,9 +3475,7 @@
   {
     "id": "111610",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3614,8 +3505,7 @@
   {
     "id": "210963",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3645,7 +3535,7 @@
   {
     "id": "211295",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3659,8 +3549,7 @@
   {
     "id": "210769",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3700,29 +3589,29 @@
   {
     "id": "210715",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111810",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110646",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211293",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -3743,8 +3632,7 @@
   {
     "id": "211405",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3767,8 +3655,7 @@
   {
     "id": "110040",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3782,16 +3669,14 @@
   {
     "id": "210370",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211432",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3806,8 +3691,7 @@
   {
     "id": "110375",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3844,7 +3728,7 @@
   {
     "id": "110342",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3892,7 +3776,7 @@
   {
     "id": "211722",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3915,7 +3799,7 @@
   {
     "id": "111934",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3930,17 +3814,14 @@
   {
     "id": "110131",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211109",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3955,8 +3836,7 @@
   {
     "id": "210319",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -3985,7 +3865,7 @@
   {
     "id": "210991",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4007,9 +3887,7 @@
   {
     "id": "110279",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4023,8 +3901,7 @@
   {
     "id": "111628",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4039,22 +3916,21 @@
   {
     "id": "210126",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211759",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211587",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4069,23 +3945,21 @@
   {
     "id": "110144",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110572",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210206",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4115,16 +3989,14 @@
   {
     "id": "211513",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "112006",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4140,7 +4012,7 @@
   {
     "id": "211149",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4185,8 +4057,7 @@
   {
     "id": "211340",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4209,15 +4080,14 @@
   {
     "id": "210718",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211342",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4233,7 +4103,7 @@
   {
     "id": "111299",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4257,16 +4127,14 @@
   {
     "id": "111900",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211473",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4281,7 +4149,7 @@
   {
     "id": "111935",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4337,31 +4205,28 @@
   {
     "id": "211032",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211557",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210638",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210584",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4406,7 +4271,7 @@
   {
     "id": "210418",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4443,8 +4308,7 @@
   {
     "id": "211325",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4468,25 +4332,21 @@
   {
     "id": "210641",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210701",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211707",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4508,15 +4368,14 @@
   {
     "id": "111219",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110731",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4539,8 +4398,7 @@
   {
     "id": "110823",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4555,8 +4413,7 @@
   {
     "id": "210119",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4627,7 +4484,7 @@
   {
     "id": "111592",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4642,8 +4499,7 @@
   {
     "id": "111547",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4658,8 +4514,7 @@
   {
     "id": "111295",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4681,8 +4536,7 @@
   {
     "id": "111307",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4727,7 +4581,7 @@
   {
     "id": "110462",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4759,8 +4613,7 @@
   {
     "id": "211398",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4775,8 +4628,7 @@
   {
     "id": "110575",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4798,8 +4650,7 @@
   {
     "id": "210583",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4846,8 +4697,7 @@
   {
     "id": "210764",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4862,25 +4712,21 @@
   {
     "id": "210151",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210644",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111706",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE",
-      "MISOGYNY-NON-SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -4997,7 +4843,7 @@
   {
     "id": "211470",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5027,8 +4873,7 @@
   {
     "id": "211088",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5051,8 +4896,7 @@
   {
     "id": "110472",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5082,15 +4926,14 @@
   {
     "id": "211698",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211632",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5122,14 +4965,14 @@
   {
     "id": "110264",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111938",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5151,8 +4994,7 @@
   {
     "id": "110739",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5167,23 +5009,21 @@
   {
     "id": "210279",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111300",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210904",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5214,8 +5054,7 @@
   {
     "id": "211023",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5254,23 +5093,21 @@
   {
     "id": "210802",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210636",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210780",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5286,8 +5123,7 @@
   {
     "id": "210394",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5309,8 +5145,7 @@
   {
     "id": "211379",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5348,8 +5183,7 @@
   {
     "id": "111063",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5386,8 +5220,7 @@
   {
     "id": "110196",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5403,8 +5236,7 @@
   {
     "id": "110727",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5475,15 +5307,14 @@
   {
     "id": "111262",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110675",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5505,7 +5336,7 @@
   {
     "id": "111710",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5527,16 +5358,14 @@
   {
     "id": "210128",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111781",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5557,8 +5386,7 @@
   {
     "id": "210895",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5580,8 +5408,7 @@
   {
     "id": "110348",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5596,16 +5423,14 @@
   {
     "id": "110116",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111636",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5636,7 +5461,7 @@
   {
     "id": "111221",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5652,16 +5477,14 @@
   {
     "id": "110499",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210137",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5676,15 +5499,14 @@
   {
     "id": "110884",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211486",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "MISOGYNY-NON-SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5699,24 +5521,21 @@
   {
     "id": "111790",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110338",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211112",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5762,7 +5581,7 @@
   {
     "id": "211695",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5837,8 +5656,7 @@
   {
     "id": "111837",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5862,13 +5680,15 @@
   {
     "id": "111039",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211451",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -5889,7 +5709,7 @@
   {
     "id": "210650",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5920,8 +5740,7 @@
   {
     "id": "110627",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -5944,15 +5763,14 @@
   {
     "id": "211606",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211195",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6027,7 +5845,7 @@
   {
     "id": "210946",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6081,7 +5899,7 @@
   {
     "id": "211622",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6121,7 +5939,7 @@
   {
     "id": "210148",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6158,31 +5976,28 @@
   {
     "id": "211873",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110311",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211069",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211705",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6213,8 +6028,7 @@
   {
     "id": "211279",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6244,9 +6058,7 @@
   {
     "id": "210066",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6261,32 +6073,28 @@
   {
     "id": "210108",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211889",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110337",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211164",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6317,8 +6125,7 @@
   {
     "id": "110213",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6342,8 +6149,7 @@
   {
     "id": "210836",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6366,16 +6172,14 @@
   {
     "id": "110610",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210348",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6390,7 +6194,7 @@
   {
     "id": "110463",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6405,8 +6209,7 @@
   {
     "id": "111081",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6483,8 +6286,7 @@
   {
     "id": "110221",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6498,17 +6300,14 @@
   {
     "id": "211179",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111527",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6572,15 +6371,14 @@
   {
     "id": "111887",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111303",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6618,8 +6416,7 @@
   {
     "id": "210354",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6673,8 +6470,7 @@
   {
     "id": "211409",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6689,8 +6485,7 @@
   {
     "id": "210595",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6705,8 +6500,7 @@
   {
     "id": "111525",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6719,14 +6513,15 @@
   },
   {
     "id": "110860",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211370",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6783,15 +6578,14 @@
   {
     "id": "110355",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111186",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6820,7 +6614,7 @@
   {
     "id": "211388",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6835,16 +6629,14 @@
   {
     "id": "211776",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111407",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6874,8 +6666,7 @@
   {
     "id": "110310",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6890,8 +6681,7 @@
   {
     "id": "211472",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6906,8 +6696,7 @@
   {
     "id": "110448",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6930,9 +6719,7 @@
   {
     "id": "111294",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6946,8 +6733,7 @@
   {
     "id": "210447",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -6987,8 +6773,7 @@
   {
     "id": "110474",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7003,7 +6788,7 @@
   {
     "id": "210347",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7033,9 +6818,7 @@
   {
     "id": "111455",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7074,8 +6857,7 @@
   {
     "id": "210534",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7113,8 +6895,7 @@
   {
     "id": "210851",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7137,9 +6918,7 @@
   {
     "id": "211343",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7171,8 +6950,7 @@
   {
     "id": "110327",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7195,8 +6973,7 @@
   {
     "id": "110557",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7210,8 +6987,7 @@
   {
     "id": "110725",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7226,8 +7002,7 @@
   {
     "id": "210831",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7349,7 +7124,7 @@
   {
     "id": "111952",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7363,15 +7138,14 @@
   {
     "id": "110816",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110787",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7401,8 +7175,7 @@
   {
     "id": "111732",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7424,17 +7197,14 @@
   {
     "id": "210052",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210010",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7448,7 +7218,7 @@
   {
     "id": "211422",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7471,16 +7241,14 @@
   {
     "id": "110501",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "112000",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7504,31 +7272,28 @@
   {
     "id": "111583",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111246",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211772",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211333",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7551,15 +7316,14 @@
   {
     "id": "211410",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210064",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7581,8 +7345,7 @@
   {
     "id": "111656",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7614,8 +7377,7 @@
   {
     "id": "110447",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7639,22 +7401,21 @@
   {
     "id": "211235",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210565",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211474",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7677,21 +7438,21 @@
   {
     "id": "110300",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210774",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110385",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7722,22 +7483,21 @@
   {
     "id": "211450",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210664",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211449",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7767,8 +7527,7 @@
   {
     "id": "211332",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7790,8 +7549,7 @@
   {
     "id": "111534",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7805,8 +7563,7 @@
   {
     "id": "111727",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7837,7 +7594,7 @@
   {
     "id": "210617",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7860,8 +7617,7 @@
   {
     "id": "110699",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7891,15 +7647,14 @@
   {
     "id": "210352",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111579",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7937,22 +7692,21 @@
   {
     "id": "111940",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110601",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211407",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -7967,22 +7721,21 @@
   {
     "id": "210588",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111463",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211427",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8004,7 +7757,7 @@
   {
     "id": "211609",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8019,7 +7772,7 @@
   {
     "id": "110262",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8035,16 +7788,14 @@
   {
     "id": "210720",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111655",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8114,8 +7865,7 @@
   {
     "id": "210950",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8130,8 +7880,7 @@
   {
     "id": "211061",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8146,8 +7895,7 @@
   {
     "id": "210995",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8162,15 +7910,14 @@
   {
     "id": "111968",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211456",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8185,7 +7932,7 @@
   {
     "id": "110551",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8200,32 +7947,28 @@
   {
     "id": "111401",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211567",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111057",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211947",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8239,15 +7982,14 @@
   {
     "id": "110143",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110931",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8311,15 +8053,14 @@
   {
     "id": "210952",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111937",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8381,33 +8122,28 @@
   {
     "id": "210901",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210803",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211603",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210280",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8429,8 +8165,7 @@
   {
     "id": "110577",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8453,16 +8188,14 @@
   {
     "id": "110772",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210278",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8500,16 +8233,14 @@
   {
     "id": "210955",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211197",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8531,7 +8262,7 @@
   {
     "id": "111512",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8546,8 +8277,7 @@
   {
     "id": "110607",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8585,9 +8315,7 @@
   {
     "id": "111613",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8610,8 +8338,7 @@
   {
     "id": "110617",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8649,8 +8376,7 @@
   {
     "id": "211535",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8665,9 +8391,7 @@
   {
     "id": "110370",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8723,8 +8447,7 @@
   {
     "id": "210365",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8739,25 +8462,21 @@
   {
     "id": "210703",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111733",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111652",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8804,8 +8523,7 @@
   {
     "id": "211111",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8852,8 +8570,7 @@
   {
     "id": "110751",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8875,7 +8592,7 @@
   {
     "id": "210117",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -8960,23 +8677,21 @@
   {
     "id": "110443",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211986",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111520",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9007,7 +8722,7 @@
   {
     "id": "110980",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9119,8 +8834,7 @@
   {
     "id": "210295",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9167,8 +8881,7 @@
   {
     "id": "211599",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9183,16 +8896,14 @@
   {
     "id": "210618",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211267",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9207,7 +8918,7 @@
   {
     "id": "111991",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9239,7 +8950,7 @@
   {
     "id": "211028",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9270,7 +8981,7 @@
   {
     "id": "111614",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9356,7 +9067,9 @@
   },
   {
     "id": "111709",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -9385,7 +9098,7 @@
   {
     "id": "210203",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9416,23 +9129,21 @@
   {
     "id": "211737",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111234",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110390",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9454,15 +9165,14 @@
   {
     "id": "111627",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210063",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9477,7 +9187,7 @@
   {
     "id": "210766",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9499,17 +9209,14 @@
   {
     "id": "110464",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111431",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9539,7 +9246,7 @@
   {
     "id": "210834",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9571,8 +9278,7 @@
   {
     "id": "210602",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9603,8 +9309,7 @@
   {
     "id": "210975",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9626,23 +9331,21 @@
   {
     "id": "110665",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210631",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110841",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9656,7 +9359,7 @@
   {
     "id": "210075",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9678,24 +9381,21 @@
   {
     "id": "211667",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111838",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110604",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9710,7 +9410,7 @@
   {
     "id": "111674",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9755,16 +9455,14 @@
   {
     "id": "110655",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110217",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9786,16 +9484,14 @@
   {
     "id": "210367",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211347",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9850,8 +9546,7 @@
   {
     "id": "111539",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9891,32 +9586,28 @@
   {
     "id": "111323",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110214",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210296",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110288",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -9974,23 +9665,21 @@
   {
     "id": "210761",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210264",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210164",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10035,8 +9724,7 @@
   {
     "id": "110663",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10051,8 +9739,7 @@
   {
     "id": "111692",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10083,8 +9770,7 @@
   {
     "id": "110365",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10098,7 +9784,7 @@
   {
     "id": "210423",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10113,15 +9799,14 @@
   {
     "id": "110985",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211604",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10144,23 +9829,21 @@
   {
     "id": "210125",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110656",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "112007",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10230,8 +9913,7 @@
   {
     "id": "111667",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10246,8 +9928,7 @@
   {
     "id": "210927",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10309,9 +9990,7 @@
   {
     "id": "112019",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE",
-      "MISOGYNY-NON-SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10326,8 +10005,7 @@
   {
     "id": "211207",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10410,8 +10088,7 @@
   {
     "id": "210725",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10426,7 +10103,7 @@
   {
     "id": "210250",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10441,7 +10118,7 @@
   {
     "id": "211436",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10494,8 +10171,7 @@
   {
     "id": "211638",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10526,7 +10202,7 @@
   {
     "id": "110272",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10547,15 +10223,14 @@
   {
     "id": "110758",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210234",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10577,7 +10252,9 @@
   },
   {
     "id": "210760",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -10606,8 +10283,7 @@
   {
     "id": "110205",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10622,21 +10298,21 @@
   {
     "id": "211708",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110628",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211229",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10674,31 +10350,28 @@
   {
     "id": "211054",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210360",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110398",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210397",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10712,7 +10385,9 @@
   },
   {
     "id": "211213",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -10734,8 +10409,7 @@
   {
     "id": "211493",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10750,8 +10424,7 @@
   {
     "id": "210412",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10788,8 +10461,7 @@
   {
     "id": "210120",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "MISOGYNY-NON-SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10812,8 +10484,7 @@
   {
     "id": "111528",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10828,15 +10499,14 @@
   {
     "id": "111634",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210393",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10851,7 +10521,7 @@
   {
     "id": "211602",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10864,7 +10534,9 @@
   },
   {
     "id": "210131",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -10878,7 +10550,7 @@
   {
     "id": "111212",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10909,15 +10581,14 @@
   {
     "id": "111775",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110468",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -10939,29 +10610,29 @@
   },
   {
     "id": "211610",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111425",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210629",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211927",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11016,16 +10687,14 @@
   {
     "id": "110843",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110449",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11040,17 +10709,14 @@
   {
     "id": "210349",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110275",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11064,15 +10730,14 @@
   {
     "id": "211452",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110740",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11086,8 +10751,7 @@
   {
     "id": "111642",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11110,15 +10774,14 @@
   {
     "id": "211534",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111302",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11140,8 +10803,7 @@
   {
     "id": "210061",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11164,8 +10826,7 @@
   {
     "id": "211891",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11180,9 +10841,7 @@
   {
     "id": "211789",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11226,24 +10885,21 @@
   {
     "id": "210082",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111622",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111354",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11266,16 +10922,14 @@
   {
     "id": "211155",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111070",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11329,8 +10983,7 @@
   {
     "id": "211328",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11344,7 +10997,7 @@
   {
     "id": "110396",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11358,15 +11011,14 @@
   {
     "id": "211043",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111785",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11389,15 +11041,14 @@
   {
     "id": "110894",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211877",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11420,8 +11071,7 @@
   {
     "id": "211890",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11451,7 +11101,7 @@
   {
     "id": "210417",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11466,8 +11116,7 @@
   {
     "id": "211222",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11520,7 +11169,7 @@
   {
     "id": "211355",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11542,8 +11191,7 @@
   {
     "id": "210069",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11558,8 +11206,7 @@
   {
     "id": "210293",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11575,22 +11222,21 @@
   {
     "id": "111309",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110359",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211466",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11622,8 +11268,7 @@
   {
     "id": "110430",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11647,15 +11292,14 @@
   {
     "id": "110335",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111800",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11685,15 +11329,14 @@
   {
     "id": "210840",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110994",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11715,7 +11358,7 @@
   {
     "id": "110761",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11729,7 +11372,7 @@
   {
     "id": "110114",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11799,8 +11442,7 @@
   {
     "id": "210781",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11815,7 +11457,7 @@
   {
     "id": "111936",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11830,16 +11472,14 @@
   {
     "id": "111351",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111705",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11901,27 +11541,28 @@
   {
     "id": "110752",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110608",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111243",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210966",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11936,8 +11577,7 @@
   {
     "id": "111411",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11960,8 +11600,7 @@
   {
     "id": "210047",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11983,8 +11622,7 @@
   {
     "id": "111196",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -11999,8 +11637,7 @@
   {
     "id": "110050",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12023,8 +11660,7 @@
   {
     "id": "111350",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12055,16 +11691,14 @@
   {
     "id": "111080",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211637",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12088,38 +11722,35 @@
   {
     "id": "110124",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210845",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111140",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211611",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110273",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12147,31 +11778,28 @@
   {
     "id": "110442",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211458",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211034",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110138",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12186,8 +11814,7 @@
   {
     "id": "210420",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12234,7 +11861,7 @@
   {
     "id": "210129",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12249,16 +11876,14 @@
   {
     "id": "210661",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210419",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12287,8 +11912,7 @@
   {
     "id": "110289",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12303,8 +11927,7 @@
   {
     "id": "111671",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12344,7 +11967,7 @@
   {
     "id": "111373",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12367,8 +11990,7 @@
   {
     "id": "211118",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12389,8 +12011,7 @@
   {
     "id": "211516",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12413,8 +12034,7 @@
   {
     "id": "211237",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12437,41 +12057,35 @@
   {
     "id": "110824",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110822",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111668",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211682",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210494",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12494,31 +12108,28 @@
   {
     "id": "210363",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111979",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111605",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211123",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12540,8 +12151,7 @@
   {
     "id": "111802",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12556,7 +12166,7 @@
   {
     "id": "111359",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12589,14 +12199,14 @@
   {
     "id": "111560",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110247",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12667,7 +12277,7 @@
   {
     "id": "110088",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12682,8 +12292,7 @@
   {
     "id": "210741",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12705,7 +12314,7 @@
   {
     "id": "210341",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12733,12 +12342,16 @@
   },
   {
     "id": "211683",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110498",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -12775,8 +12388,7 @@
   {
     "id": "211316",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12807,7 +12419,7 @@
   {
     "id": "110598",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12829,7 +12441,7 @@
   {
     "id": "110399",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12852,15 +12464,14 @@
   {
     "id": "210282",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211014",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12890,16 +12501,14 @@
   {
     "id": "111044",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111807",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12922,7 +12531,7 @@
   {
     "id": "210938",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -12984,7 +12593,7 @@
   {
     "id": "111083",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13022,8 +12631,7 @@
   {
     "id": "211943",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13067,7 +12675,7 @@
   {
     "id": "111632",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13081,7 +12689,7 @@
   {
     "id": "110389",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13149,8 +12757,7 @@
   {
     "id": "211203",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13165,16 +12772,14 @@
   {
     "id": "210698",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210356",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13229,8 +12834,7 @@
   {
     "id": "211444",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13244,8 +12848,7 @@
   {
     "id": "211336",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13260,7 +12863,7 @@
   {
     "id": "210228",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13298,15 +12901,14 @@
   {
     "id": "211435",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211949",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13329,7 +12931,7 @@
   {
     "id": "210843",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13345,8 +12947,7 @@
   {
     "id": "211471",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13368,7 +12969,7 @@
   {
     "id": "110031",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13383,8 +12984,7 @@
   {
     "id": "211438",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13399,15 +12999,14 @@
   {
     "id": "211906",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210107",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13422,8 +13021,7 @@
   {
     "id": "111023",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13446,24 +13044,21 @@
   {
     "id": "211480",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211668",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210124",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13484,13 +13079,15 @@
   },
   {
     "id": "111817",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111006",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13505,8 +13102,7 @@
   {
     "id": "111663",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13521,15 +13117,14 @@
   {
     "id": "211062",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211720",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13552,8 +13147,7 @@
   {
     "id": "211218",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13568,15 +13162,14 @@
   {
     "id": "111933",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111848",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13598,8 +13191,7 @@
   {
     "id": "110649",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13621,8 +13213,7 @@
   {
     "id": "210853",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13637,7 +13228,7 @@
   {
     "id": "210947",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13652,24 +13243,21 @@
   {
     "id": "210571",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211243",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211791",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13692,25 +13280,21 @@
   {
     "id": "110343",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110844",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210541",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13740,7 +13324,7 @@
   {
     "id": "110981",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13763,8 +13347,7 @@
   {
     "id": "210535",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13786,17 +13369,14 @@
   {
     "id": "111472",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111242",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13818,16 +13398,14 @@
   {
     "id": "211319",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110876",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13856,16 +13434,14 @@
   {
     "id": "110786",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211941",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13880,15 +13456,14 @@
   {
     "id": "210220",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211476",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13919,7 +13494,7 @@
   {
     "id": "111538",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13934,16 +13509,14 @@
   {
     "id": "110270",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211071",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13972,7 +13545,7 @@
   {
     "id": "211455",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -13987,37 +13560,35 @@
   {
     "id": "210860",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210776",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111930",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211421",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211732",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14032,8 +13603,7 @@
   {
     "id": "110534",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14048,8 +13618,7 @@
   {
     "id": "110382",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14118,8 +13687,7 @@
   {
     "id": "111778",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14134,8 +13702,7 @@
   {
     "id": "210271",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14163,8 +13730,7 @@
   {
     "id": "211132",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14186,16 +13752,14 @@
   {
     "id": "111410",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210839",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14281,8 +13845,7 @@
   {
     "id": "210297",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14305,14 +13868,14 @@
   {
     "id": "210829",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211794",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14335,8 +13898,7 @@
   {
     "id": "110544",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14350,15 +13912,14 @@
   {
     "id": "112005",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210149",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14405,9 +13966,7 @@
   {
     "id": "110560",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14448,8 +14007,7 @@
   {
     "id": "110669",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14465,17 +14023,14 @@
   {
     "id": "211948",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110271",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14490,8 +14045,7 @@
   {
     "id": "110065",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14549,8 +14103,7 @@
   {
     "id": "111412",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14581,8 +14134,7 @@
   {
     "id": "110209",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14606,8 +14158,7 @@
   {
     "id": "211428",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14678,7 +14229,7 @@
   {
     "id": "110253",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14700,7 +14251,7 @@
   {
     "id": "210134",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14715,14 +14266,14 @@
   {
     "id": "210695",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110140",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14760,8 +14311,7 @@
   {
     "id": "110522",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14824,7 +14374,7 @@
   {
     "id": "211360",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14839,7 +14389,7 @@
   {
     "id": "210273",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14855,52 +14405,49 @@
   {
     "id": "111073",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211842",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211584",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110673",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110321",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110057",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211527",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14923,16 +14470,14 @@
   {
     "id": "210762",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110165",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14947,24 +14492,21 @@
   {
     "id": "211330",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111531",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111194",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -14988,15 +14530,14 @@
   {
     "id": "110126",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211285",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15034,8 +14575,7 @@
   {
     "id": "110212",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15050,7 +14590,7 @@
   {
     "id": "110391",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15104,23 +14644,21 @@
   {
     "id": "211274",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210679",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211170",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15158,8 +14696,7 @@
   {
     "id": "210723",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15182,8 +14719,7 @@
   {
     "id": "210563",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15248,8 +14784,7 @@
   {
     "id": "211270",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15264,23 +14799,21 @@
   {
     "id": "210374",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210388",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111277",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15294,14 +14827,14 @@
   {
     "id": "210337",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210263",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15317,8 +14850,7 @@
   {
     "id": "110923",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15333,8 +14865,7 @@
   {
     "id": "111799",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15355,8 +14886,7 @@
   {
     "id": "110029",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15379,7 +14909,7 @@
   {
     "id": "211713",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15401,7 +14931,7 @@
   {
     "id": "111236",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15433,9 +14963,7 @@
   {
     "id": "211930",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15450,16 +14978,14 @@
   {
     "id": "210793",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210575",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15521,22 +15047,21 @@
   {
     "id": "210078",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210308",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211238",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15551,7 +15076,7 @@
   {
     "id": "211307",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15582,8 +15107,7 @@
   {
     "id": "211453",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15597,7 +15121,7 @@
   {
     "id": "211490",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15621,8 +15145,7 @@
   {
     "id": "111881",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15637,8 +15160,7 @@
   {
     "id": "111638",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15684,16 +15206,14 @@
   {
     "id": "211627",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111082",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15716,8 +15236,7 @@
   {
     "id": "211591",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15733,7 +15252,7 @@
   {
     "id": "110590",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15778,8 +15297,7 @@
   {
     "id": "211457",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15794,8 +15312,7 @@
   {
     "id": "110216",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15809,15 +15326,14 @@
   {
     "id": "111509",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210400",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15840,16 +15356,14 @@
   {
     "id": "211230",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210409",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "MISOGYNY-NON-SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15880,14 +15394,14 @@
   {
     "id": "210355",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111346",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15917,48 +15431,42 @@
   {
     "id": "210743",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111152",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110372",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111293",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111657",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210621",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -15980,8 +15488,7 @@
   {
     "id": "110160",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16028,16 +15535,14 @@
   {
     "id": "110471",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110748",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16100,14 +15605,14 @@
   {
     "id": "210312",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211468",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16122,7 +15627,7 @@
   {
     "id": "111222",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16169,40 +15674,35 @@
   {
     "id": "110219",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110912",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210095",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211317",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210844",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16217,23 +15717,21 @@
   {
     "id": "111758",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111091",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210794",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16288,8 +15786,7 @@
   {
     "id": "111041",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16320,7 +15817,7 @@
   {
     "id": "210666",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16334,8 +15831,7 @@
   {
     "id": "211354",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16350,7 +15846,7 @@
   {
     "id": "211545",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16381,8 +15877,7 @@
   {
     "id": "211445",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16396,22 +15891,21 @@
   {
     "id": "110503",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111014",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210835",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16426,37 +15920,35 @@
   {
     "id": "211612",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110778",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211358",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210443",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210230",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16479,16 +15971,14 @@
   {
     "id": "111479",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111777",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16511,16 +16001,14 @@
   {
     "id": "111654",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110267",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16543,15 +16031,14 @@
   {
     "id": "211284",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111669",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16605,32 +16092,28 @@
   {
     "id": "211615",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211345",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111372",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210856",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16654,9 +16137,7 @@
   {
     "id": "210874",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16695,7 +16176,7 @@
   {
     "id": "110863",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16709,15 +16190,14 @@
   {
     "id": "210721",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110341",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16732,8 +16212,7 @@
   {
     "id": "211608",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16763,23 +16242,21 @@
   {
     "id": "211489",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110528",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211864",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16801,16 +16278,14 @@
   {
     "id": "110611",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211431",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16862,15 +16337,14 @@
   {
     "id": "111184",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110109",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16885,22 +16359,21 @@
   {
     "id": "210261",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111470",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110054",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -16932,8 +16405,7 @@
   {
     "id": "110781",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17002,7 +16474,7 @@
   {
     "id": "210252",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17040,23 +16512,21 @@
   {
     "id": "211130",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211098",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211503",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17079,7 +16549,7 @@
   {
     "id": "110920",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17094,16 +16564,14 @@
   {
     "id": "210328",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110576",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17181,8 +16649,7 @@
   {
     "id": "211728",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17223,32 +16690,28 @@
   {
     "id": "210519",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110911",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211827",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211841",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17296,7 +16759,7 @@
   {
     "id": "210548",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17312,7 +16775,7 @@
   {
     "id": "110753",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17372,7 +16835,7 @@
   {
     "id": "210403",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17401,7 +16864,7 @@
   {
     "id": "211497",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17431,8 +16894,7 @@
   {
     "id": "211437",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17501,32 +16963,28 @@
   {
     "id": "111985",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210699",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111738",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210953",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17541,8 +16999,7 @@
   {
     "id": "110334",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17557,8 +17014,7 @@
   {
     "id": "211189",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17611,7 +17067,9 @@
   },
   {
     "id": "210231",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -17647,13 +17105,15 @@
   },
   {
     "id": "211038",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110640",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17667,16 +17127,14 @@
   {
     "id": "211335",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210657",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17692,7 +17150,7 @@
   {
     "id": "211724",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17707,24 +17165,21 @@
   {
     "id": "211711",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111192",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210612",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17748,15 +17203,14 @@
   {
     "id": "210728",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110591",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17771,8 +17225,7 @@
   {
     "id": "111518",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17857,9 +17310,7 @@
   {
     "id": "210175",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17907,8 +17358,7 @@
   {
     "id": "110090",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -17987,8 +17437,7 @@
   {
     "id": "211956",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18028,16 +17477,14 @@
   {
     "id": "211792",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110441",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18060,8 +17507,7 @@
   {
     "id": "210788",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18084,15 +17530,14 @@
   {
     "id": "111058",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111487",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18107,7 +17552,7 @@
   {
     "id": "110679",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18130,7 +17575,7 @@
   {
     "id": "210441",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18162,8 +17607,7 @@
   {
     "id": "111649",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18186,8 +17630,7 @@
   {
     "id": "110836",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18202,8 +17645,7 @@
   {
     "id": "211878",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18234,32 +17676,28 @@
   {
     "id": "110284",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110296",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111568",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110775",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18274,15 +17712,14 @@
   {
     "id": "110546",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111203",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18312,7 +17749,7 @@
   {
     "id": "210430",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18351,8 +17788,7 @@
   {
     "id": "110765",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18376,9 +17812,7 @@
   {
     "id": "211850",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18402,7 +17836,7 @@
   {
     "id": "210815",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18425,22 +17859,21 @@
   {
     "id": "111683",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111536",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111125",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18494,15 +17927,14 @@
   {
     "id": "210353",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110467",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18526,8 +17958,7 @@
   {
     "id": "110827",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18550,7 +17981,7 @@
   {
     "id": "210222",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18565,8 +17996,7 @@
   {
     "id": "211210",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18604,7 +18034,7 @@
   {
     "id": "110281",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18619,15 +18049,14 @@
   {
     "id": "110505",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210187",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18642,8 +18071,7 @@
   {
     "id": "110218",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18657,8 +18085,7 @@
   {
     "id": "111369",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18673,7 +18100,7 @@
   {
     "id": "111223",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18719,16 +18146,14 @@
   {
     "id": "211021",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110915",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18775,7 +18200,7 @@
   {
     "id": "210036",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18791,15 +18216,14 @@
   {
     "id": "110378",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210421",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18830,8 +18254,7 @@
   {
     "id": "211782",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18909,8 +18332,7 @@
   {
     "id": "211694",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18925,16 +18347,14 @@
   {
     "id": "210142",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211324",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18948,7 +18368,7 @@
   {
     "id": "210437",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -18963,30 +18383,28 @@
   {
     "id": "111793",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211681",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111969",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210729",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19002,33 +18420,28 @@
   {
     "id": "210135",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211496",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110018",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210276",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19043,8 +18456,7 @@
   {
     "id": "210977",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19059,8 +18471,7 @@
   {
     "id": "110225",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19099,24 +18510,21 @@
   {
     "id": "111792",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211702",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211823",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19131,8 +18539,7 @@
   {
     "id": "111237",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19147,7 +18554,7 @@
   {
     "id": "211182",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19169,8 +18576,7 @@
   {
     "id": "211884",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19201,8 +18607,7 @@
   {
     "id": "111621",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19243,24 +18648,21 @@
   {
     "id": "110115",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210133",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210350",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19305,7 +18707,9 @@
   },
   {
     "id": "211356",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -19320,8 +18724,7 @@
   {
     "id": "210936",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19386,8 +18789,7 @@
   {
     "id": "110979",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19401,23 +18803,21 @@
   {
     "id": "110139",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210594",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110403",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19447,8 +18847,7 @@
   {
     "id": "111122",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19471,30 +18870,28 @@
   {
     "id": "210056",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210654",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111617",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210245",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19517,8 +18914,7 @@
   {
     "id": "110285",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19533,9 +18929,7 @@
   {
     "id": "111315",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19565,31 +18959,28 @@
   {
     "id": "210197",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111408",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111314",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210452",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19604,23 +18995,21 @@
   {
     "id": "210899",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211035",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111857",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19674,7 +19063,7 @@
   {
     "id": "110280",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19711,24 +19100,21 @@
   {
     "id": "211280",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111645",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211817",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19759,7 +19145,7 @@
   {
     "id": "110241",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19789,24 +19175,21 @@
   {
     "id": "111672",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210402",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111301",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19830,8 +19213,7 @@
   {
     "id": "211787",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19888,51 +19270,49 @@
   {
     "id": "210865",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211563",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110600",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211232",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211495",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210861",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210204",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19963,8 +19343,7 @@
   {
     "id": "211547",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -19993,8 +19372,7 @@
   {
     "id": "111540",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20017,7 +19395,7 @@
   {
     "id": "211301",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20032,8 +19410,7 @@
   {
     "id": "111843",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20048,15 +19425,14 @@
   {
     "id": "110514",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110293",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20087,8 +19463,7 @@
   {
     "id": "210179",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20103,7 +19478,7 @@
   {
     "id": "110978",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20118,7 +19493,7 @@
   {
     "id": "111180",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20148,8 +19523,7 @@
   {
     "id": "210777",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20163,7 +19537,7 @@
   {
     "id": "210304",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20179,16 +19553,14 @@
   {
     "id": "210287",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211742",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20281,7 +19653,7 @@
   {
     "id": "110672",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20296,8 +19668,7 @@
   {
     "id": "110771",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20321,7 +19692,7 @@
   {
     "id": "211749",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20336,23 +19707,21 @@
   {
     "id": "111811",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210130",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110726",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20401,7 +19770,7 @@
   {
     "id": "210622",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20453,7 +19822,9 @@
   },
   {
     "id": "110602",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -20466,31 +19837,28 @@
   {
     "id": "111428",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211374",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210268",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210299",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20536,17 +19904,14 @@
   {
     "id": "111099",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211368",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20578,8 +19943,7 @@
   {
     "id": "210759",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20610,7 +19974,7 @@
   {
     "id": "210849",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20632,8 +19996,7 @@
   {
     "id": "211691",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20648,8 +20011,7 @@
   {
     "id": "211010",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20664,15 +20026,14 @@
   {
     "id": "110784",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110480",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20687,8 +20048,7 @@
   {
     "id": "111808",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20734,8 +20094,7 @@
   {
     "id": "111548",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20750,7 +20109,7 @@
   {
     "id": "110925",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20788,23 +20147,21 @@
   {
     "id": "110780",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210411",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110274",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20827,15 +20184,14 @@
   {
     "id": "211224",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111200",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20859,8 +20215,7 @@
   {
     "id": "211097",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20968,8 +20323,7 @@
   {
     "id": "211107",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -20991,24 +20345,21 @@
   {
     "id": "211447",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110983",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211459",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21046,8 +20397,7 @@
   {
     "id": "211052",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21061,7 +20411,7 @@
   {
     "id": "110060",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21084,16 +20434,14 @@
   {
     "id": "211690",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110508",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21107,16 +20455,14 @@
   {
     "id": "210330",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211095",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21148,16 +20494,14 @@
   {
     "id": "111598",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210144",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21172,7 +20516,7 @@
   {
     "id": "110222",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21212,15 +20556,14 @@
   {
     "id": "110677",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210726",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21234,7 +20577,9 @@
   },
   {
     "id": "110361",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -21296,7 +20641,7 @@
   {
     "id": "210340",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21310,7 +20655,7 @@
   {
     "id": "211597",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21357,9 +20702,7 @@
   {
     "id": "210775",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21374,24 +20717,21 @@
   {
     "id": "210862",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210704",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211548",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21421,23 +20761,21 @@
   {
     "id": "210321",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210767",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210232",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21468,45 +20806,42 @@
   {
     "id": "111975",
     "value": [
-      "SEXUAL-VIOLENCE",
-      "MISOGYNY-NON-SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211046",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111650",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111312",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210942",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110261",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21529,8 +20864,7 @@
   {
     "id": "211030",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21609,8 +20943,7 @@
   {
     "id": "211805",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21663,8 +20996,7 @@
   {
     "id": "211580",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21679,8 +21011,7 @@
   {
     "id": "211106",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21695,8 +21026,7 @@
   {
     "id": "111515",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21719,9 +21049,7 @@
   {
     "id": "210985",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21736,18 +21064,14 @@
   {
     "id": "111478",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110242",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21811,8 +21135,7 @@
   {
     "id": "211441",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21827,7 +21150,7 @@
   {
     "id": "110783",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21858,8 +21181,7 @@
   {
     "id": "111739",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21882,9 +21204,7 @@
   {
     "id": "111241",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21931,7 +21251,7 @@
   {
     "id": "210696",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -21961,24 +21281,21 @@
   {
     "id": "210265",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210905",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111932",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22000,8 +21317,7 @@
   {
     "id": "211127",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22024,7 +21340,7 @@
   {
     "id": "210711",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22038,16 +21354,14 @@
   {
     "id": "110678",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210121",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22062,8 +21376,7 @@
   {
     "id": "110287",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22078,8 +21391,7 @@
   {
     "id": "210088",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22102,7 +21414,7 @@
   {
     "id": "111612",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22147,7 +21459,7 @@
   {
     "id": "111931",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22162,14 +21474,15 @@
   },
   {
     "id": "211738",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110730",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22193,8 +21506,7 @@
   {
     "id": "110117",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22216,14 +21528,14 @@
   {
     "id": "211079",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110515",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22261,8 +21573,7 @@
   {
     "id": "211126",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22276,8 +21587,7 @@
   {
     "id": "211613",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22291,23 +21601,21 @@
   {
     "id": "210291",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211175",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111774",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22338,15 +21646,14 @@
   {
     "id": "211220",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211359",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22384,7 +21691,9 @@
   },
   {
     "id": "210838",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
@@ -22457,8 +21766,7 @@
   {
     "id": "210092",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22473,7 +21781,7 @@
   {
     "id": "110026",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22503,8 +21811,7 @@
   {
     "id": "110776",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22519,24 +21826,21 @@
   {
     "id": "210785",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211673",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111012",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22567,7 +21871,7 @@
   {
     "id": "211351",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22590,14 +21894,14 @@
   {
     "id": "111664",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "112012",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22628,8 +21932,7 @@
   {
     "id": "210112",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22707,8 +22010,7 @@
   {
     "id": "210833",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22738,7 +22040,7 @@
   {
     "id": "210188",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22777,8 +22079,7 @@
   {
     "id": "111681",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22809,8 +22110,7 @@
   {
     "id": "211124",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22833,8 +22133,7 @@
   {
     "id": "210093",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22849,62 +22148,56 @@
   {
     "id": "110950",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211417",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111204",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110654",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110134",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210783",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210560",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110661",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22927,8 +22220,7 @@
   {
     "id": "211676",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22960,8 +22252,7 @@
   {
     "id": "110414",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -22999,16 +22290,14 @@
   {
     "id": "210786",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210281",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23055,43 +22344,42 @@
   {
     "id": "111584",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210655",
-    "value": [],
+    "value": [
+      "NO"
+    ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211377",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210858",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210633",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210562",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23106,8 +22394,7 @@
   {
     "id": "210999",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23122,15 +22409,14 @@
   {
     "id": "111624",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210772",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23199,8 +22485,7 @@
   {
     "id": "111836",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23220,7 +22505,7 @@
   {
     "id": "211074",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23259,8 +22544,7 @@
   {
     "id": "211313",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23276,16 +22560,14 @@
   {
     "id": "110387",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110344",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23360,8 +22642,7 @@
   {
     "id": "111989",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23405,8 +22686,7 @@
   {
     "id": "110121",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23437,8 +22717,7 @@
   {
     "id": "111788",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23452,8 +22731,7 @@
   {
     "id": "210087",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23484,24 +22762,21 @@
   {
     "id": "211136",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211624",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111011",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23516,8 +22791,7 @@
   {
     "id": "111761",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23546,8 +22820,7 @@
   {
     "id": "211323",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23586,7 +22859,7 @@
   {
     "id": "211442",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23618,7 +22891,7 @@
   {
     "id": "110237",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23654,8 +22927,7 @@
   {
     "id": "210940",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23670,7 +22942,7 @@
   {
     "id": "111941",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23685,15 +22957,14 @@
   {
     "id": "210294",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210630",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23723,7 +22994,7 @@
   {
     "id": "110353",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23784,8 +23055,7 @@
   {
     "id": "210822",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23808,24 +23078,21 @@
   {
     "id": "211887",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211800",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110305",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23839,31 +23106,28 @@
   {
     "id": "111818",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110163",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110930",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110919",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23878,8 +23142,7 @@
   {
     "id": "211872",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23894,9 +23157,7 @@
   {
     "id": "111322",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23911,8 +23172,7 @@
   {
     "id": "110595",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23926,24 +23186,21 @@
   {
     "id": "211050",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210073",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211349",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -23987,7 +23244,7 @@
   {
     "id": "110905",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24010,8 +23267,7 @@
   {
     "id": "210448",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24043,32 +23299,28 @@
   {
     "id": "210300",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110110",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210832",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111916",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24092,8 +23344,7 @@
   {
     "id": "211475",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24115,16 +23366,14 @@
   {
     "id": "211386",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110517",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24138,7 +23387,7 @@
   {
     "id": "110058",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24161,7 +23410,7 @@
   {
     "id": "210442",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24184,66 +23433,56 @@
   {
     "id": "110997",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111942",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211688",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111468",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210791",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110432",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111499",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211364",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24273,23 +23512,21 @@
   {
     "id": "111055",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211001",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210651",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24320,15 +23557,14 @@
   {
     "id": "211018",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211719",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24343,24 +23579,21 @@
   {
     "id": "211100",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111191",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211339",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24383,8 +23616,7 @@
   {
     "id": "210086",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24406,8 +23638,7 @@
   {
     "id": "210716",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24421,8 +23652,7 @@
   {
     "id": "210067",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24444,16 +23674,14 @@
   {
     "id": "110510",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210111",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24477,8 +23705,7 @@
   {
     "id": "211411",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24501,16 +23728,14 @@
   {
     "id": "111661",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "210689",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24563,31 +23788,28 @@
   {
     "id": "210686",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110545",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110759",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "211931",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24610,8 +23832,7 @@
   {
     "id": "111976",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24642,15 +23863,14 @@
   {
     "id": "110005",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110532",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24672,15 +23892,14 @@
   {
     "id": "110998",
     "value": [
-      "IDEOLOGICAL-INEQUALITY"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111061",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24720,25 +23939,21 @@
   {
     "id": "210576",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111616",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "111915",
     "value": [
-      "IDEOLOGICAL-INEQUALITY",
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24776,8 +23991,7 @@
   {
     "id": "110366",
     "value": [
-      "STEREOTYPING-DOMINANCE",
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24792,15 +24006,14 @@
   {
     "id": "110866",
     "value": [
-      "OBJECTIFICATION",
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
   {
     "id": "110541",
     "value": [
-      "STEREOTYPING-DOMINANCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24840,7 +24053,7 @@
   {
     "id": "111567",
     "value": [
-      "OBJECTIFICATION"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },
@@ -24863,7 +24076,7 @@
   {
     "id": "111966",
     "value": [
-      "SEXUAL-VIOLENCE"
+      "NO"
     ],
     "test_case": "EXIST2025"
   },

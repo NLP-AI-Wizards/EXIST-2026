@@ -37,39 +37,75 @@ def _build_task2_1_json_entries(ids, yes_probs, hard: bool):
             # Probabilistic dict
             value = {"YES": p_yes, "NO": 1.0 - p_yes}
 
-        entries.append(
-            {
-                "id": str(sample_id),
-                "value": value,
-                "test_case": "EXIST2025",  # DO NOT CHANGE THIS
-            }
-        )
+        entries.append({
+            "id": str(sample_id),
+            "value": value,
+            "test_case": "EXIST2025",  # DO NOT CHANGE THIS
+        })
     return entries
 
 
-def _build_task2_2_json_entries(ids, judgemental_probs, hard: bool):
+def _build_task2_2_json_entries(ids, p_2_1, judgemental_probs, hard: bool):
     entries = []
-    for sample_id, p_judg in zip(ids, judgemental_probs):
+    for sample_id, p_yes, p_judg in zip(ids, p_2_1, judgemental_probs):
+        p_yes = float(max(0.0, min(1.0, p_yes)))
         p_judg = float(max(0.0, min(1.0, p_judg)))
+
         if hard:
-            value = "JUDGEMENTAL" if p_judg >= 0.5 else "DIRECT"
+            if p_yes < 0.5:
+                value = "NO"
+            else:
+                value = "JUDGEMENTAL" if p_judg >= 0.5 else "DIRECT"
         else:
-            value = {"JUDGEMENTAL": p_judg, "DIRECT": 1.0 - p_judg}
+            # Task 2.2 soft labels: DIRECT, JUDGEMENTAL, NO
+            # TODO: (Check if correct) Redistribute probabilities so they sum to 1 and reflect hierarchy
+            if p_yes >= 0.5:
+                value = {
+                    "JUDGEMENTAL": p_judg,
+                    "DIRECT": 1.0 - p_judg,
+                    "NO": 0.0,
+                }
+            else:
+                value = {
+                    "JUDGEMENTAL": 0.0,
+                    "DIRECT": 0.0,
+                    "NO": 1.0,
+                }
         entries.append({"id": str(sample_id), "value": value, "test_case": "EXIST2025"})
     return entries
 
 
-def _build_task2_3_json_entries(ids, cat_probs, hard: bool):
+def _build_task2_3_json_entries(ids, p_2_1, cat_probs, hard: bool):
     from dataset import TASK_2_3_CLASSES
 
     entries = []
-    for sample_id, probs in zip(ids, cat_probs):
+    for sample_id, p_yes, probs in zip(ids, p_2_1, cat_probs):
+        p_yes = float(max(0.0, min(1.0, p_yes)))
         if hard:
-            # Multi-label hard: any class with p >= 0.5
-            value = [TASK_2_3_CLASSES[i] for i, p in enumerate(probs) if p >= 0.5]
+            if p_yes < 0.5:
+                value = ["NO"]
+            else:
+                # Multi-label hard: any class with p >= 0.5
+                value = [TASK_2_3_CLASSES[i] for i, p in enumerate(probs) if p >= 0.5]
+                if not value:  # Fallback if p_yes >= 0.5 but no class >= 0.5
+                    # Maybe pick the highest one or just NO? Usually if p_yes >= 0.5 there should be one.
+                    # But for consistency with golden files, let's keep it as is or add NO if empty.
+                    value = ["NO"]
         else:
-            # Multi-label soft: dictionary of all classes
-            value = {TASK_2_3_CLASSES[i]: float(p) for i, p in enumerate(probs)}
+            # Multi-label soft: dictionary of all classes + NO
+            if p_yes >= 0.5:
+                sum_p = sum(probs)
+                if sum_p > 0:
+                    normalized = [float(p) / sum_p for p in probs]
+                else:
+                    normalized = [1.0 / len(probs)] * len(probs)
+
+                value = {TASK_2_3_CLASSES[i]: p for i, p in enumerate(normalized)}
+                value["NO"] = 0.0
+            else:
+                value = {TASK_2_3_CLASSES[i]: 0.0 for i in range(len(probs))}
+                value["NO"] = 1.0
+
         entries.append({"id": str(sample_id), "value": value, "test_case": "EXIST2025"})
     return entries
 
@@ -126,9 +162,25 @@ def _run_eval(
 
     # 4. Build prediction entries
     for task_name, probs_list, build_fn in [
-        ("task2_1", sorted_probs_2_1, _build_task2_1_json_entries),
-        ("task2_2", sorted_probs_2_2, _build_task2_2_json_entries),
-        ("task2_3", sorted_probs_2_3, _build_task2_3_json_entries),
+        (
+            "task2_1",
+            sorted_probs_2_1,
+            lambda ids, probs, hard: _build_task2_1_json_entries(ids, probs, hard),
+        ),
+        (
+            "task2_2",
+            sorted_probs_2_2,
+            lambda ids, probs, hard: _build_task2_2_json_entries(
+                ids, sorted_probs_2_1, probs, hard
+            ),
+        ),
+        (
+            "task2_3",
+            sorted_probs_2_3,
+            lambda ids, probs, hard: _build_task2_3_json_entries(
+                ids, sorted_probs_2_1, probs, hard
+            ),
+        ),
     ]:
         hard_entries = build_fn(sorted_ids, probs_list, hard=True)
         soft_entries = build_fn(sorted_ids, probs_list, hard=False)
