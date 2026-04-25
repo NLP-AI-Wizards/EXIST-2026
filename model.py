@@ -7,6 +7,7 @@ from torchmetrics.classification import (
     MultilabelF1Score,
 )
 from models.Gemini import Gemini
+from models.SigLIP import SigLIP
 from loss import CustomLoss
 
 
@@ -24,11 +25,21 @@ class EXISTModel(pl.LightningModule):
     ):
         super().__init__()
         self.validation_step_outputs = []
+        self.requires_image = False
+        self.requires_text = False
+        self.requires_ids = False
 
         if model_name == "gemini":
             self.model = Gemini(
                 n_blocks=n_blocks, expansion_factor=expansion_factor, dropout=dropout, soft_gating=soft_gating
             )
+            self.requires_ids = True
+        elif model_name == "siglip":
+            self.model = SigLIP(
+                n_blocks=n_blocks, expansion_factor=expansion_factor, dropout=dropout, soft_gating=soft_gating
+            )
+            self.requires_image = True
+            self.requires_text = True
         else:
             raise ValueError(f"Unknown model name: {model_name}")
 
@@ -68,10 +79,15 @@ class EXISTModel(pl.LightningModule):
         self, image=None, text=None, ids=None, physio_features=None, physio_mask=None
     ):
         if isinstance(self.model, Gemini):
+            if ids is None:
+                raise ValueError("Gemini requires 'ids' in forward pass")
             return self.model(ids)
-        if physio_features is None or physio_mask is None:
+        elif isinstance(self.model, SigLIP):
+            if image is None or text is None:
+                raise ValueError("SigLIP requires both 'image' and 'text' in forward pass")
             return self.model(image, text)
-        return self.model(image, text, physio_features, physio_mask)
+        else:
+            raise ValueError("Unknown model type in forward pass")
 
     def _step(self, batch, batch_idx):
         image = batch.get("image", None)
@@ -80,12 +96,13 @@ class EXISTModel(pl.LightningModule):
         physio_features = batch.get("physio_features", None)
         physio_mask = batch.get("physio_mask", None)
 
-        if isinstance(self.model, Gemini):
-            outputs = self.model(ids)
-        elif physio_features is not None and physio_mask is not None:
-            outputs = self.model(image, text, physio_features, physio_mask)
-        else:
-            outputs = self.model(image, text)
+        outputs = self.forward(
+            image=image,
+            text=text,
+            ids=ids,
+            physio_features=physio_features,
+            physio_mask=physio_mask,
+        )
 
         targets = {
             "t_2_1": batch["target_2_1"],
@@ -226,10 +243,12 @@ class EXISTModel(pl.LightningModule):
             pct_start=self.warmup_ratio,
             max_lr=self.lr,
             anneal_strategy="cos",
+            cycle_momentum=False,
         )
 
         print(f"Optimizer: {optimizer}")
         print(f"Scheduler: {scheduler}")
+        print(f"Estimated stepping batches: {total_steps}")
 
         return {
             "optimizer": optimizer,
@@ -237,5 +256,6 @@ class EXISTModel(pl.LightningModule):
                 "scheduler": scheduler,
                 "interval": "step",
                 "frequency": 1,
+                "name": "onecycle_lr",
             },
         }

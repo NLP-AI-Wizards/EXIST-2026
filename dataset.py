@@ -4,7 +4,6 @@ import torch
 from torch.utils.data import Dataset
 from PIL import Image
 import numpy as np
-from typing import Optional
 
 TASK_2_3_CLASSES = [
     "IDEOLOGICAL-INEQUALITY",
@@ -20,10 +19,12 @@ class EXISTDataset(Dataset):
         self,
         json_path: str = r"data/EXIST 2026 Memes Dataset/training/EXIST2026_training.json",
         img_dir: str = r"data/EXIST 2026 Memes Dataset/training/images",
+        include_image: bool = True,
+        include_text: bool = True,
+        include_id: bool = True,
         use_sensorial: bool = False,
         use_annotator_metadata: bool = False,
         max_subjects: int = 4,
-        physio_dim: int = 108,
     ):
         # Load the JSON data
         self.data = pd.read_json(json_path, orient="index")
@@ -32,10 +33,13 @@ class EXISTDataset(Dataset):
         self.data = self.data.reset_index(drop=True)
 
         self.img_dir = img_dir
+        self.include_image = include_image
+        self.include_text = include_text
+        self.include_id = include_id
         self.use_sensorial = use_sensorial
         self.use_annotator_metadata = use_annotator_metadata
         self.max_subjects = max_subjects
-        self.physio_dim = physio_dim
+        self.physio_dim = 108
 
     def __len__(self):
         return len(self.data)
@@ -80,6 +84,17 @@ class EXISTDataset(Dataset):
             torch.tensor([t_2_2], dtype=torch.float32),
             torch.tensor(t_2_3, dtype=torch.float32),
         )
+
+    def _extract_image(self, item):
+        img_filename = item["path_memes"].split("/")[-1].split("\\")[-1]
+        img_path = os.path.join(self.img_dir, img_filename)
+        # Convert first to RGBA then to RGB
+        img = Image.open(img_path)
+        img_array = np.array(img.convert("RGBA").convert("RGB"))
+        return img_array
+
+    def _extract_text(self, item):
+        return item.get("text", "")
 
     def _extract_physio(self, item):
         physio_features = np.zeros(
@@ -127,26 +142,13 @@ class EXISTDataset(Dataset):
     def __getitem__(self, idx):
         item = self.data.iloc[idx]
 
-        # Image
-        img_filename = item["path_memes"].split("/")[-1].split("\\")[-1]
-        img_path = os.path.join(self.img_dir, img_filename)
-
-        # Convert image to RGB array (handle missing image gracefully if needed)
-        try:
-            img_array = np.array(Image.open(img_path).convert("RGB"))
-        except FileNotFoundError:
-            # Fallback to black image if file is missing
-            img_array = np.zeros((224, 224, 3), dtype=np.uint8)
-
-        text = item.get("text", "")
+        image = self._extract_image(item) if self.include_image else None
+        text = self._extract_text(item) if self.include_text else None
 
         t_2_1, t_2_2, t_2_3 = self._compute_marginals(item)
 
         # Build output dictionary
         sample = {
-            "id": item["id_EXIST"],
-            "image": img_array,
-            "text": text,
             "target_2_1": t_2_1,
             "target_2_2": t_2_2,
             "target_2_3": t_2_3,
@@ -154,6 +156,13 @@ class EXISTDataset(Dataset):
                 [1.0 if t_2_1.item() > 0.0 else 0.0], dtype=torch.float32
             ),
         }
+
+        if self.include_id:
+            sample["id"] = item["id_EXIST"]
+        if self.include_image:
+            sample["image"] = image
+        if self.include_text:
+            sample["text"] = text
 
         # Sensorial Data
         if self.use_sensorial:
@@ -166,30 +175,3 @@ class EXISTDataset(Dataset):
             sample["annotator_metadata"] = self._extract_annotators(item)
 
         return sample
-
-
-if __name__ == "__main__":
-    dataset = EXISTDataset(
-        json_path=r"data/EXIST 2026 Memes Dataset/training/EXIST2026_training.json",
-        img_dir=r"data/EXIST 2026 Memes Dataset/training/memes",
-        use_sensorial=True,
-        use_annotator_metadata=True,
-    )
-
-    print(f"Dataset initialized with {len(dataset)} items.")
-
-    if len(dataset) > 0:
-        sample = dataset[0]
-        print(f"\nSample ID: {sample['id']}")
-        print(f"Text: {sample['text'][:50]}...")
-        print(f"Image Array Shape: {sample['image'].shape}")
-
-        print("\nTargets:")
-        print(f"  Task 2.1 (YES prob): {sample['target_2_1'].item():.4f}")
-        print(f"  Task 2.2 (JUDG prob): {sample['target_2_2'].item():.4f}")
-        print(f"  Task 2.3 (Categories): {sample['target_2_3'].numpy()}")
-        print(f"  Conditional Mask: {sample['mask_conditional'].item()}")
-
-        if "physio_features" in sample:
-            print(f"\nPhysiological Features Shape: {sample['physio_features'].shape}")
-            print(f"Physiological Mask: {sample['physio_mask'].numpy()}")

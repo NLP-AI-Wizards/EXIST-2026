@@ -12,13 +12,22 @@ from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks.model_checkpoint import ModelCheckpoint
 from pytorch_lightning.callbacks import LearningRateMonitor, ModelSummary
 
-from dataset import EXISTDataset
+from dataset import EXISTDataset, TASK_2_3_CLASSES
 from datamodule import EXISTDataModule
 from model import EXISTModel
 
 logger: Logger = logging.getLogger(__name__)
 
 torch.set_float32_matmul_precision("high")
+
+TEST_CASE = "EXIST2025"
+
+def _get_model_input_flags(model_name: str) -> dict:
+    if model_name == "gemini":
+        return {"include_image": False, "include_text": False, "include_id": True}
+    if model_name == "siglip":
+        return {"include_image": True, "include_text": True, "include_id": True}
+    raise ValueError(f"Unknown model name: {model_name}")
 
 
 def _build_task2_1_json_entries(ids, yes_probs, hard: bool):
@@ -27,9 +36,6 @@ def _build_task2_1_json_entries(ids, yes_probs, hard: bool):
     """
     entries = []
     for sample_id, p_yes in zip(ids, yes_probs):
-        # Clip probabilities for safety
-        p_yes = float(max(0.0, min(1.0, p_yes)))
-
         if hard:
             # Majority vote
             value = "YES" if p_yes >= 0.5 else "NO"
@@ -40,73 +46,53 @@ def _build_task2_1_json_entries(ids, yes_probs, hard: bool):
         entries.append({
             "id": str(sample_id),
             "value": value,
-            "test_case": "EXIST2025",  # DO NOT CHANGE THIS
+            "test_case": TEST_CASE,
         })
     return entries
 
 
 def _build_task2_2_json_entries(ids, p_2_1, judgemental_probs, hard: bool):
-    entries = []
+    entries =[]
     for sample_id, p_yes, p_judg in zip(ids, p_2_1, judgemental_probs):
-        p_yes = float(max(0.0, min(1.0, p_yes)))
-        p_judg = float(max(0.0, min(1.0, p_judg)))
-
         if hard:
+            # HARD TRACK: Strict hierarchical decision tree
             if p_yes < 0.5:
                 value = "NO"
             else:
                 value = "JUDGEMENTAL" if p_judg >= 0.5 else "DIRECT"
         else:
-            # Task 2.2 soft labels: DIRECT, JUDGEMENTAL, NO
-            # TODO: (Check if correct) Redistribute probabilities so they sum to 1 and reflect hierarchy
-            if p_yes >= 0.5:
-                value = {
-                    "JUDGEMENTAL": p_judg,
-                    "DIRECT": 1.0 - p_judg,
-                    "NO": 0.0,
-                }
-            else:
-                value = {
-                    "JUDGEMENTAL": 0.0,
-                    "DIRECT": 0.0,
-                    "NO": 1.0,
-                }
-        entries.append({"id": str(sample_id), "value": value, "test_case": "EXIST2025"})
+            # SOFT TRACK: Joint Probability Distribution
+            value = {
+                "JUDGEMENTAL": float(p_yes * p_judg),
+                "DIRECT": float(p_yes * (1.0 - p_judg)),
+                "NO": float(1.0 - p_yes),
+            }
+        entries.append({"id": str(sample_id), "value": value, "test_case": TEST_CASE})
     return entries
 
 
 def _build_task2_3_json_entries(ids, p_2_1, cat_probs, hard: bool):
-    from dataset import TASK_2_3_CLASSES
-
-    entries = []
+    entries =[]
     for sample_id, p_yes, probs in zip(ids, p_2_1, cat_probs):
-        p_yes = float(max(0.0, min(1.0, p_yes)))
         if hard:
+            # HARD TRACK: Strict hierarchical decision tree
             if p_yes < 0.5:
                 value = ["NO"]
             else:
-                # Multi-label hard: any class with p >= 0.5
-                value = [TASK_2_3_CLASSES[i] for i, p in enumerate(probs) if p >= 0.5]
-                if not value:  # Fallback if p_yes >= 0.5 but no class >= 0.5
-                    # Maybe pick the highest one or just NO? Usually if p_yes >= 0.5 there should be one.
-                    # But for consistency with golden files, let's keep it as is or add NO if empty.
-                    value = ["NO"]
+                # Multi-label hard: any class with conditional p >= 0.5
+                value =[TASK_2_3_CLASSES[i] for i, p in enumerate(probs) if p >= 0.5]
+
+                # Fallback: If network is sure it's YES, but unsure of the category,
+                # force it to pick the most likely category instead of defaulting to NO.
+                if not value:
+                    best_idx = max(range(len(probs)), key=lambda i: probs[i])
+                    value = [TASK_2_3_CLASSES[best_idx]]
         else:
-            # Multi-label soft: dictionary of all classes + NO
-            if p_yes >= 0.5:
-                sum_p = sum(probs)
-                if sum_p > 0:
-                    normalized = [float(p) / sum_p for p in probs]
-                else:
-                    normalized = [1.0 / len(probs)] * len(probs)
+            # SOFT TRACK: Joint Probability Distribution
+            value = {TASK_2_3_CLASSES[i]: float(p_yes * p) for i, p in enumerate(probs)}
+            value["NO"] = float(1.0 - p_yes)
 
-                value = {TASK_2_3_CLASSES[i]: p for i, p in enumerate(normalized)}
-                value["NO"] = 0.0
-            else:
-                value = {TASK_2_3_CLASSES[i]: 0.0 for i in range(len(probs))}
-                value["NO"] = 1.0
-
-        entries.append({"id": str(sample_id), "value": value, "test_case": "EXIST2025"})
+        entries.append({"id": str(sample_id), "value": value, "test_case": TEST_CASE})
     return entries
 
 
@@ -118,9 +104,6 @@ def _run_eval(
     version: str,
     output_dir: str = "outputs",
 ):
-    if args.paper_run:
-        output_dir = output_dir + "_paper"
-
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs(os.path.join(output_dir, version), exist_ok=True)
 
@@ -203,12 +186,10 @@ def _run_eval(
     print(f"Saved SOFT predictions to: {soft_path}")
 
 
-def train(seed):
-    if args.paper_run:
-        version = f"{args.model_name}_{args.version}_seed_{seed}"
-    else:
-        version = f"{args.model_name}_{args.version}"
+def train(args):
+    version = f"{args.model_name}_{args.version}_seed_{args.seed}"
 
+    input_flags = _get_model_input_flags(args.model_name)
 
     loggers: list = []
     tb_logger = TensorBoardLogger(save_dir="tb_logs", name=version)
@@ -220,6 +201,7 @@ def train(seed):
             name=version,
             save_dir="wandb",
             entity=args.wandb_entity,
+            log_model="all"
         )
         loggers.append(wandb_logger)
 
@@ -229,16 +211,25 @@ def train(seed):
         train_dataset=EXISTDataset(
             json_path=r"data/EXIST 2026 Memes Dataset/training/EXIST2026_training.json",
             img_dir=r"data/EXIST 2026 Memes Dataset/training/memes",
+            include_image=input_flags["include_image"],
+            include_text=input_flags["include_text"],
+            include_id=input_flags["include_id"],
             use_sensorial=args.use_sensorial,
         ),
         test_dataset=EXISTDataset(
             json_path=r"data/EXIST 2026 Memes Dataset/test/EXIST2026_test_clean.json",
             img_dir=r"data/EXIST 2026 Memes Dataset/test/memes",
+            include_image=input_flags["include_image"],
+            include_text=input_flags["include_text"],
+            include_id=input_flags["include_id"],
             use_sensorial=args.use_sensorial,
         ),
         batch_size=args.batch_size,
         num_workers=args.num_workers,
         seed=args.seed,
+        include_image=input_flags["include_image"],
+        include_text=input_flags["include_text"],
+        include_id=input_flags["include_id"],
     )
 
     # Pytorch Lightning module
@@ -265,13 +256,11 @@ def train(seed):
 
     model_summary = ModelSummary(max_depth=4)
 
-    lr_monitor = LearningRateMonitor(
-        logging_interval="step",
-    )
+    lr_monitor = LearningRateMonitor(logging_interval="step")
 
     early_stopping = pl.callbacks.EarlyStopping(
         monitor="val/total_loss",
-        patience=5,
+        patience=args.epochs // 3,
         mode="min",
         verbose=True,
     )
@@ -321,7 +310,7 @@ if __name__ == "__main__":
         "--model_name",
         type=str,
         required=True,
-        choices=["gemini"],
+        choices=["gemini", "siglip"],
         help="Model variant to train with",
     )
     parser.add_argument(
@@ -391,11 +380,6 @@ if __name__ == "__main__":
     parser.add_argument(
         "--seed", type=int, default=42, help="Random seed for reproducibility"
     )
-    parser.add_argument(
-        "--paper_run",
-        action="store_true",
-        help="Train the model over five different seeds, then averages the results",
-    )
 
     # LOGGING
     parser.add_argument(
@@ -417,15 +401,8 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    seeds = [42,67,89,110,1337]
-    if args.paper_run:
-        for seed in seeds:
-            pl.seed_everything(seed)
-            train(seed)
-    
-    else:
-        # Set random seed for reproducibility
-        pl.seed_everything(args.seed)
+    # Set random seed for reproducibility
+    pl.seed_everything(args.seed)
 
-        # Start training
-        train(0)
+    # Start training
+    train(args)

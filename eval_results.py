@@ -54,66 +54,115 @@ def eval_task(root, file, predictions_dir):
 
 
 def eval_all(
-    predictions_dir: str = "outputs", output_csv: str = "evaluation_results.csv"
+    predictions_dir: str = "outputs",
+    output_csv: str = "evaluation_results.csv",
+    overwrite: bool = False,
 ):
     """
     Scans a directory for JSON prediction files and evaluates them all in parallel.
     Generates a CSV report of the results.
     """
-    # Collect all candidate files first
+    existing_results = []
+
+    for mode in ["soft", "hard"]:
+        mode_csv = output_csv.replace(".csv", f"_{mode}.csv")
+        if os.path.exists(mode_csv):
+            try:
+                existing_results.extend(pd.read_csv(mode_csv).to_dict("records"))
+            except Exception as e:
+                print(f"Warning: Could not read {mode_csv}: {e}")
+
+    def infer_task(file_name: str):
+        if "task2_1" in file_name:
+            return "2.1"
+        if "task2_2" in file_name:
+            return "2.2"
+        if "task2_3" in file_name:
+            return "2.3"
+        return None
+
+    def infer_mode(file_name: str):
+        return "hard" if "hard" in file_name.lower() else "soft"
+
+    def make_key(model: str, file_name: str, task: str, mode: str):
+        return (str(model), str(file_name), str(task), str(mode))
+
+    existing_by_key = {}
+    for row in existing_results:
+        row_task = row.get("task")
+        row_mode = row.get("mode")
+        if row_task is None or row_mode is None:
+            continue
+        key = make_key(row.get("model", ""), row.get("file", ""), row_task, row_mode)
+        existing_by_key[key] = row
+
     tasks_to_run = []
     for root, _, files in os.walk(predictions_dir):
+        relative_path = os.path.relpath(root, predictions_dir)
+        model_name = relative_path if relative_path != "." else "root"
+
         for file in files:
             if file.endswith(".json") and "task2_" in file:
-                tasks_to_run.append((root, file))
+                task = infer_task(file)
+                mode = infer_mode(file)
+                if task is None:
+                    continue
+
+                key = make_key(model_name, file, task, mode)
+                if overwrite or key not in existing_by_key:
+                    tasks_to_run.append((root, file, predictions_dir))
 
     if not tasks_to_run:
-        print("No valid prediction files found for evaluation.")
+        print("No new prediction files found for evaluation.")
+        results_list = list(existing_by_key.values())
+    else:
+        print(f"Starting parallel evaluation of {len(tasks_to_run)} new files...")
+        new_results = Parallel(n_jobs=8)(
+            delayed(eval_task)(root, file, p_dir)
+            for root, file, p_dir in tqdm(tasks_to_run, desc="Evaluating", unit="file")
+        )
+
+        for row in new_results:
+            if row is None:
+                continue
+            key = make_key(row["model"], row["file"], row["task"], row["mode"])
+            existing_by_key[key] = row
+
+        results_list = list(existing_by_key.values())
+
+    if not results_list:
+        print("No metrics were successfully computed.")
         return
 
-    print(f"Starting parallel evaluation of {len(tasks_to_run)} files...")
+    df = pd.DataFrame(results_list)
+    df["task"] = pd.Categorical(df["task"].astype(str), categories=["2.1", "2.2", "2.3"], ordered=True)
+    df["mode"] = pd.Categorical(df["mode"], categories=["soft", "hard"], ordered=True)
 
-    # Run evaluation in parallel using joblib and tqdm
-    results = Parallel(n_jobs=4)(
-        delayed(eval_task)(root, file, predictions_dir)
-        for root, file in tqdm(tasks_to_run, desc="Evaluating", unit="file")
-    )
+    for mode in ["soft", "hard"]:
+        mode_df = df[df["mode"] == mode].copy()
+        if mode_df.empty:
+            continue
 
-    # Filter out None results
-    results_list = [r for r in results if r is not None]
+        sort_metric = "ICMSoft" if mode == "soft" else "ICM"
+        if sort_metric in mode_df.columns:
+            # Sort by task, then metric decreasing
+            mode_df = mode_df.sort_values(by=["task", sort_metric], ascending=[True, False])
 
-    if results_list:
-        df = pd.DataFrame(results_list)
+        mode_df = mode_df.dropna(axis=1, how="all")
 
-        # Define categorical order for tasks and modes
-        df["task"] = pd.Categorical(
-            df["task"], categories=["2.1", "2.2", "2.3"], ordered=True
-        )
-        df["mode"] = pd.Categorical(
-            df["mode"], categories=["soft", "hard"], ordered=True
-        )
+        # Reorder columns to put metadata first
+        meta_cols = ["task", "model", "file", "mode"]
+        other_cols = [c for c in mode_df.columns if c not in meta_cols]
+        mode_df = mode_df[meta_cols + other_cols]
 
-        # Sort by model, then task, then mode
-        df = df.sort_values(by=["model", "task", "mode"])
+        mode_output = output_csv.replace(".csv", f"_{mode}.csv")
+        # Save flat CSV for easy loading later
+        mode_df.to_csv(mode_output, index=False)
 
-        # Split and save into two files
-        for mode in ["soft", "hard"]:
-            mode_df = df[df["mode"] == mode].copy()
-            if not mode_df.empty:
-                # Remove columns that are all NaN for this mode
-                mode_df = mode_df.dropna(axis=1, how="all")
-
-                # Reorder columns to put metadata first
-                meta_cols = ["model", "file", "task", "mode"]
-                other_cols = [c for c in mode_df.columns if c not in meta_cols]
-                mode_df = mode_df[meta_cols + other_cols]
-
-                mode_output = output_csv.replace(".csv", f"_{mode}.csv")
-                mode_df.to_csv(mode_output, index=False)
-                print(f"\nResults for {mode} mode saved to {mode_output}")
-                print(mode_df.to_string())
-    else:
-        print("No metrics were successfully computed.")
+        print(f"\nResults for {mode} mode saved to {mode_output}")
+        # Set a multi-index for cleaner terminal output
+        display_df = mode_df.drop(columns=["mode"]).set_index(["task", "model"])
+        print(display_df.to_string())
 
 
 def evaluate(
@@ -123,51 +172,26 @@ def evaluate(
     verbose: bool = True,
 ):
     test = PyEvALLEvaluation()
-    params = dict()
-
-    # Determine mode from path
     mode = "hard" if "hard" in predictions_path.lower() else "soft"
 
-    if mode == "hard":
-        params[PyEvALLUtils.PARAM_REPORT] = PyEvALLUtils.PARAM_OPTION_REPORT_EMBEDDED
-        metrics = ["ICM", "ICMNorm", "FMeasure"]
-        if task == "2.2":
-            TASK2_2_HIERARCHY = {"YES": ["DIRECT", "JUDGEMENTAL"], "NO": []}
-            params[PyEvALLUtils.PARAM_HIERARCHY] = TASK2_2_HIERARCHY
-        elif task == "2.3":
-            TASK2_3_HIERARCHY = {
-                "YES": [
-                    "IDEOLOGICAL-INEQUALITY",
-                    "STEREOTYPING-DOMINANCE",
-                    "OBJECTIFICATION",
-                    "SEXUAL-VIOLENCE",
-                    "MISOGYNY-NON-SEXUAL-VIOLENCE",
-                ],
-                "NO": [],
-            }
-            params[PyEvALLUtils.PARAM_HIERARCHY] = TASK2_3_HIERARCHY
-        report = test.evaluate(predictions_path, gold_path, metrics, **params)
+    params = {PyEvALLUtils.PARAM_REPORT: PyEvALLUtils.PARAM_OPTION_REPORT_EMBEDDED}
 
+    # Define hierarchies based on task
+    if task == "2.2":
+        params[PyEvALLUtils.PARAM_HIERARCHY] = {"YES": ["DIRECT", "JUDGEMENTAL"], "NO": []}
+    elif task == "2.3":
+        params[PyEvALLUtils.PARAM_HIERARCHY] = {
+            "YES": ["IDEOLOGICAL-INEQUALITY", "STEREOTYPING-DOMINANCE", "OBJECTIFICATION", "SEXUAL-VIOLENCE", "MISOGYNY-NON-SEXUAL-VIOLENCE"],
+            "NO": []
+        }
+
+    # Define metrics based on mode and task
+    if mode == "hard":
+        metrics = ["ICM", "ICMNorm", "FMeasure"]
     else:
-        params[PyEvALLUtils.PARAM_REPORT] = PyEvALLUtils.PARAM_OPTION_REPORT_EMBEDDED
-        metrics = ["ICMSoft", "ICMSoftNorm", "CrossEntropy"]
-        if task == "2.2":
-            TASK2_2_HIERARCHY = {"YES": ["DIRECT", "JUDGEMENTAL"], "NO": []}
-            params[PyEvALLUtils.PARAM_HIERARCHY] = TASK2_2_HIERARCHY
-        elif task == "2.3":
-            metrics = ["ICMSoft", "ICMSoftNorm"]
-            TASK2_3_HIERARCHY = {
-                "YES": [
-                    "IDEOLOGICAL-INEQUALITY",
-                    "STEREOTYPING-DOMINANCE",
-                    "OBJECTIFICATION",
-                    "SEXUAL-VIOLENCE",
-                    "MISOGYNY-NON-SEXUAL-VIOLENCE",
-                ],
-                "NO": [],
-            }
-            params[PyEvALLUtils.PARAM_HIERARCHY] = TASK2_3_HIERARCHY
-        report = test.evaluate(predictions_path, gold_path, metrics, **params)
+        metrics = ["ICMSoft", "ICMSoftNorm"] if task == "2.3" else ["ICMSoft", "ICMSoftNorm", "CrossEntropy"]
+
+    report = test.evaluate(predictions_path, gold_path, metrics, **params)
 
     if verbose:
         report.print_report()
@@ -222,10 +246,18 @@ if __name__ == "__main__":
         choices=["2.1", "2.2", "2.3"],
         help="Task identifier.",
     )
+    parser.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Whether to overwrite existing CSV files when using --all.",
+    )
     args = parser.parse_args()
 
     if args.all:
-        eval_all(args.dir)
+        eval_all(
+            predictions_dir=args.dir,
+            overwrite=args.overwrite,
+        )
     elif args.predictions_path and args.gold_path and args.task:
         evaluate(args.predictions_path, args.gold_path, args.task, verbose=True)
     else:

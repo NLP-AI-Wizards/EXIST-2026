@@ -211,3 +211,4 @@ data/
 checkpoints/
 tb_logs/
 *.zip
+wandb/
