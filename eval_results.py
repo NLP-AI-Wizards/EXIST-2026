@@ -7,29 +7,23 @@ from pyevall.evaluation import PyEvALLEvaluation
 from pyevall.utils.utils import PyEvALLUtils
 
 
-def eval_task(root, file, predictions_dir):
+def eval_task(file_path: str, file_name: str, model_name: str):
     """Helper function to evaluate a single task file for parallel execution."""
-    if not (file.endswith(".json") and "task2_" in file):
+    if not (file_name.endswith(".json") and "task2_" in file_name):
         return None
-
-    file_path = os.path.join(root, file)
 
     # Infer task and mode from filename
     task = None
-    if "task2_1" in file:
+    if "task2_1" in file_name:
         task = "2.1"
-    elif "task2_2" in file:
+    elif "task2_2" in file_name:
         task = "2.2"
-    elif "task2_3" in file:
+    elif "task2_3" in file_name:
         task = "2.3"
     else:
         return None
 
-    mode = "hard" if "hard" in file.lower() else "soft"
-
-    # Extract model name
-    relative_path = os.path.relpath(root, predictions_dir)
-    model_name = relative_path if relative_path != "." else "root"
+    mode = "hard" if "hard" in file_name.lower() else "soft"
 
     # Define gold path
     gold_task = task.replace(".", "_")
@@ -44,17 +38,19 @@ def eval_task(root, file, predictions_dir):
         metrics = evaluate(file_path, gold_path=gold_path, task=task, verbose=False)
         if metrics:
             metrics["model"] = model_name
-            metrics["file"] = file
+            metrics["file"] = file_name
             metrics["task"] = task
             metrics["mode"] = mode
             return metrics
     except Exception as e:
-        print(f"Error evaluating {file}: {e}")
+        print(f"Error evaluating {file_name}: {e}")
     return None
 
 
 def eval_all(
     predictions_dir: str = "outputs",
+    baselines_dir: str = "data/evaluation/baselines",
+    include_baselines: bool = True,
     output_csv: str = "evaluation_results.csv",
     overwrite: bool = False,
 ):
@@ -97,6 +93,8 @@ def eval_all(
         existing_by_key[key] = row
 
     tasks_to_run = []
+
+    # Model outputs under the predictions directory.
     for root, _, files in os.walk(predictions_dir):
         relative_path = os.path.relpath(root, predictions_dir)
         model_name = relative_path if relative_path != "." else "root"
@@ -110,16 +108,42 @@ def eval_all(
 
                 key = make_key(model_name, file, task, mode)
                 if overwrite or key not in existing_by_key:
-                    tasks_to_run.append((root, file, predictions_dir))
+                    file_path = os.path.join(root, file)
+                    tasks_to_run.append((file_path, file, model_name))
+
+    # Baseline files are included as pseudo-models to ease ranking comparisons.
+    if include_baselines and os.path.isdir(baselines_dir):
+        for file in os.listdir(baselines_dir):
+            if not (file.endswith(".json") and "task2_" in file and "training" in file):
+                continue
+
+            task = infer_task(file)
+            mode = infer_mode(file)
+            if task is None:
+                continue
+
+            if "majority" in file.lower():
+                model_name = "baseline_majority"
+            elif "minority" in file.lower():
+                model_name = "baseline_minority"
+            else:
+                model_name = "baseline"
+
+            key = make_key(model_name, file, task, mode)
+            if overwrite or key not in existing_by_key:
+                file_path = os.path.join(baselines_dir, file)
+                tasks_to_run.append((file_path, file, model_name))
 
     if not tasks_to_run:
         print("No new prediction files found for evaluation.")
         results_list = list(existing_by_key.values())
     else:
         print(f"Starting parallel evaluation of {len(tasks_to_run)} new files...")
-        new_results = Parallel(n_jobs=8)(
-            delayed(eval_task)(root, file, p_dir)
-            for root, file, p_dir in tqdm(tasks_to_run, desc="Evaluating", unit="file")
+        new_results = Parallel(n_jobs=args.njobs)(
+            delayed(eval_task)(file_path, file_name, model_name)
+            for file_path, file_name, model_name in tqdm(
+                tasks_to_run, desc="Evaluating", unit="file"
+            )
         )
 
         for row in new_results:
@@ -135,7 +159,9 @@ def eval_all(
         return
 
     df = pd.DataFrame(results_list)
-    df["task"] = pd.Categorical(df["task"].astype(str), categories=["2.1", "2.2", "2.3"], ordered=True)
+    df["task"] = pd.Categorical(
+        df["task"].astype(str), categories=["2.1", "2.2", "2.3"], ordered=True
+    )
     df["mode"] = pd.Categorical(df["mode"], categories=["soft", "hard"], ordered=True)
 
     for mode in ["soft", "hard"]:
@@ -146,7 +172,9 @@ def eval_all(
         sort_metric = "ICMSoft" if mode == "soft" else "ICM"
         if sort_metric in mode_df.columns:
             # Sort by task, then metric decreasing
-            mode_df = mode_df.sort_values(by=["task", sort_metric], ascending=[True, False])
+            mode_df = mode_df.sort_values(
+                by=["task", sort_metric], ascending=[True, False]
+            )
 
         mode_df = mode_df.dropna(axis=1, how="all")
 
@@ -178,18 +206,31 @@ def evaluate(
 
     # Define hierarchies based on task
     if task == "2.2":
-        params[PyEvALLUtils.PARAM_HIERARCHY] = {"YES": ["DIRECT", "JUDGEMENTAL"], "NO": []}
+        params[PyEvALLUtils.PARAM_HIERARCHY] = {
+            "YES": ["DIRECT", "JUDGEMENTAL"],
+            "NO": [],
+        }
     elif task == "2.3":
         params[PyEvALLUtils.PARAM_HIERARCHY] = {
-            "YES": ["IDEOLOGICAL-INEQUALITY", "STEREOTYPING-DOMINANCE", "OBJECTIFICATION", "SEXUAL-VIOLENCE", "MISOGYNY-NON-SEXUAL-VIOLENCE"],
-            "NO": []
+            "YES": [
+                "IDEOLOGICAL-INEQUALITY",
+                "STEREOTYPING-DOMINANCE",
+                "OBJECTIFICATION",
+                "SEXUAL-VIOLENCE",
+                "MISOGYNY-NON-SEXUAL-VIOLENCE",
+            ],
+            "NO": [],
         }
 
     # Define metrics based on mode and task
     if mode == "hard":
         metrics = ["ICM", "ICMNorm", "FMeasure"]
     else:
-        metrics = ["ICMSoft", "ICMSoftNorm"] if task == "2.3" else ["ICMSoft", "ICMSoftNorm", "CrossEntropy"]
+        metrics = (
+            ["ICMSoft", "ICMSoftNorm"]
+            if task == "2.3"
+            else ["ICMSoft", "ICMSoftNorm", "CrossEntropy"]
+        )
 
     report = test.evaluate(predictions_path, gold_path, metrics, **params)
 
@@ -231,6 +272,17 @@ if __name__ == "__main__":
         help="Directory to scan for JSON files when using --all.",
     )
     parser.add_argument(
+        "--baselines-dir",
+        type=str,
+        default="data/evaluation/baselines",
+        help="Directory containing baseline JSON predictions for task2.*.",
+    )
+    parser.add_argument(
+        "--no-baselines",
+        action="store_true",
+        help="Do not include baseline files when using --all.",
+    )
+    parser.add_argument(
         "--predictions_path",
         type=str,
         help="Path to a single predictions file.",
@@ -251,11 +303,19 @@ if __name__ == "__main__":
         action="store_true",
         help="Whether to overwrite existing CSV files when using --all.",
     )
+    parser.add_argument(
+        "--njobs",
+        type=int,
+        default=8,
+        help="Number of parallel jobs to run when using --all.",
+    )
     args = parser.parse_args()
 
     if args.all:
         eval_all(
             predictions_dir=args.dir,
+            baselines_dir=args.baselines_dir,
+            include_baselines=not args.no_baselines,
             overwrite=args.overwrite,
         )
     elif args.predictions_path and args.gold_path and args.task:
