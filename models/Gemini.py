@@ -6,10 +6,17 @@ from safetensors.torch import load_file
 from models.model_head.mlp import ClassificationHead, SwiGLU
 
 
-def get_embeddings():
-    # Load embeddings from safetensors
-    train_data = load_file("data/embeddings_train.safetensors")
-    test_data = load_file("data/embeddings_test.safetensors")
+def get_embeddings(
+    use_demographics: bool = False,
+):
+    if use_demographics:
+        # Load embeddings from safetensors
+        train_data = load_file("data/embeddings_train_demographics.safetensors")
+        test_data = load_file("data/embeddings_test_demographics.safetensors")
+    else:
+        # Load embeddings from safetensors
+        train_data = load_file("data/embeddings_train.safetensors")
+        test_data = load_file("data/embeddings_test.safetensors")
 
     # Combine embeddings
     train_ids = train_data["ids"].numpy()
@@ -44,10 +51,17 @@ class ExpansionBlock(nn.Module):
 
 class Gemini(nn.Module):
     def __init__(
-        self, n_blocks: int = 2, expansion_factor: int = 4, dropout: float = 0.2, soft_gating: bool = False
+        self,
+        n_blocks: int = 2,
+        expansion_factor: int = 4,
+        dropout: float = 0.2,
+        soft_gating: bool = False,
+        use_demographics: bool = False,
     ):
         super().__init__()
-        embeddings, embedding_ids, id_to_embedding_idx = get_embeddings()
+        embeddings, embedding_ids, id_to_embedding_idx = get_embeddings(
+            use_demographics=use_demographics
+        )
         self.register_buffer("embeddings", embeddings)
         self.id_to_embedding_idx = id_to_embedding_idx
         self.soft_gating = soft_gating

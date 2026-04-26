@@ -21,7 +21,8 @@ class EXISTModel(pl.LightningModule):
         lr: float = 1e-4,
         weight_decay: float = 1e-2,
         warmup_ratio: float = 0.1,
-        soft_gating: bool = False
+        soft_gating: bool = False,
+        use_demographics: bool = False,
     ):
         super().__init__()
         self.validation_step_outputs = []
@@ -31,12 +32,19 @@ class EXISTModel(pl.LightningModule):
 
         if model_name == "gemini":
             self.model = Gemini(
-                n_blocks=n_blocks, expansion_factor=expansion_factor, dropout=dropout, soft_gating=soft_gating
+                n_blocks=n_blocks,
+                expansion_factor=expansion_factor,
+                dropout=dropout,
+                soft_gating=soft_gating,
+                use_demographics=use_demographics,
             )
             self.requires_ids = True
         elif model_name == "siglip":
             self.model = SigLIP(
-                n_blocks=n_blocks, expansion_factor=expansion_factor, dropout=dropout, soft_gating=soft_gating
+                n_blocks=n_blocks,
+                expansion_factor=expansion_factor,
+                dropout=dropout,
+                soft_gating=soft_gating,
             )
             self.requires_image = True
             self.requires_text = True
@@ -84,7 +92,9 @@ class EXISTModel(pl.LightningModule):
             return self.model(ids)
         elif isinstance(self.model, SigLIP):
             if image is None or text is None:
-                raise ValueError("SigLIP requires both 'image' and 'text' in forward pass")
+                raise ValueError(
+                    "SigLIP requires both 'image' and 'text' in forward pass"
+                )
             return self.model(image, text)
         else:
             raise ValueError("Unknown model type in forward pass")

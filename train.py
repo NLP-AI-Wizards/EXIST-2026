@@ -22,6 +22,7 @@ torch.set_float32_matmul_precision("high")
 
 TEST_CASE = "EXIST2025"
 
+
 def _get_model_input_flags(model_name: str) -> dict:
     if model_name == "gemini":
         return {"include_image": False, "include_text": False, "include_id": True}
@@ -52,7 +53,7 @@ def _build_task2_1_json_entries(ids, yes_probs, hard: bool):
 
 
 def _build_task2_2_json_entries(ids, p_2_1, judgemental_probs, hard: bool):
-    entries =[]
+    entries = []
     for sample_id, p_yes, p_judg in zip(ids, p_2_1, judgemental_probs):
         if hard:
             # HARD TRACK: Strict hierarchical decision tree
@@ -72,7 +73,7 @@ def _build_task2_2_json_entries(ids, p_2_1, judgemental_probs, hard: bool):
 
 
 def _build_task2_3_json_entries(ids, p_2_1, cat_probs, hard: bool):
-    entries =[]
+    entries = []
     for sample_id, p_yes, probs in zip(ids, p_2_1, cat_probs):
         if hard:
             # HARD TRACK: Strict hierarchical decision tree
@@ -80,7 +81,7 @@ def _build_task2_3_json_entries(ids, p_2_1, cat_probs, hard: bool):
                 value = ["NO"]
             else:
                 # Multi-label hard: any class with conditional p >= 0.5
-                value =[TASK_2_3_CLASSES[i] for i, p in enumerate(probs) if p >= 0.5]
+                value = [TASK_2_3_CLASSES[i] for i, p in enumerate(probs) if p >= 0.5]
 
                 # Fallback: If network is sure it's YES, but unsure of the category,
                 # force it to pick the most likely category instead of defaulting to NO.
@@ -201,7 +202,7 @@ def train(args):
             name=version,
             save_dir="wandb",
             entity=args.wandb_entity,
-            log_model="all"
+            log_model="all",
         )
         loggers.append(wandb_logger)
 
@@ -242,7 +243,8 @@ def train(args):
         lr=args.lr,
         weight_decay=args.weight_decay,
         warmup_ratio=args.warmup_ratio,
-        soft_gating=args.soft_gating
+        soft_gating=args.soft_gating,
+        use_demographics=args.use_demographics,
     )
 
     model_checkpoint = ModelCheckpoint(
@@ -344,7 +346,6 @@ if __name__ == "__main__":
         help="Add soft gating to model architecture",
     )
 
-
     # OPTIMIZATION
     parser.add_argument(
         "--lr", type=float, default=1e-4, help="Learning rate for the optimizer"
@@ -376,6 +377,11 @@ if __name__ == "__main__":
         "--use_sensorial",
         action="store_true",
         help="Enable physiological modality",
+    )
+    parser.add_argument(
+        "--use_demographics",
+        action="store_true",
+        help="Whether to use demographic embeddings for the Gemini model",
     )
     parser.add_argument(
         "--seed", type=int, default=42, help="Random seed for reproducibility"
