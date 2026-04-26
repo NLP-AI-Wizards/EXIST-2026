@@ -14,6 +14,7 @@ def generate_predictions(args):
 
     # 1. Load the model directly from the checkpoint
     model = EXISTModel.load_from_checkpoint(args.ckpt_path)
+    print(model)
     model.eval()
 
     model_name = model.hparams.model_name

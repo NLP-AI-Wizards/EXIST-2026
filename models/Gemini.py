@@ -48,37 +48,91 @@ class ExpansionBlock(nn.Module):
         x = self.dropout(x)
         return x + residual
 
+class AdvancedPhysioEncoder(nn.Module):
+    def __init__(self, semantic_dim=768):
+        super().__init__()
+
+        # 1. ET and HR combined Encoder (24 + 4 = 28)
+        self.et_hr_mlp = nn.Sequential(
+            nn.Linear(28, 128),
+            nn.GELU(),
+            nn.LayerNorm(128),
+            nn.Linear(128, 128)
+        )
+
+        # 2. EEG 2D CNN Encoder (16 channels x 5 frequency bands)
+        self.eeg_cnn = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=16, kernel_size=(3, 3), padding=1),
+            nn.GELU(),
+            nn.BatchNorm2d(16),
+
+            nn.Conv2d(in_channels=16, out_channels=32, kernel_size=(3, 3), padding=1),
+            nn.GELU(),
+            nn.BatchNorm2d(32),
+
+            nn.AdaptiveAvgPool2d((4, 1)),
+            nn.Flatten() # Outputs 128 features
+        )
+
+        # 3. Final Fusion
+        self.fusion_proj = nn.Sequential(
+            nn.Linear(128 + 128, semantic_dim),
+            nn.GELU(),
+            nn.LayerNorm(semantic_dim)
+        )
+
+    def forward(self, et_features, hr_features, eeg_features):
+        B, S, _ = et_features.shape
+
+        # --- 1. Sanitize and Log1p SQUASH to fix huge reaction times ---
+        def sanitize_and_squash(x):
+            x = torch.nan_to_num(x, nan=0.0)
+            return torch.sign(x) * torch.log1p(torch.abs(x))
+
+        et_feat = sanitize_and_squash(et_features)
+        hr_feat = sanitize_and_squash(hr_features)
+        eeg_feat = sanitize_and_squash(eeg_features)
+
+        # --- 2. Process ET/HR together ---
+        et_hr_cat = torch.cat([et_feat, hr_feat], dim=-1) # (B, S, 28)
+        et_hr_embed = self.et_hr_mlp(et_hr_cat)           # (B, S, 128)
+
+        # --- 3. Process EEG as a 2D Grid ---
+        # Shape: (Batch * Subjects, 1 Channel, 16 Electrodes, 5 Frequencies)
+        eeg_feat_2d = eeg_feat.view(B * S, 1, 16, 5)
+
+        eeg_embed = self.eeg_cnn(eeg_feat_2d)             # (B*S, 128)
+        eeg_embed = eeg_embed.view(B, S, 128)             # (B, S, 128)
+
+        # --- 4. Fuse representations ---
+        combined_physio = torch.cat([et_hr_embed, eeg_embed], dim=-1) # (B, S, 256)
+        V_physio = self.fusion_proj(combined_physio) # (B, S, 768)
+
+        return V_physio
 
 class BiosignalCrossAttention(nn.Module):
-    def __init__(self, semantic_dim=768, physio_dim=108):
+    def __init__(self, semantic_dim=768):
         super().__init__()
-        self.physio_proj = nn.Linear(physio_dim, semantic_dim)
+
+        self.physio_encoder = AdvancedPhysioEncoder(semantic_dim=semantic_dim)
 
         self.cross_attn = nn.MultiheadAttention(
-            embed_dim=semantic_dim,
-            num_heads=semantic_dim // 64,  # QKV dim: 64
-            batch_first=True,
-            dropout=0.1,
+            embed_dim=semantic_dim, num_heads=semantic_dim//64, batch_first=True, dropout=0.1
         )
         self.norm = nn.LayerNorm(semantic_dim)
 
-    def forward(self, V_semantic, physio_features, physio_mask):
-        """
-        V_semantic: (Batch, Semantic_Dim)
-        physio_features: (Batch, Num_Subjects, 108)
-        physio_mask: (Batch, Num_Subjects)
-        """
-        # Sanitize JSON Nulls (prevents NaN propagation)
-        physio_features = torch.nan_to_num(physio_features, nan=0.0)
+        self.out_proj = nn.Linear(semantic_dim, semantic_dim)
+        nn.init.zeros_(self.out_proj.weight)
+        nn.init.zeros_(self.out_proj.bias)
 
-        V_physio = self.physio_proj(physio_features)  # (B, S, Dim)
+    def forward(self, V_semantic, et_features, hr_features, eeg_features, physio_mask):
 
-        # Semantic vector acts as a single Query token -> (B, 1, Dim)
+        # Process the raw 108D vector using the CNN + MLP split
+        V_physio = self.physio_encoder(et_features, hr_features, eeg_features)
+
         query = V_semantic.unsqueeze(1)
-
         attn_padding_mask = ~physio_mask.bool()
 
-        # Prevent NaN crash for memes with no physio data ---
         all_masked = attn_padding_mask.all(dim=-1)
         safe_mask = attn_padding_mask.clone()
         safe_mask[all_masked, 0] = False
@@ -91,13 +145,10 @@ class BiosignalCrossAttention(nn.Module):
         )
 
         attended_physio = attended_physio.squeeze(1)
-
-        # Force the attended output to be exactly 0.0 for memes without physio data
         attended_physio[all_masked] = 0.0
 
-        # Residual fusion (Pre-Norm)
-        return V_semantic + self.norm(attended_physio)
-
+        physio_update = torch.tanh(self.out_proj(self.norm(attended_physio)))
+        return V_semantic + physio_update
 
 class Gemini(nn.Module):
     def __init__(
@@ -122,7 +173,7 @@ class Gemini(nn.Module):
 
         if self.use_sensorial:
             self.physio_fusion = BiosignalCrossAttention(
-                semantic_dim=embed_dim, physio_dim=108
+                semantic_dim=embed_dim
             )
 
         # Shared projection layers (SwiGLU Reasoning Blocks)

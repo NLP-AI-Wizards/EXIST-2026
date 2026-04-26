@@ -95,37 +95,49 @@ class EXISTDataset(Dataset):
         return item.get("text", "")
 
     def _extract_physio(self, item):
-        physio_features = np.zeros(
-            (self.max_subjects, self.physio_dim), dtype=np.float32
-        )
+        # The exact expected feature counts based on the EXIST guidelines
+        dim_et = 24
+        dim_hr = 4
+        dim_eeg = 80
+
+        et_features = np.zeros((self.max_subjects, dim_et), dtype=np.float32)
+        hr_features = np.zeros((self.max_subjects, dim_hr), dtype=np.float32)
+        eeg_features = np.zeros((self.max_subjects, dim_eeg), dtype=np.float32)
         physio_mask = np.zeros(self.max_subjects, dtype=bool)
 
-        # Safely extract sensorial data (handles Pandas NaN behavior)
         sensorial = item.get("sensorial", {})
         if pd.isna(sensorial):
             sensorial = {}
 
-        users = sensorial.get("users", [])
+        users = sensorial.get("users",[])
         modalities = sensorial.get("modalities", {})
 
         for i, user in enumerate(users[: self.max_subjects]):
             physio_mask[i] = True
-            user_features = []
 
-            for mod in ["ET", "HR", "EEG"]:
-                mod_data = modalities.get(mod, {}).get("by_user", {}).get(user, {})
+            # 1. Extract ET (Eye Tracking)
+            et_data = modalities.get("ET", {}).get("by_user", {}).get(user, {})
+            et_vals =[et_data[k] for k in sorted(et_data.keys())]
+            if et_vals:
+                et_features[i, :min(len(et_vals), dim_et)] = et_vals[:dim_et]
 
-                sorted_keys = sorted(mod_data.keys())
-                features = [mod_data[k] for k in sorted_keys]
-                user_features.extend(features)
+            # 2. Extract HR (Heart Rate)
+            hr_data = modalities.get("HR", {}).get("by_user", {}).get(user, {})
+            hr_vals = [hr_data[k] for k in sorted(hr_data.keys())]
+            if hr_vals:
+                hr_features[i, :min(len(hr_vals), dim_hr)] = hr_vals[:dim_hr]
 
-            feat_len = len(user_features)
-            if feat_len > 0:
-                copy_len = min(feat_len, self.physio_dim)
-                physio_features[i, :copy_len] = user_features[:copy_len]
+            # 3. Extract EEG
+            eeg_data = modalities.get("EEG", {}).get("by_user", {}).get(user, {})
+            eeg_vals =[eeg_data[k] for k in sorted(eeg_data.keys())]
+            if eeg_vals:
+                eeg_features[i, :min(len(eeg_vals), dim_eeg)] = eeg_vals[:dim_eeg]
 
-        return torch.tensor(physio_features, dtype=torch.float32), torch.tensor(
-            physio_mask, dtype=torch.bool
+        return (
+            torch.tensor(et_features, dtype=torch.float32),
+            torch.tensor(hr_features, dtype=torch.float32),
+            torch.tensor(eeg_features, dtype=torch.float32),
+            torch.tensor(physio_mask, dtype=torch.bool),
         )
 
     def _extract_annotators(self, item):
@@ -164,8 +176,10 @@ class EXISTDataset(Dataset):
 
         # Sensorial Data
         if self.use_sensorial:
-            physio_features, physio_mask = self._extract_physio(item)
-            sample["physio_features"] = physio_features
+            et_feat, hr_feat, eeg_feat, physio_mask = self._extract_physio(item)
+            sample["et_features"] = et_feat
+            sample["hr_features"] = hr_feat
+            sample["eeg_features"] = eeg_feat
             sample["physio_mask"] = physio_mask
 
         return sample

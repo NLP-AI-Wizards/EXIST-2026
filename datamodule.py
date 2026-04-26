@@ -29,13 +29,11 @@ def collate_fn(batch, include_image=True, include_text=True, include_id=True):
         }
     )
 
-    if "physio_features" in batch[0]:
-        collated_batch["physio_features"] = torch.stack(
-            [item["physio_features"] for item in batch]
-        )
-        collated_batch["physio_mask"] = torch.stack(
-            [item["physio_mask"] for item in batch]
-        )
+    if "physio_mask" in batch[0]:
+        collated_batch["et_features"] = torch.stack([item["et_features"] for item in batch])
+        collated_batch["hr_features"] = torch.stack([item["hr_features"] for item in batch])
+        collated_batch["eeg_features"] = torch.stack([item["eeg_features"] for item in batch])
+        collated_batch["physio_mask"] = torch.stack([item["physio_mask"] for item in batch])
 
     return collated_batch
 

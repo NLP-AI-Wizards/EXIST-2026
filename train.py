@@ -247,6 +247,8 @@ def train(args):
         use_demographics=args.use_demographics,
         use_sensorial=args.use_sensorial,
     )
+    if args.wandb:
+        wandb_logger.watch(model, log="all")
 
     model_checkpoint = ModelCheckpoint(
         dirpath=f"checkpoints/{version}",
@@ -360,13 +362,13 @@ if __name__ == "__main__":
     parser.add_argument(
         "--warmup_ratio",
         type=float,
-        default=0.3,
+        default=0.1,
         help="Warmup ratio for learning rate scheduling",
     )
 
     # TRAINING
     parser.add_argument(
-        "--epochs", type=int, default=15, help="Number of training epochs"
+        "--epochs", type=int, default=50, help="Number of training epochs"
     )
     parser.add_argument(
         "--batch_size", type=int, default=8, help="Batch size for training"
