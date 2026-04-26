@@ -52,7 +52,7 @@ class EXISTDataModule(pl.LightningDataModule):
     ):
         super().__init__()
         self.train = train_dataset
-        self.test = test_dataset
+        self.eval = test_dataset
         self.batch_size = batch_size
         self.num_workers = num_workers
         self.seed = seed
@@ -81,19 +81,27 @@ class EXISTDataModule(pl.LightningDataModule):
                 t_2_1 = valid_2_1.count("YES") / len(valid_2_1) if len(valid_2_1) > 0 else 0.0
                 strata.append(int(t_2_1 >= 0.5))
 
-            train_idx, val_idx = train_test_split(
-                range(len(self.train)),
-                test_size=0.15,
+            all_idx = list(range(len(self.train)))
+
+            train_idx, temp_idx = train_test_split(
+                all_idx,
+                test_size=0.20,
                 stratify=strata,
-                random_state=self.seed
+                random_state=self.seed,
+            )
+
+            temp_strata = [strata[i] for i in temp_idx]
+            val_idx, test_idx = train_test_split(
+                temp_idx,
+                test_size=0.50,
+                stratify=temp_strata,
+                random_state=self.seed,
             )
 
             self.train_dataset = Subset(self.train, train_idx)
             self.val_dataset = Subset(self.train, val_idx)
-            self.predict_dataset = self.train
-
-        if self.test_dataset is None:
-            self.test_dataset = self.test
+            self.test_dataset = Subset(self.train, test_idx)
+            self.predict_dataset = self.test_dataset
 
     def train_dataloader(self):
         return DataLoader(
@@ -130,7 +138,7 @@ class EXISTDataModule(pl.LightningDataModule):
         if self.predict_dataset is None:
             self.setup(stage="predict")
 
-        # Use full training dataset for predicting/evaluating against golds
+        # Use internal test split for prediction.
         return DataLoader(
             self.predict_dataset,
             batch_size=self.batch_size,

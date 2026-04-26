@@ -189,47 +189,38 @@ class Gemini(nn.Module):
         self.head_2_3 = ClassificationHead(embed_dim, 5)
 
     def forward(self, ids: list[int], physio_features=None, physio_mask=None):
+        """
+        ids: List of sample IDs
+        """
+        # Map sample IDs to embedding indices
         indices = [self.id_to_embedding_idx[int(sample_id)] for sample_id in ids]
         indices = torch.tensor(indices, device=self.embeddings.device)
 
-        # Pure Semantic Features (Gemini Embedding 2)
-        semantic_features = self.embeddings[indices]
+        # Retrieve raw Gemini embeddings
+        features = self.embeddings[indices]
 
-        # Pure Semantics through the SwiGLU blocks (Tasks 2.2 and 2.3)
-        pure_shared_features = self.shared_proj(semantic_features)
-
-        # Enrich semantic featues with physio reactions (Task 2.1)
+        # Inject Biosignals BEFORE SwiGLU
         if (
             self.use_sensorial
             and physio_features is not None
             and physio_mask is not None
         ):
-            physio_reaction_features = self.physio_fusion(
-                semantic_features,
-                physio_features[0],  # et
-                physio_features[1],  # hr
-                physio_features[2],  # eeg
-            )
-        else:
-            physio_reaction_features = semantic_features
+            features = self.physio_fusion(features, physio_features, physio_mask)
 
-        # Process Physio Reaction through SwiGLU block
-        physio_shared_features = self.shared_proj(physio_reaction_features)
+        # Shared features (SwiGLU digests the text/image + human reaction)
+        shared_features = self.shared_proj(features)
 
-        # Head 2.1 (Is it sexist?) gets the Biosignal + Semantic features
-        logits_2_1 = self.head_2_1(physio_shared_features)
+        # Output raw logits
+        logits_2_1 = self.head_2_1(shared_features)
 
-        # soft-gating from 2.1 probs
+        # Soft gating: Dampen features for non-sexist memes before downstream tasks
         if self.soft_gating:
             prob_2_1 = torch.sigmoid(logits_2_1.detach())
-            physio_shared_features = physio_shared_features * prob_2_1
-            pure_shared_features = pure_shared_features * prob_2_1
+            shared_features = shared_features * prob_2_1
 
-        # Head 2.2: Biosignal + Semantic features (optional soft-gating)
-        logits_2_2 = self.head_2_2(physio_shared_features)
-
-        # Head 2.3: Pure Semantic features only (optional soft-gating)
-        logits_2_3 = self.head_2_3(pure_shared_features)
+        # Logits for Task 2.2 and 2.3
+        logits_2_2 = self.head_2_2(shared_features)
+        logits_2_3 = self.head_2_3(shared_features)
 
         return {
             "logits_2_1": logits_2_1,

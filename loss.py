@@ -46,11 +46,9 @@ class CustomLoss(nn.Module):
         L2_raw = binary_kl_divergence_with_logits(outputs["logits_2_2"], t_2_2)
 
         # 3. Task 2.3 (Categorization - Multi-label)
-        # Weighting subtasks by their frequency or importance
-        pos_weight_2_3 = torch.tensor([2.0, 2.0, 3.0, 5.0, 2.0], device=t_2_3.device)
-        L3_raw = binary_kl_divergence_with_logits(
-            outputs["logits_2_3"], t_2_3, pos_weight=pos_weight_2_3
-        ).mean(dim=1, keepdim=True)
+        L3_raw = binary_kl_divergence_with_logits(outputs["logits_2_3"], t_2_3).mean(
+            dim=1, keepdim=True
+        )
 
         # -----------------------------------------------------------------
         # 2. Apply Kendall's Uncertainty Weighting (1 / 2*sigma^2)

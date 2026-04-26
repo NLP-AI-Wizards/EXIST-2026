@@ -172,8 +172,8 @@ def _run_eval(
         hard_entries = build_fn(sorted_ids, probs_list, hard=True)
         soft_entries = build_fn(sorted_ids, probs_list, hard=False)
 
-        hard_path = os.path.join(output_dir, version, f"{task_name}_hard.json")
-        soft_path = os.path.join(output_dir, version, f"{task_name}_soft.json")
+        hard_path = os.path.join(output_dir, version, f"{version}_{task_name}_hard.json")
+        soft_path = os.path.join(output_dir, version, f"{version}_{task_name}_soft.json")
 
         with open(hard_path, "w", encoding="utf-8") as f:
             json.dump(hard_entries, f, ensure_ascii=False, indent=2)
@@ -247,8 +247,6 @@ def train(args):
         use_demographics=args.use_demographics,
         use_sensorial=args.use_sensorial,
     )
-    if args.wandb:
-        wandb_logger.watch(model, log="all")
 
     model_checkpoint = ModelCheckpoint(
         dirpath=f"checkpoints/{version}",
@@ -327,7 +325,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--n_blocks",
         type=int,
-        default=2,
+        default=1,
         help="Number of expansion blocks in Gemini",
     )
     parser.add_argument(
