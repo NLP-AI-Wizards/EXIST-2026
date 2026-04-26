@@ -23,6 +23,7 @@ class EXISTModel(pl.LightningModule):
         warmup_ratio: float = 0.1,
         soft_gating: bool = False,
         use_demographics: bool = False,
+        use_sensorial: bool = False,
     ):
         super().__init__()
         self.validation_step_outputs = []
@@ -37,6 +38,7 @@ class EXISTModel(pl.LightningModule):
                 dropout=dropout,
                 soft_gating=soft_gating,
                 use_demographics=use_demographics,
+                use_sensorial=use_sensorial,
             )
             self.requires_ids = True
         elif model_name == "siglip":
@@ -89,7 +91,9 @@ class EXISTModel(pl.LightningModule):
         if isinstance(self.model, Gemini):
             if ids is None:
                 raise ValueError("Gemini requires 'ids' in forward pass")
-            return self.model(ids)
+            return self.model(
+                ids, physio_features=physio_features, physio_mask=physio_mask
+            )
         elif isinstance(self.model, SigLIP):
             if image is None or text is None:
                 raise ValueError(

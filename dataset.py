@@ -23,7 +23,6 @@ class EXISTDataset(Dataset):
         include_text: bool = True,
         include_id: bool = True,
         use_sensorial: bool = False,
-        use_annotator_metadata: bool = False,
         max_subjects: int = 4,
     ):
         # Load the JSON data
@@ -37,7 +36,6 @@ class EXISTDataset(Dataset):
         self.include_text = include_text
         self.include_id = include_id
         self.use_sensorial = use_sensorial
-        self.use_annotator_metadata = use_annotator_metadata
         self.max_subjects = max_subjects
         self.physio_dim = 108
 
@@ -169,9 +167,5 @@ class EXISTDataset(Dataset):
             physio_features, physio_mask = self._extract_physio(item)
             sample["physio_features"] = physio_features
             sample["physio_mask"] = physio_mask
-
-        # Annotator Metadata
-        if self.use_annotator_metadata:
-            sample["annotator_metadata"] = self._extract_annotators(item)
 
         return sample

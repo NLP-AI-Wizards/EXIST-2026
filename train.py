@@ -245,6 +245,7 @@ def train(args):
         warmup_ratio=args.warmup_ratio,
         soft_gating=args.soft_gating,
         use_demographics=args.use_demographics,
+        use_sensorial=args.use_sensorial,
     )
 
     model_checkpoint = ModelCheckpoint(
