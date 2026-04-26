@@ -109,7 +109,7 @@ class EXISTDataset(Dataset):
         if pd.isna(sensorial):
             sensorial = {}
 
-        users = sensorial.get("users",[])
+        users = sensorial.get("users", [])
         modalities = sensorial.get("modalities", {})
 
         for i, user in enumerate(users[: self.max_subjects]):
@@ -117,21 +117,21 @@ class EXISTDataset(Dataset):
 
             # 1. Extract ET (Eye Tracking)
             et_data = modalities.get("ET", {}).get("by_user", {}).get(user, {})
-            et_vals =[et_data[k] for k in sorted(et_data.keys())]
+            et_vals = [et_data[k] for k in sorted(et_data.keys())]
             if et_vals:
-                et_features[i, :min(len(et_vals), dim_et)] = et_vals[:dim_et]
+                et_features[i, : min(len(et_vals), dim_et)] = et_vals[:dim_et]
 
             # 2. Extract HR (Heart Rate)
             hr_data = modalities.get("HR", {}).get("by_user", {}).get(user, {})
             hr_vals = [hr_data[k] for k in sorted(hr_data.keys())]
             if hr_vals:
-                hr_features[i, :min(len(hr_vals), dim_hr)] = hr_vals[:dim_hr]
+                hr_features[i, : min(len(hr_vals), dim_hr)] = hr_vals[:dim_hr]
 
             # 3. Extract EEG
             eeg_data = modalities.get("EEG", {}).get("by_user", {}).get(user, {})
-            eeg_vals =[eeg_data[k] for k in sorted(eeg_data.keys())]
+            eeg_vals = [eeg_data[k] for k in sorted(eeg_data.keys())]
             if eeg_vals:
-                eeg_features[i, :min(len(eeg_vals), dim_eeg)] = eeg_vals[:dim_eeg]
+                eeg_features[i, : min(len(eeg_vals), dim_eeg)] = eeg_vals[:dim_eeg]
 
         return (
             torch.tensor(et_features, dtype=torch.float32),
@@ -139,15 +139,6 @@ class EXISTDataset(Dataset):
             torch.tensor(eeg_features, dtype=torch.float32),
             torch.tensor(physio_mask, dtype=torch.bool),
         )
-
-    def _extract_annotators(self, item):
-        return {
-            "gender": item.get("gender_annotators", []),
-            "age": item.get("age_annotators", []),
-            "country": item.get("countries_annotators", []),
-            "study_level": item.get("study_levels_annotators", []),
-            "ethnicity": item.get("ethnicities_annotators", []),
-        }
 
     def __getitem__(self, idx):
         item = self.data.iloc[idx]

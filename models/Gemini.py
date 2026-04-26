@@ -48,16 +48,14 @@ class ExpansionBlock(nn.Module):
         x = self.dropout(x)
         return x + residual
 
+
 class AdvancedPhysioEncoder(nn.Module):
     def __init__(self, semantic_dim=768):
         super().__init__()
 
         # 1. ET and HR combined Encoder (24 + 4 = 28)
         self.et_hr_mlp = nn.Sequential(
-            nn.Linear(28, 128),
-            nn.GELU(),
-            nn.LayerNorm(128),
-            nn.Linear(128, 128)
+            nn.Linear(28, 128), nn.GELU(), nn.LayerNorm(128), nn.Linear(128, 128)
         )
 
         # 2. EEG 2D CNN Encoder (16 channels x 5 frequency bands)
@@ -65,20 +63,16 @@ class AdvancedPhysioEncoder(nn.Module):
             nn.Conv2d(in_channels=1, out_channels=16, kernel_size=(3, 3), padding=1),
             nn.GELU(),
             nn.BatchNorm2d(16),
-
             nn.Conv2d(in_channels=16, out_channels=32, kernel_size=(3, 3), padding=1),
             nn.GELU(),
             nn.BatchNorm2d(32),
-
             nn.AdaptiveAvgPool2d((4, 1)),
-            nn.Flatten() # Outputs 128 features
+            nn.Flatten(),  # Outputs 128 features
         )
 
         # 3. Final Fusion
         self.fusion_proj = nn.Sequential(
-            nn.Linear(128 + 128, semantic_dim),
-            nn.GELU(),
-            nn.LayerNorm(semantic_dim)
+            nn.Linear(128 + 128, semantic_dim), nn.GELU(), nn.LayerNorm(semantic_dim)
         )
 
     def forward(self, et_features, hr_features, eeg_features):
@@ -94,21 +88,22 @@ class AdvancedPhysioEncoder(nn.Module):
         eeg_feat = sanitize_and_squash(eeg_features)
 
         # --- 2. Process ET/HR together ---
-        et_hr_cat = torch.cat([et_feat, hr_feat], dim=-1) # (B, S, 28)
-        et_hr_embed = self.et_hr_mlp(et_hr_cat)           # (B, S, 128)
+        et_hr_cat = torch.cat([et_feat, hr_feat], dim=-1)  # (B, S, 28)
+        et_hr_embed = self.et_hr_mlp(et_hr_cat)  # (B, S, 128)
 
         # --- 3. Process EEG as a 2D Grid ---
         # Shape: (Batch * Subjects, 1 Channel, 16 Electrodes, 5 Frequencies)
         eeg_feat_2d = eeg_feat.view(B * S, 1, 16, 5)
 
-        eeg_embed = self.eeg_cnn(eeg_feat_2d)             # (B*S, 128)
-        eeg_embed = eeg_embed.view(B, S, 128)             # (B, S, 128)
+        eeg_embed = self.eeg_cnn(eeg_feat_2d)  # (B*S, 128)
+        eeg_embed = eeg_embed.view(B, S, 128)  # (B, S, 128)
 
         # --- 4. Fuse representations ---
-        combined_physio = torch.cat([et_hr_embed, eeg_embed], dim=-1) # (B, S, 256)
-        V_physio = self.fusion_proj(combined_physio) # (B, S, 768)
+        combined_physio = torch.cat([et_hr_embed, eeg_embed], dim=-1)  # (B, S, 256)
+        V_physio = self.fusion_proj(combined_physio)  # (B, S, 768)
 
         return V_physio
+
 
 class BiosignalCrossAttention(nn.Module):
     def __init__(self, semantic_dim=768):
@@ -117,7 +112,10 @@ class BiosignalCrossAttention(nn.Module):
         self.physio_encoder = AdvancedPhysioEncoder(semantic_dim=semantic_dim)
 
         self.cross_attn = nn.MultiheadAttention(
-            embed_dim=semantic_dim, num_heads=semantic_dim//64, batch_first=True, dropout=0.1
+            embed_dim=semantic_dim,
+            num_heads=semantic_dim // 64,
+            batch_first=True,
+            dropout=0.1,
         )
         self.norm = nn.LayerNorm(semantic_dim)
 
@@ -150,6 +148,7 @@ class BiosignalCrossAttention(nn.Module):
         physio_update = torch.tanh(self.out_proj(self.norm(attended_physio)))
         return V_semantic + physio_update
 
+
 class Gemini(nn.Module):
     def __init__(
         self,
@@ -172,9 +171,7 @@ class Gemini(nn.Module):
         embed_dim = self.embeddings.shape[1]
 
         if self.use_sensorial:
-            self.physio_fusion = BiosignalCrossAttention(
-                semantic_dim=embed_dim
-            )
+            self.physio_fusion = BiosignalCrossAttention(semantic_dim=embed_dim)
 
         # Shared projection layers (SwiGLU Reasoning Blocks)
         self.shared_proj = nn.Sequential(
@@ -192,38 +189,47 @@ class Gemini(nn.Module):
         self.head_2_3 = ClassificationHead(embed_dim, 5)
 
     def forward(self, ids: list[int], physio_features=None, physio_mask=None):
-        """
-        ids: List of sample IDs
-        """
-        # Map sample IDs to embedding indices
         indices = [self.id_to_embedding_idx[int(sample_id)] for sample_id in ids]
         indices = torch.tensor(indices, device=self.embeddings.device)
 
-        # Retrieve raw Gemini embeddings
-        features = self.embeddings[indices]
+        # Pure Semantic Features (Gemini Embedding 2)
+        semantic_features = self.embeddings[indices]
 
-        # Inject Biosignals BEFORE SwiGLU
+        # Pure Semantics through the SwiGLU blocks (Tasks 2.2 and 2.3)
+        pure_shared_features = self.shared_proj(semantic_features)
+
+        # Enrich semantic featues with physio reactions (Task 2.1)
         if (
             self.use_sensorial
             and physio_features is not None
             and physio_mask is not None
         ):
-            features = self.physio_fusion(features, physio_features, physio_mask)
+            physio_reaction_features = self.physio_fusion(
+                semantic_features,
+                physio_features[0],  # et
+                physio_features[1],  # hr
+                physio_features[2],  # eeg
+            )
+        else:
+            physio_reaction_features = semantic_features
 
-        # Shared features (SwiGLU digests the text/image + human reaction)
-        shared_features = self.shared_proj(features)
+        # Process Physio Reaction through SwiGLU block
+        physio_shared_features = self.shared_proj(physio_reaction_features)
 
-        # Output raw logits
-        logits_2_1 = self.head_2_1(shared_features)
+        # Head 2.1 (Is it sexist?) gets the Biosignal + Semantic features
+        logits_2_1 = self.head_2_1(physio_shared_features)
 
-        # Soft gating: Dampen features for non-sexist memes before downstream tasks
+        # soft-gating from 2.1 probs
         if self.soft_gating:
             prob_2_1 = torch.sigmoid(logits_2_1.detach())
-            shared_features = shared_features * prob_2_1
+            physio_shared_features = physio_shared_features * prob_2_1
+            pure_shared_features = pure_shared_features * prob_2_1
 
-        # Logits for Task 2.2 and 2.3
-        logits_2_2 = self.head_2_2(shared_features)
-        logits_2_3 = self.head_2_3(shared_features)
+        # Head 2.2: Biosignal + Semantic features (optional soft-gating)
+        logits_2_2 = self.head_2_2(physio_shared_features)
+
+        # Head 2.3: Pure Semantic features only (optional soft-gating)
+        logits_2_3 = self.head_2_3(pure_shared_features)
 
         return {
             "logits_2_1": logits_2_1,
