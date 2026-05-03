@@ -28,8 +28,7 @@ def binary_kl_divergence_with_logits(logits, targets, pos_weight=None):
 class CustomLoss(nn.Module):
     def __init__(self):
         super().__init__()
-        # Learnable log-variances (s = log(sigma^2))
-        # Initialized to 0.0 (which means sigma = 1.0 initially)
+        # Learnable log-variances (s = log(sigma^2)), initialized to 0.0 (which means sigma = 1.0 initially)
         self.log_var_1 = nn.Parameter(torch.zeros(1))
         self.log_var_2 = nn.Parameter(torch.zeros(1))
         self.log_var_3 = nn.Parameter(torch.zeros(1))
@@ -39,21 +38,16 @@ class CustomLoss(nn.Module):
         t_2_2 = targets["t_2_2"].float()
         t_2_3 = targets["t_2_3"].float()
 
-        # -----------------------------------------------------------------
-        # 1. Compute KL Divergence Losses
-        # -----------------------------------------------------------------
+        # Compute KL Divergence Losses
         L1_raw = binary_kl_divergence_with_logits(outputs["logits_2_1"], t_2_1)
         L2_raw = binary_kl_divergence_with_logits(outputs["logits_2_2"], t_2_2)
 
-        # 3. Task 2.3 (Categorization - Multi-label)
+        # Task 2.3 (Categorization - Multi-label)
         L3_raw = binary_kl_divergence_with_logits(outputs["logits_2_3"], t_2_3).mean(
             dim=1, keepdim=True
         )
 
-        # -----------------------------------------------------------------
-        # 2. Apply Kendall's Uncertainty Weighting (1 / 2*sigma^2)
-        # exp(-log_var) is mathematically equivalent to (1 / sigma^2)
-        # -----------------------------------------------------------------
+        # Apply Kendall's Uncertainty Weighting
         precision_1 = torch.exp(-self.log_var_1)
         precision_2 = torch.exp(-self.log_var_2)
         precision_3 = torch.exp(-self.log_var_3)
@@ -63,19 +57,15 @@ class CustomLoss(nn.Module):
         L2_scaled = (precision_2 * L2_raw) + (0.5 * self.log_var_2)
         L3_scaled = (precision_3 * L3_raw) + (0.5 * self.log_var_3)
 
-        # -----------------------------------------------------------------
-        # 3. Apply the Hierarchical Probability Chain
-        # -----------------------------------------------------------------
-        # The mask is 1 if it's sexist, 0 if it's benign
+        # Apply the Hierarchical Probability Chain
+        # The mask is 1 if it's sexist, 0 if it's not sexist.
         is_sexist_mask = (t_2_1 > 0.0).float()
 
-        # Multiply BOTH the loss and the regularizer by the mask!
+        # Multiply both the loss and the regularizer by the mask
         L2_masked = L2_scaled * is_sexist_mask
         L3_masked = L3_scaled * is_sexist_mask
 
-        # -----------------------------------------------------------------
-        # 4. Aggregate
-        # -----------------------------------------------------------------
+        # Aggregate
         valid_count = is_sexist_mask.sum() + 1e-8
 
         loss_1 = L1_scaled.mean()
@@ -89,7 +79,6 @@ class CustomLoss(nn.Module):
             "loss_2_2": loss_2,
             "loss_2_3": loss_3,
             "total_loss": total_loss,
-            # Logging the sigmas is highly recommended to monitor task uncertainty
             "sigma_1": torch.exp(0.5 * self.log_var_1),
             "sigma_2": torch.exp(0.5 * self.log_var_2),
             "sigma_3": torch.exp(0.5 * self.log_var_3),

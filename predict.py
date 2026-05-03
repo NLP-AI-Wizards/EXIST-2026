@@ -12,16 +12,13 @@ from train import _get_model_input_flags, _run_eval
 def generate_predictions(args):
     print(f"===> Loading model from checkpoint: {args.ckpt_path}")
 
-    # 1. Load the model directly from the checkpoint
-    model = EXISTModel.load_from_checkpoint(args.ckpt_path, use_subject_ids=True)
+    # Load the model directly from the checkpoint (with hyperparameters)
+    model = EXISTModel.load_from_checkpoint(args.ckpt_path)  # use_subject_ids=True
     print(model)
     model.eval()
 
     input_flags = _get_model_input_flags(model.hparams.model_name)
 
-    # 2. Setup the DataModule
-    # Pass the target evaluation dataset through `test_dataset`.
-    # The DataModule uses it directly during `setup(stage="predict")`.
     print(f"===> Loading evaluation dataset from: {args.eval_json}")
     datamodule = EXISTDataModule(
         test_dataset=EXISTDataset(
@@ -41,12 +38,11 @@ def generate_predictions(args):
 
     datamodule.setup(stage="predict")
 
-    # 3. Instantiate a barebones Trainer
     trainer = pl.Trainer(
         accelerator="auto",
         devices="auto",
         precision="bf16-mixed",
-        logger=False,  # Disable wandb/tensorboard for clean inference
+        logger=False,
     )
 
     _run_eval(

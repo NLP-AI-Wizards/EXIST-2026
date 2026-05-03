@@ -1,5 +1,3 @@
-import os
-
 import pandas as pd
 from pyevall.evaluation import PyEvALLEvaluation
 from pyevall.utils.utils import PyEvALLUtils

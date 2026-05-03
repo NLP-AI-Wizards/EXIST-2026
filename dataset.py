@@ -7,6 +7,8 @@ import torch
 from PIL import Image
 from torch.utils.data import Dataset
 
+TASK_2_1_CLASSES = ["YES", "NO"]
+TASK_2_2_CLASSES = ["DIRECT", "JUDGEMENTAL"]
 TASK_2_3_CLASSES = [
     "IDEOLOGICAL-INEQUALITY",
     "STEREOTYPING-DOMINANCE",
@@ -24,13 +26,9 @@ class EXISTDataset(Dataset):
         include_image: bool = True,
         include_text: bool = True,
         include_id: bool = True,
-        use_sensorial: bool = False,
-        max_subjects: int = 4,
+        use_sensorial: bool = True,
     ):
-        # Load the JSON data
         self.data = pd.read_json(json_path, orient="index")
-
-        # Reset index just in case the JSON keys aren't perfectly sequential
         self.data = self.data.reset_index(drop=True)
 
         self.img_dir = img_dir
@@ -38,8 +36,7 @@ class EXISTDataset(Dataset):
         self.include_text = include_text
         self.include_id = include_id
         self.use_sensorial = use_sensorial
-        self.max_subjects = max_subjects
-        self.physio_dim = 108
+        self.max_subjects = 4  # Max number of subjects for which we have sensorial data
 
     def __len__(self):
         return len(self.data)
@@ -49,26 +46,23 @@ class EXISTDataset(Dataset):
         labels_2_2 = item.get("labels_task2_2", [])
         labels_2_3 = item.get("labels_task2_3", [])
 
-        # --- Task 2.1: Sexist Identification ---
-        # Filter out "UNKNOWN" before counting
-        valid_2_1 = [l for l in labels_2_1 if l in ["YES", "NO"]]
+        # [2.1] Sexist Identification
+        valid_2_1 = [l for l in labels_2_1 if l in TASK_2_1_CLASSES]
         t_2_1 = valid_2_1.count("YES") / len(valid_2_1) if len(valid_2_1) > 0 else 0.0
 
-        # --- Task 2.2: Source Intention ---
-        # Filter out "-" and "UNKNOWN"
-        valid_2_2 = [l for l in labels_2_2 if l in ["DIRECT", "JUDGEMENTAL"]]
+        # [2.2] Source Intention
+        valid_2_2 = [l for l in labels_2_2 if l in TASK_2_2_CLASSES]
         t_2_2 = (
             valid_2_2.count("JUDGEMENTAL") / len(valid_2_2)
             if len(valid_2_2) > 0
             else 0.0
         )
 
-        # --- Task 2.3: Sexism Categorization (Multi-Label) ---
+        # [2.3] Sexism Categorization
         t_2_3 = np.zeros(len(TASK_2_3_CLASSES), dtype=np.float32)
         valid_2_3_annotators = 0
 
         for annotator_labels in labels_2_3:
-            # Filter out "-" and "UNKNOWN"
             valid_labels = [l for l in annotator_labels if l in TASK_2_3_CLASSES]
             if len(valid_labels) > 0:
                 valid_2_3_annotators += 1
@@ -86,6 +80,7 @@ class EXISTDataset(Dataset):
         )
 
     def _extract_image(self, item):
+        # Get img path
         img_filename = item["path_memes"].split("/")[-1].split("\\")[-1]
         img_path = os.path.join(self.img_dir, img_filename)
         # Convert first to RGBA then to RGB
@@ -94,10 +89,11 @@ class EXISTDataset(Dataset):
         return img_array
 
     def _extract_text(self, item):
+        # Get text content
         return item.get("text", "")
 
     def _extract_physio(self, item):
-        # The exact expected feature counts based on the EXIST guidelines
+        # Physio data as indicated in EXIST guidelines
         dim_et = 24
         dim_hr = 4
         dim_eeg = 80
@@ -115,23 +111,24 @@ class EXISTDataset(Dataset):
         users = sensorial.get("users", [])
         modalities = sensorial.get("modalities", {})
 
+        # For each subject - 0 if not present
         for i, user in enumerate(users[: self.max_subjects]):
             physio_mask[i] = True
             id_features[i] = int(re.sub(r"\D", "", user))  # [2, 3, 4, 7]
 
-            # 1. Extract ET (Eye Tracking)
+            # Extract ET (Eye Tracking)
             et_data = modalities.get("ET", {}).get("by_user", {}).get(user, {})
             et_vals = [et_data[k] for k in sorted(et_data.keys())]
             if et_vals:
                 et_features[i, : min(len(et_vals), dim_et)] = et_vals[:dim_et]
 
-            # 2. Extract HR (Heart Rate)
+            # Extract HR (Heart Rate)
             hr_data = modalities.get("HR", {}).get("by_user", {}).get(user, {})
             hr_vals = [hr_data[k] for k in sorted(hr_data.keys())]
             if hr_vals:
                 hr_features[i, : min(len(hr_vals), dim_hr)] = hr_vals[:dim_hr]
 
-            # 3. Extract EEG
+            # Extract EEG
             eeg_data = modalities.get("EEG", {}).get("by_user", {}).get(user, {})
             eeg_vals = [eeg_data[k] for k in sorted(eeg_data.keys())]
             if eeg_vals:
@@ -148,12 +145,14 @@ class EXISTDataset(Dataset):
     def __getitem__(self, idx):
         item = self.data.iloc[idx]
 
+        # Image and text
         image = self._extract_image(item) if self.include_image else None
         text = self._extract_text(item) if self.include_text else None
 
+        # Compute targets (marginals)
         t_2_1, t_2_2, t_2_3 = self._compute_marginals(item)
 
-        # Build output dictionary
+        # conditional mask for task 2.2.and 2.3 (only if 2.1 is YES)
         sample = {
             "target_2_1": t_2_1,
             "target_2_2": t_2_2,

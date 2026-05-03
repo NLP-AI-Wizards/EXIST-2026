@@ -24,7 +24,6 @@ class EXISTModel(pl.LightningModule):
         use_subject_ids: bool = False,
     ):
         super().__init__()
-        self.validation_step_outputs = []
         self.requires_image = False
         self.requires_text = False
         self.requires_ids = False
@@ -66,7 +65,6 @@ class EXISTModel(pl.LightningModule):
             postfix="_2_1",
         )
 
-        # Task 2.2: Highly subjective (Intention). Lower threshold to catch soft predictions.
         self.metrics_2_2 = MetricCollection(
             {
                 "f1": BinaryF1Score(threshold=0.35),
@@ -74,7 +72,6 @@ class EXISTModel(pl.LightningModule):
             postfix="_2_2",
         )
 
-        # Task 2.3: Rare classes (Sexual Violence, etc.). Lower threshold.
         self.metrics_2_3 = MetricCollection(
             {
                 "f1_macro": MultilabelF1Score(
@@ -123,11 +120,10 @@ class EXISTModel(pl.LightningModule):
             "t_2_3": batch["target_2_3"],
         }
 
+        # True if at least 1 annotator said it was sexist (target > 0)
         masks = {
             "physio_mask": physio_mask,
-            "cond_mask": (
-                batch["target_2_1"] > 0
-            ).float(),  # True if at least 1 annotator said it was sexist (target > 0)
+            "cond_mask": (batch["target_2_1"] > 0).float(),
         }
 
         return outputs, targets, masks
@@ -142,13 +138,12 @@ class EXISTModel(pl.LightningModule):
         t_2_2 = targets["t_2_2"]
         t_2_3 = targets["t_2_3"]
 
-        # --- Task 2.1 (Always Evaluated) ---
+        # Task 2.1
         hard_t_2_1 = (t_2_1 >= 0.5).int()
 
-        # FIX: Update metrics INDIVIDUALLY by key to avoid broadcasting the wrong targets!
         self.metrics_2_1["f1"].update(preds_2_1_prob, hard_t_2_1)
 
-        # --- Extract Conditional Mask (Only look at sexist memes) ---
+        # Extract Conditional Mask
         valid_mask = masks["cond_mask"].squeeze().bool()
 
         # Only evaluate 2.2 and 2.3 if there is at least one sexist meme in the batch
@@ -161,11 +156,11 @@ class EXISTModel(pl.LightningModule):
             valid_preds_2_3 = valid_preds_2_3.reshape(-1, 5)
             valid_targets_2_3 = valid_targets_2_3.reshape(-1, 5)
 
-            # --- Task 2.2 ---
+            # Task 2.2
             hard_t_2_2 = (valid_targets_2_2 >= 0.5).int()
             self.metrics_2_2["f1"].update(valid_preds_2_2, hard_t_2_2)
 
-            # --- Task 2.3 ---
+            # Task 2.3
             hard_t_2_3 = (valid_targets_2_3 >= 0.5).int()
             self.metrics_2_3["f1_macro"].update(valid_preds_2_3, hard_t_2_3)
 
@@ -200,7 +195,6 @@ class EXISTModel(pl.LightningModule):
             "logits_2_2": outputs["logits_2_2"].detach(),
             "logits_2_3": outputs["logits_2_3"].detach(),
         }
-        self.validation_step_outputs.append(step_output)
         return step_output
 
     def on_validation_epoch_end(self):
@@ -228,9 +222,6 @@ class EXISTModel(pl.LightningModule):
         finally:
             self.metrics_2_2.reset()
             self.metrics_2_3.reset()
-
-        # Clear step outputs to avoid memory bloat, since we're not using them for PyEvALL here
-        self.validation_step_outputs = []
 
     def predict_step(self, batch, batch_idx):
         outputs, _, _ = self._step(batch, batch_idx)

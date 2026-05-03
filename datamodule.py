@@ -22,25 +22,27 @@ def collate_fn(batch, include_image=True, include_text=True, include_id=True):
     target_2_2 = torch.stack([item["target_2_2"] for item in batch])
     target_2_3 = torch.stack([item["target_2_3"] for item in batch])
 
-    collated_batch.update({
-        "target_2_1": target_2_1,
-        "target_2_2": target_2_2,
-        "target_2_3": target_2_3,
-    })
+    collated_batch.update(
+        {
+            "target_2_1": target_2_1,
+            "target_2_2": target_2_2,
+            "target_2_3": target_2_3,
+        }
+    )
 
     if "physio_mask" in batch[0]:
-        collated_batch["et_features"] = torch.stack([
-            item["et_features"] for item in batch
-        ])
-        collated_batch["hr_features"] = torch.stack([
-            item["hr_features"] for item in batch
-        ])
-        collated_batch["eeg_features"] = torch.stack([
-            item["eeg_features"] for item in batch
-        ])
-        collated_batch["physio_mask"] = torch.stack([
-            item["physio_mask"] for item in batch
-        ])
+        collated_batch["et_features"] = torch.stack(
+            [item["et_features"] for item in batch]
+        )
+        collated_batch["hr_features"] = torch.stack(
+            [item["hr_features"] for item in batch]
+        )
+        collated_batch["eeg_features"] = torch.stack(
+            [item["eeg_features"] for item in batch]
+        )
+        collated_batch["physio_mask"] = torch.stack(
+            [item["physio_mask"] for item in batch]
+        )
 
     return collated_batch
 
@@ -80,8 +82,7 @@ class EXISTDataModule(pl.LightningDataModule):
         self.predict_dataset = None
 
     def setup(self, stage=None):
-        # Predict-only mode: if an external evaluation dataset was provided,
-        # use it directly without creating train/val/test splits.
+        # Predict-only mode: if an external evaluation dataset was provided, use it directly without creating train/val/test splits.
         if stage == "predict":
             if self.eval is not None:
                 self.predict_dataset = self.eval
@@ -154,11 +155,6 @@ class EXISTDataModule(pl.LightningDataModule):
         )
 
     def predict_dataloader(self):
-        # Ensure setup is called if bypassing training
-        if self.predict_dataset is None:
-            self.setup(stage="predict")
-
-        # Use internal test split for prediction.
         return DataLoader(
             self.predict_dataset,
             batch_size=self.batch_size,

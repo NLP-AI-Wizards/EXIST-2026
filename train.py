@@ -6,7 +6,8 @@ from logging import Logger
 
 import pytorch_lightning as pl
 import torch
-from pytorch_lightning.callbacks import Callback, LearningRateMonitor, ModelSummary
+from pytorch_lightning.callbacks import (Callback, LearningRateMonitor,
+                                         ModelSummary)
 from pytorch_lightning.callbacks.model_checkpoint import ModelCheckpoint
 from pytorch_lightning.loggers import TensorBoardLogger, WandbLogger
 
@@ -36,17 +37,19 @@ def _build_task2_1_json_entries(ids, yes_probs, hard: bool):
     entries = []
     for sample_id, p_yes in zip(ids, yes_probs):
         if hard:
-            # Majority vote
+            # Hard: Majority vote
             value = "YES" if p_yes >= 0.5 else "NO"
         else:
-            # Probabilistic dict
+            # Soft: Probabilistic dict
             value = {"YES": p_yes, "NO": 1.0 - p_yes}
 
-        entries.append({
-            "id": str(sample_id),
-            "value": value,
-            "test_case": TEST_CASE,
-        })
+        entries.append(
+            {
+                "id": str(sample_id),
+                "value": value,
+                "test_case": TEST_CASE,
+            }
+        )
     return entries
 
 
@@ -54,13 +57,13 @@ def _build_task2_2_json_entries(ids, p_2_1, judgemental_probs, hard: bool):
     entries = []
     for sample_id, p_yes, p_judg in zip(ids, p_2_1, judgemental_probs):
         if hard:
-            # HARD TRACK: Strict hierarchical decision tree
+            # Hard: Strict hierarchical decision tree
             if p_yes < 0.5:
                 value = "NO"
             else:
                 value = "JUDGEMENTAL" if p_judg >= 0.5 else "DIRECT"
         else:
-            # SOFT TRACK: Joint Probability Distribution
+            # Soft: Joint Probability Distribution
             value = {
                 "JUDGEMENTAL": float(p_yes * p_judg),
                 "DIRECT": float(p_yes * (1.0 - p_judg)),
@@ -74,20 +77,20 @@ def _build_task2_3_json_entries(ids, p_2_1, cat_probs, hard: bool):
     entries = []
     for sample_id, p_yes, probs in zip(ids, p_2_1, cat_probs):
         if hard:
-            # HARD TRACK: Strict hierarchical decision tree
+            # Hard: Strict hierarchical decision tree
             if p_yes < 0.5:
                 value = ["NO"]
             else:
                 # Multi-label hard: any class with conditional p >= 0.5
                 value = [TASK_2_3_CLASSES[i] for i, p in enumerate(probs) if p >= 0.5]
 
-                # Fallback: If network is sure it's YES, but unsure of the category,
+                # HACK: If network is sure it's YES, but unsure of the category,
                 # force it to pick the most likely category instead of defaulting to NO.
                 if not value:
                     best_idx = max(range(len(probs)), key=lambda i: probs[i])
                     value = [TASK_2_3_CLASSES[best_idx]]
         else:
-            # SOFT TRACK: Joint Probability Distribution
+            # Soft: Joint Probability Distribution
             value = {TASK_2_3_CLASSES[i]: float(p_yes * p) for i, p in enumerate(probs)}
             value["NO"] = float(1.0 - p_yes)
 
@@ -108,15 +111,14 @@ def _run_eval(
 
     print("\n===> Running predictions on the test set via trainer.predict()...")
 
-    # 1. Run Lightning inference.
-    # This automatically loads 'best_ckpt' and iterates over 'predict_dataloader'
+    # Run Lightning inference.
     predictions = trainer.predict(
         model=model,
         dataloaders=datamodule.predict_dataloader(),
         ckpt_path=best_ckpt,
     )
 
-    # 2. Unpack the batched predictions
+    # Unpack the batched predictions
     all_ids = []
     all_probs_2_1 = []
     all_probs_2_2 = []
@@ -137,15 +139,14 @@ def _run_eval(
         all_probs_2_2.extend(probs_2_2)
         all_probs_2_3.extend(probs_2_3)
 
-    # 3. Zip all data together and sort by ID (numeric sort for string IDs)
-    # We use key=lambda x: int(x[0]) because sample IDs are strings of integers
+    # 3. Zip all data together and sort by ID
     combined = list(zip(all_ids, all_probs_2_1, all_probs_2_2, all_probs_2_3))
     combined.sort(key=lambda x: int(x[0]))
 
     # Unpack sorted data
     sorted_ids, sorted_probs_2_1, sorted_probs_2_2, sorted_probs_2_3 = zip(*combined)
 
-    # 4. Build prediction entries
+    # Build prediction entries
     for task_name, probs_list, build_fn in [
         (
             "task2_1",
@@ -208,7 +209,6 @@ def train(args):
         )
         loggers.append(wandb_logger)
 
-    # DataLoader
     print("===> Loading datasets")
     datamodule = EXISTDataModule(
         train_dataset=EXISTDataset(
@@ -235,7 +235,6 @@ def train(args):
         include_id=input_flags["include_id"],
     )
 
-    # Pytorch Lightning module
     print("===> Start building model")
     model = EXISTModel(
         model_name=args.model_name,
@@ -296,7 +295,6 @@ def train(args):
 
     print(f"Best checkpoint path: {best_ckpt}")
 
-    # Generate the prediction files at the very end
     _run_eval(
         trainer=trainer,
         model=model,
