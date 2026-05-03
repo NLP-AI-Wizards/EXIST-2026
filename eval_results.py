@@ -1,8 +1,9 @@
 import os
-import pandas as pd
 
+import pandas as pd
 from pyevall.evaluation import PyEvALLEvaluation
 from pyevall.utils.utils import PyEvALLUtils
+
 
 def evaluate(
     predictions: list[str],
@@ -25,12 +26,16 @@ def evaluate(
         elif "2_3" in predictions[0]:
             task = "2_3"
         else:
-            raise ValueError("Could not infer task from prediction file name. Please specify --task explicitly.")
+            raise ValueError(
+                "Could not infer task from prediction file name. Please specify --task explicitly."
+            )
     if mode is None:
         mode = "hard" if "hard" in predictions[0] else "soft"
 
     if gold_path is None:
-        gold_path = f"data/evaluation/golds/EXIST2025_training_task{task}_gold_{mode}.json"
+        gold_path = (
+            f"data/evaluation/golds/EXIST2025_training_task{task}_gold_{mode}.json"
+        )
 
     print("===> Starting evaluation with the following parameters:")
     print(f"Predictions: {predictions}")
@@ -39,14 +44,16 @@ def evaluate(
     print(f"Mode: {mode}\n")
 
     gold_entries = pd.read_json(gold_path)
-    pred_entries = pd.read_json(predictions[0]) # HACK: Assumes all prediction files have the same IDs, so we can just read one of them to get the list of IDs
+    pred_entries = pd.read_json(
+        predictions[0]
+    )  # HACK: Assumes all prediction files have the same IDs, so we can just read one of them to get the list of IDs
     valid_gold = gold_entries[gold_entries["id"].isin(pred_entries["id"])]
     valid_gold["id"] = valid_gold["id"].astype(str)
     gold_subset_path = gold_path.replace(".json", "_subset.json")
     valid_gold.to_json(gold_subset_path, orient="records", lines=False, indent=2)
 
-    params= dict()
-    params[PyEvALLUtils.PARAM_REPORT]= PyEvALLUtils.PARAM_OPTION_REPORT_DATAFRAME
+    params = dict()
+    params[PyEvALLUtils.PARAM_REPORT] = PyEvALLUtils.PARAM_OPTION_REPORT_DATAFRAME
 
     # Define hierarchies based on task
     if task == "2_2":

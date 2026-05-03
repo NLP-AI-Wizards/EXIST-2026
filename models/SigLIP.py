@@ -4,6 +4,7 @@ from transformers import AutoProcessor, SiglipModel
 
 from models.model_head.mlp import ClassificationHead, SwiGLU
 
+
 class ExpansionBlock(nn.Module):
     def __init__(self, dim_in, expansion_factor=2, dropout=0.1):
         super().__init__()
@@ -21,6 +22,7 @@ class ExpansionBlock(nn.Module):
         x = self.dropout(x)
         return x + residual
 
+
 class SigLIP(nn.Module):
     def __init__(
         self,
@@ -28,7 +30,7 @@ class SigLIP(nn.Module):
         n_blocks: int = 2,
         expansion_factor: int = 4,
         dropout: float = 0.2,
-        soft_gating: bool = True
+        soft_gating: bool = True,
     ):
         super().__init__()
 
@@ -36,7 +38,7 @@ class SigLIP(nn.Module):
         self.siglip = SiglipModel.from_pretrained(model_name)
         self.soft_gating = soft_gating
 
-        embed_dim = 768*2
+        embed_dim = 768 * 2
 
         # Shared projection layers
         self.shared_proj = nn.Sequential(

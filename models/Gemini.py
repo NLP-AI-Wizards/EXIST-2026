@@ -1,6 +1,6 @@
+import numpy as np
 import torch
 import torch.nn as nn
-import numpy as np
 from safetensors.torch import load_file
 
 from models.model_head.mlp import ClassificationHead, SwiGLU
@@ -49,16 +49,47 @@ class ExpansionBlock(nn.Module):
         return x + residual
 
 
-class AdvancedPhysioEncoder(nn.Module):
-    def __init__(self, semantic_dim=768):
+class SubjectFiLM(nn.Module):
+    def __init__(self, subject_embed_dim=32, feature_dim=256):
         super().__init__()
+        # Takes the subject embedding and generates Scale (Gamma) and Shift (Beta)
+        self.film_generator = nn.Linear(subject_embed_dim, feature_dim * 2)
 
-        # 1. ET and HR combined Encoder (24 + 4 = 28)
-        self.et_hr_mlp = nn.Sequential(
-            nn.Linear(28, 128), nn.GELU(), nn.LayerNorm(128), nn.Linear(128, 128)
-        )
+    def forward(self, features, subject_embeds):
+        """
+        features: (Batch, Subjects, Feature_Dim) - The concatenated EEG/ET/HR data
+        subject_embeds: (Batch, Subjects, Embed_Dim) - The dense ID vectors
+        """
+        film_params = self.film_generator(subject_embeds)
 
-        # 2. EEG 2D CNN Encoder (16 channels x 5 frequency bands)
+        # Split into scale and shift
+        gamma, beta = film_params.chunk(2, dim=-1)
+
+        # Apply FiLM conditioning
+        # We add 1.0 to gamma so the default scaling is identity (1 * x + 0)
+        return features * (1.0 + gamma) + beta
+
+
+class AdvancedPhysioEncoder(nn.Module):
+    def __init__(self, semantic_dim=768, use_subject_ids=False, num_unique_subjects=13):
+        # ID Subject: EN[1-7] + ES[1-5,8]
+        super().__init__()
+        self.use_subject_ids = use_subject_ids
+
+        if use_subject_ids:
+            # Subject ID Embedding Layer
+            # padding_idx=0 ensures that padded/missing subjects output a vector of pure 0.0s
+            subject_embed_dim = 32
+            self.subject_embedding = nn.Embedding(
+                num_embeddings=num_unique_subjects + 1,
+                embedding_dim=subject_embed_dim,
+                padding_idx=0,
+            )
+
+        # ET and HR combined Encoder (24 + 4 = 28)
+        self.et_hr_mlp = nn.Sequential(nn.Linear(28, 128), nn.GELU(), nn.LayerNorm(128))
+
+        # EEG 2D CNN Encoder (16 channels x 5 frequency bands)
         self.eeg_cnn = nn.Sequential(
             nn.Conv2d(in_channels=1, out_channels=16, kernel_size=(3, 3), padding=1),
             nn.GELU(),
@@ -70,15 +101,27 @@ class AdvancedPhysioEncoder(nn.Module):
             nn.Flatten(),  # Outputs 128 features
         )
 
-        # 3. Final Fusion
+        if use_subject_ids:
+            # Subject Conditioning (FiLM)
+            # Modulates the 256 concatenated features (128 ET/HR + 128 EEG)
+            self.film_layer = SubjectFiLM(
+                subject_embed_dim=subject_embed_dim, feature_dim=256
+            )
+
+        # Final Fusion
         self.fusion_proj = nn.Sequential(
-            nn.Linear(128 + 128, semantic_dim), nn.GELU(), nn.LayerNorm(semantic_dim)
+            nn.Linear(256, semantic_dim), nn.GELU(), nn.LayerNorm(semantic_dim)
         )
 
-    def forward(self, et_features, hr_features, eeg_features):
+    def forward(self, id_features, et_features, hr_features, eeg_features):
         B, S, _ = et_features.shape
 
-        # --- 1. Sanitize and Log1p SQUASH to fix huge reaction times ---
+        if self.use_subject_ids:
+            # Map IDs to dense subject profiles
+            # Shape: (B, S, 32)
+            subject_embeds = self.subject_embedding(id_features)
+
+        # Sanitize and Squash continuous sensors
         def sanitize_and_squash(x):
             x = torch.nan_to_num(x, nan=0.0)
             return torch.sign(x) * torch.log1p(torch.abs(x))
@@ -87,29 +130,35 @@ class AdvancedPhysioEncoder(nn.Module):
         hr_feat = sanitize_and_squash(hr_features)
         eeg_feat = sanitize_and_squash(eeg_features)
 
-        # --- 2. Process ET/HR together ---
+        # Process ET/HR
         et_hr_cat = torch.cat([et_feat, hr_feat], dim=-1)  # (B, S, 28)
         et_hr_embed = self.et_hr_mlp(et_hr_cat)  # (B, S, 128)
 
-        # --- 3. Process EEG as a 2D Grid ---
-        # Shape: (Batch * Subjects, 1 Channel, 16 Electrodes, 5 Frequencies)
+        # Process EEG
         eeg_feat_2d = eeg_feat.view(B * S, 1, 16, 5)
-
         eeg_embed = self.eeg_cnn(eeg_feat_2d)  # (B*S, 128)
         eeg_embed = eeg_embed.view(B, S, 128)  # (B, S, 128)
 
-        # --- 4. Fuse representations ---
+        # Combine Physiologies
         combined_physio = torch.cat([et_hr_embed, eeg_embed], dim=-1)  # (B, S, 256)
-        V_physio = self.fusion_proj(combined_physio)  # (B, S, 768)
+
+        if self.use_subject_ids:
+            # FiLM Conditioning: Modulate the combined physio features based on subject profile
+            conditioned_physio = self.film_layer(combined_physio, subject_embeds)
+
+        # Final Fusion to match semantic dimension
+        V_physio = self.fusion_proj(conditioned_physio)  # (B, S, 768)
 
         return V_physio
 
 
 class BiosignalCrossAttention(nn.Module):
-    def __init__(self, semantic_dim=768):
+    def __init__(self, semantic_dim=768, use_subject_ids=False):
         super().__init__()
 
-        self.physio_encoder = AdvancedPhysioEncoder(semantic_dim=semantic_dim)
+        self.physio_encoder = AdvancedPhysioEncoder(
+            semantic_dim=semantic_dim, use_subject_ids=use_subject_ids
+        )
 
         self.cross_attn = nn.MultiheadAttention(
             embed_dim=semantic_dim,
@@ -158,6 +207,7 @@ class Gemini(nn.Module):
         soft_gating: bool = False,
         use_demographics: bool = False,
         use_sensorial: bool = False,
+        use_subject_ids: bool = False,
     ):
         super().__init__()
         embeddings, embedding_ids, id_to_embedding_idx = get_embeddings(
@@ -171,7 +221,9 @@ class Gemini(nn.Module):
         embed_dim = self.embeddings.shape[1]
 
         if self.use_sensorial:
-            self.physio_fusion = BiosignalCrossAttention(semantic_dim=embed_dim)
+            self.physio_fusion = BiosignalCrossAttention(
+                semantic_dim=embed_dim, use_subject_ids=use_subject_ids
+            )
 
         # Shared projection layers (SwiGLU Reasoning Blocks)
         self.shared_proj = nn.Sequential(

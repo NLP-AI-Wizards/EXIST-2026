@@ -1,10 +1,11 @@
-import torch
-import pytorch_lightning as pl
-from torch.utils.data import DataLoader, Subset
-from PIL import Image
-from typing import Optional
 from functools import partial
+from typing import Optional
+
+import pytorch_lightning as pl
+import torch
+from PIL import Image
 from sklearn.model_selection import train_test_split
+from torch.utils.data import DataLoader, Subset
 
 
 def collate_fn(batch, include_image=True, include_text=True, include_id=True):
@@ -21,19 +22,25 @@ def collate_fn(batch, include_image=True, include_text=True, include_id=True):
     target_2_2 = torch.stack([item["target_2_2"] for item in batch])
     target_2_3 = torch.stack([item["target_2_3"] for item in batch])
 
-    collated_batch.update(
-        {
-            "target_2_1": target_2_1,
-            "target_2_2": target_2_2,
-            "target_2_3": target_2_3,
-        }
-    )
+    collated_batch.update({
+        "target_2_1": target_2_1,
+        "target_2_2": target_2_2,
+        "target_2_3": target_2_3,
+    })
 
     if "physio_mask" in batch[0]:
-        collated_batch["et_features"] = torch.stack([item["et_features"] for item in batch])
-        collated_batch["hr_features"] = torch.stack([item["hr_features"] for item in batch])
-        collated_batch["eeg_features"] = torch.stack([item["eeg_features"] for item in batch])
-        collated_batch["physio_mask"] = torch.stack([item["physio_mask"] for item in batch])
+        collated_batch["et_features"] = torch.stack([
+            item["et_features"] for item in batch
+        ])
+        collated_batch["hr_features"] = torch.stack([
+            item["hr_features"] for item in batch
+        ])
+        collated_batch["eeg_features"] = torch.stack([
+            item["eeg_features"] for item in batch
+        ])
+        collated_batch["physio_mask"] = torch.stack([
+            item["physio_mask"] for item in batch
+        ])
 
     return collated_batch
 
@@ -73,12 +80,25 @@ class EXISTDataModule(pl.LightningDataModule):
         self.predict_dataset = None
 
     def setup(self, stage=None):
+        # Predict-only mode: if an external evaluation dataset was provided,
+        # use it directly without creating train/val/test splits.
+        if stage == "predict":
+            if self.eval is not None:
+                self.predict_dataset = self.eval
+                return
+
         if self.train_dataset is None:
             # Stratified split based on Task 2.1
             strata = []
             for _, row in self.train.data.iterrows():
-                valid_2_1 = [l for l in row.get("labels_task2_1", []) if l in ["YES", "NO"]]
-                t_2_1 = valid_2_1.count("YES") / len(valid_2_1) if len(valid_2_1) > 0 else 0.0
+                valid_2_1 = [
+                    l for l in row.get("labels_task2_1", []) if l in ["YES", "NO"]
+                ]
+                t_2_1 = (
+                    valid_2_1.count("YES") / len(valid_2_1)
+                    if len(valid_2_1) > 0
+                    else 0.0
+                )
                 strata.append(int(t_2_1 >= 0.5))
 
             all_idx = list(range(len(self.train)))

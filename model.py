@@ -1,14 +1,11 @@
-import torch
 import pytorch_lightning as pl
-
+import torch
 from torchmetrics import MetricCollection
-from torchmetrics.classification import (
-    BinaryF1Score,
-    MultilabelF1Score,
-)
+from torchmetrics.classification import BinaryF1Score, MultilabelF1Score
+
+from loss import CustomLoss
 from models.Gemini import Gemini
 from models.SigLIP import SigLIP
-from loss import CustomLoss
 
 
 class EXISTModel(pl.LightningModule):
@@ -24,6 +21,7 @@ class EXISTModel(pl.LightningModule):
         soft_gating: bool = False,
         use_demographics: bool = False,
         use_sensorial: bool = False,
+        use_subject_ids: bool = False,
     ):
         super().__init__()
         self.validation_step_outputs = []
@@ -39,6 +37,7 @@ class EXISTModel(pl.LightningModule):
                 soft_gating=soft_gating,
                 use_demographics=use_demographics,
                 use_sensorial=use_sensorial,
+                use_subject_ids=use_subject_ids,
             )
             self.requires_ids = True
         elif model_name == "siglip":
@@ -273,3 +272,6 @@ class EXISTModel(pl.LightningModule):
                 "name": "onecycle_lr",
             },
         }
+
+    def lr_scheduler_step(self, scheduler, metric):
+        scheduler.step(self.global_step)

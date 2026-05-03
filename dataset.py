@@ -1,9 +1,11 @@
 import os
+import re
+
+import numpy as np
 import pandas as pd
 import torch
-from torch.utils.data import Dataset
 from PIL import Image
-import numpy as np
+from torch.utils.data import Dataset
 
 TASK_2_3_CLASSES = [
     "IDEOLOGICAL-INEQUALITY",
@@ -100,6 +102,7 @@ class EXISTDataset(Dataset):
         dim_hr = 4
         dim_eeg = 80
 
+        id_features = np.zeros((self.max_subjects,), dtype=np.int64)  # [0, 0, 0, 0]
         et_features = np.zeros((self.max_subjects, dim_et), dtype=np.float32)
         hr_features = np.zeros((self.max_subjects, dim_hr), dtype=np.float32)
         eeg_features = np.zeros((self.max_subjects, dim_eeg), dtype=np.float32)
@@ -114,6 +117,7 @@ class EXISTDataset(Dataset):
 
         for i, user in enumerate(users[: self.max_subjects]):
             physio_mask[i] = True
+            id_features[i] = int(re.sub(r"\D", "", user))  # [2, 3, 4, 7]
 
             # 1. Extract ET (Eye Tracking)
             et_data = modalities.get("ET", {}).get("by_user", {}).get(user, {})
@@ -134,6 +138,7 @@ class EXISTDataset(Dataset):
                 eeg_features[i, : min(len(eeg_vals), dim_eeg)] = eeg_vals[:dim_eeg]
 
         return (
+            torch.tensor(id_features, dtype=torch.int64),
             torch.tensor(et_features, dtype=torch.float32),
             torch.tensor(hr_features, dtype=torch.float32),
             torch.tensor(eeg_features, dtype=torch.float32),
@@ -167,7 +172,10 @@ class EXISTDataset(Dataset):
 
         # Sensorial Data
         if self.use_sensorial:
-            et_feat, hr_feat, eeg_feat, physio_mask = self._extract_physio(item)
+            id_feat, et_feat, hr_feat, eeg_feat, physio_mask = self._extract_physio(
+                item
+            )
+            sample["id_features"] = id_feat
             sample["et_features"] = et_feat
             sample["hr_features"] = hr_feat
             sample["eeg_features"] = eeg_feat

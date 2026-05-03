@@ -1,19 +1,17 @@
-import logging
 import json
+import logging
 import os
-from logging import Logger
 from datetime import datetime
+from logging import Logger
 
-import torch
 import pytorch_lightning as pl
-from pytorch_lightning.callbacks import Callback
-from pytorch_lightning.loggers import TensorBoardLogger
-from pytorch_lightning.loggers import WandbLogger
+import torch
+from pytorch_lightning.callbacks import Callback, LearningRateMonitor, ModelSummary
 from pytorch_lightning.callbacks.model_checkpoint import ModelCheckpoint
-from pytorch_lightning.callbacks import LearningRateMonitor, ModelSummary
+from pytorch_lightning.loggers import TensorBoardLogger, WandbLogger
 
-from dataset import EXISTDataset, TASK_2_3_CLASSES
 from datamodule import EXISTDataModule
+from dataset import TASK_2_3_CLASSES, EXISTDataset
 from model import EXISTModel
 
 logger: Logger = logging.getLogger(__name__)
@@ -172,8 +170,12 @@ def _run_eval(
         hard_entries = build_fn(sorted_ids, probs_list, hard=True)
         soft_entries = build_fn(sorted_ids, probs_list, hard=False)
 
-        hard_path = os.path.join(output_dir, version, f"{version}_{task_name}_hard.json")
-        soft_path = os.path.join(output_dir, version, f"{version}_{task_name}_soft.json")
+        hard_path = os.path.join(
+            output_dir, version, f"{task_name}_hard_aiwizards_1.json"
+        )
+        soft_path = os.path.join(
+            output_dir, version, f"{task_name}_soft_aiwizards_1.json"
+        )
 
         with open(hard_path, "w", encoding="utf-8") as f:
             json.dump(hard_entries, f, ensure_ascii=False, indent=2)
@@ -188,7 +190,7 @@ def _run_eval(
 
 
 def train(args):
-    version = f"{args.model_name}_{args.version}_seed_{args.seed}"
+    version = f"{args.model_name}_{args.version}"
 
     input_flags = _get_model_input_flags(args.model_name)
 
@@ -225,8 +227,8 @@ def train(args):
             include_id=input_flags["include_id"],
             use_sensorial=args.use_sensorial,
         ),
-        batch_size=args.batch_size,
-        num_workers=args.num_workers,
+        batch_size=8,
+        num_workers=4,
         seed=args.seed,
         include_image=input_flags["include_image"],
         include_text=input_flags["include_text"],
@@ -237,15 +239,16 @@ def train(args):
     print("===> Start building model")
     model = EXISTModel(
         model_name=args.model_name,
-        n_blocks=args.n_blocks,
-        expansion_factor=args.expansion_factor,
-        dropout=args.dropout,
-        lr=args.lr,
-        weight_decay=args.weight_decay,
-        warmup_ratio=args.warmup_ratio,
+        n_blocks=1,
+        expansion_factor=2,
+        dropout=0.2,
+        lr=1e-4,
+        weight_decay=1e-2,
+        warmup_ratio=0.1,
         soft_gating=args.soft_gating,
         use_demographics=args.use_demographics,
         use_sensorial=args.use_sensorial,
+        use_subject_ids=args.use_subject_ids,
     )
 
     model_checkpoint = ModelCheckpoint(
@@ -307,8 +310,6 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Train EXIST2026 Model")
-
-    # MODEL
     parser.add_argument(
         "--model_name",
         type=str,
@@ -323,56 +324,12 @@ if __name__ == "__main__":
         help="Version name for logging and checkpointing (default: timestamp)",
     )
     parser.add_argument(
-        "--n_blocks",
-        type=int,
-        default=1,
-        help="Number of expansion blocks in Gemini",
+        "--epochs", type=int, default=50, help="Number of training epochs"
     )
-    parser.add_argument(
-        "--expansion_factor",
-        type=int,
-        default=2,
-        help="Expansion factor for the Gemini blocks",
-    )
-    parser.add_argument(
-        "--dropout",
-        type=float,
-        default=0.2,
-        help="Dropout rate for the Gemini blocks",
-    )
-
     parser.add_argument(
         "--soft_gating",
         action="store_true",
         help="Add soft gating to model architecture",
-    )
-
-    # OPTIMIZATION
-    parser.add_argument(
-        "--lr", type=float, default=1e-4, help="Learning rate for the optimizer"
-    )
-    parser.add_argument(
-        "--weight_decay",
-        type=float,
-        default=1e-2,
-        help="Weight decay for the optimizer",
-    )
-    parser.add_argument(
-        "--warmup_ratio",
-        type=float,
-        default=0.1,
-        help="Warmup ratio for learning rate scheduling",
-    )
-
-    # TRAINING
-    parser.add_argument(
-        "--epochs", type=int, default=50, help="Number of training epochs"
-    )
-    parser.add_argument(
-        "--batch_size", type=int, default=8, help="Batch size for training"
-    )
-    parser.add_argument(
-        "--num_workers", type=int, default=4, help="Number of workers for data loading"
     )
     parser.add_argument(
         "--use_sensorial",
@@ -383,6 +340,11 @@ if __name__ == "__main__":
         "--use_demographics",
         action="store_true",
         help="Whether to use demographic embeddings for the Gemini model",
+    )
+    parser.add_argument(
+        "--use_subject_ids",
+        action="store_true",
+        help="Whether to use subject ID embeddings for the Gemini model",
     )
     parser.add_argument(
         "--seed", type=int, default=42, help="Random seed for reproducibility"
@@ -409,7 +371,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Set random seed for reproducibility
-    pl.seed_everything(args.seed)
+    pl.seed_everything(args.seed, workers=True)
 
     # Start training
     train(args)
