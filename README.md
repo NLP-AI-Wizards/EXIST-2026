@@ -30,7 +30,11 @@ data/
     test/memes/
 ```
 
-The Gemini embedding `.safetensors` files are **not** included in this repository. They will be provided on request by opening an issue.
+The Gemini embedding `.safetensors` files are **not** included in this repository. Request gated access here:
+
+https://huggingface.co/AIWizards/EXIST2026-embeddings
+
+The model weights are still pending upload and will be added separately.
 
 Optional demographic embeddings, if used for ablations, follow the same convention:
 
