@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="title" content="AI Wizards at EXIST 2026: Hierarchical Soft-Label Learning for Multimodal Sexism Identification in Memes">
+  <meta name="description" content="Public release and paper page for the AI Wizards EXIST 2026 system on multimodal sexism identification in memes.">
+  <meta name="keywords" content="EXIST 2026, sexism identification, memes, multimodal learning, hierarchical classification, soft labels, Gemini embeddings">
+  <meta name="author" content="Matteo Fasulo, Antonio Gravina, Luca Tedeschini, Luca Babboni">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="AI Wizards">
+  <meta property="og:title" content="AI Wizards at EXIST 2026">
+  <meta property="og:description" content="Hierarchical soft-label learning for multimodal sexism identification in memes using fixed Gemini Embedding 2 representations.">
+  <meta property="og:url" content="https://nlp-ai-wizards.github.io/EXIST-2026/">
+  <meta property="article:published_time" content="2026-07-07T00:00:00.000Z">
+  <meta property="article:author" content="Matteo Fasulo">
+  <meta property="article:author" content="Antonio Gravina">
+  <meta property="article:author" content="Luca Tedeschini">
+  <meta property="article:author" content="Luca Babboni">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="multimodal learning">
+  <meta property="article:tag" content="sexism identification">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Wizards at EXIST 2026">
+  <meta name="twitter:description" content="Public release and paper page for the AI Wizards EXIST 2026 system on multimodal sexism identification in memes.">
+
+  <meta name="citation_title" content="AI Wizards at EXIST 2026: Hierarchical Soft-Label Learning for Multimodal Sexism Identification in Memes">
+  <meta name="citation_author" content="Fasulo, Matteo">
+  <meta name="citation_author" content="Gravina, Antonio">
+  <meta name="citation_author" content="Tedeschini, Luca">
+  <meta name="citation_author" content="Babboni, Luca">
+  <meta name="citation_publication_date" content="2026-07-07">
+  <meta name="citation_conference_title" content="EXIST 2026">
+
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>AI Wizards at EXIST 2026 | arXiv + Code</title>
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "AI Wizards at EXIST 2026: Hierarchical Soft-Label Learning for Multimodal Sexism Identification in Memes",
+    "description": "Public release and paper page for the AI Wizards EXIST 2026 system on multimodal sexism identification in memes.",
+    "author": [
+      {"@type": "Person", "name": "Matteo Fasulo"},
+      {"@type": "Person", "name": "Antonio Gravina"},
+      {"@type": "Person", "name": "Luca Tedeschini"},
+      {"@type": "Person", "name": "Luca Babboni"}
+    ],
+    "datePublished": "2026-01-01",
+    "publisher": {"@type": "Organization", "name": "EXIST 2026"},
+    "url": "https://nlp-ai-wizards.github.io/EXIST-2026/",
+    "keywords": ["EXIST 2026", "sexism identification", "memes", "multimodal learning", "hierarchical classification"],
+    "abstract": "We present the AI Wizards submission to EXIST 2026 for multimodal sexism identification in memes. We model the three hierarchical subtasks as conditional soft-label prediction over empirical annotator distributions.",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {"@type": "WebPage", "@id": "https://nlp-ai-wizards.github.io/EXIST-2026/"}
+  }
+  </script>
+</head>
+<body>
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+    <section class="hero publication-header">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">AI Wizards at EXIST 2026</h1>
+              <p class="subtitle is-4">Hierarchical Soft-Label Learning for Multimodal Sexism Identification in Memes</p>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><a href="https://www.matteofasulo.com/" target="_blank">Matteo Fasulo</a>,</span>
+                <span class="author-block"><a href="https://github.com/GravAnt" target="_blank">Antonio Gravina</a>,</span>
+                <span class="author-block"><a href="https://github.com/LucaTedeschini" target="_blank">Luca Tedeschini</a>,</span>
+                <span class="author-block"><a href="https://github.com/ElektroDuck" target="_blank">Luca Babboni</a></span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">arXiv preprint, 2026</span>
+              </div>
+
+              <div class="publication-venue">
+                Public release for the EXIST 2026 shared task
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://github.com/NLP-AI-Wizards/EXIST-2026" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fab fa-github"></i></span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/2607.04410" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-file-alt"></i></span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="#BibTeX" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon"><i class="fas fa-quote-right"></i></span>
+                      <span>BibTeX</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                We present the AI Wizards submission to EXIST 2026 for multimodal sexism identification in memes. The system treats the three hierarchical subtasks as conditional soft-label prediction over empirical annotator distributions.
+              </p>
+              <p>
+                Our system maps fixed Gemini Embedding 2 vision-language representations through a lightweight Gated MLP trained with KL divergence and homoscedastic uncertainty weighting. The submitted systems ranked first in Task 2.3 and fourth in Tasks 2.1 and 2.2 on the official Soft-Soft leaderboards.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Method</h2>
+            <div class="content">
+              <p>The model treats Gemini Embedding 2 vectors as fixed meme representations indexed by the official EXIST identifiers. A compact Gated MLP predicts sexism identification, source intention, and sexism category with conditional masking.</p>
+              <p>Soft predictions are decoded through the task hierarchy: downstream intention and category probabilities are conditioned on the predicted probability that a meme is sexist. Hard predictions use a simple 0.5 threshold without task-specific calibration.</p>
+            </div>
+            <div class="columns">
+              <div class="column">
+                <div class="box">
+                  <h3 class="title is-5">Fixed Embeddings</h3>
+                  <p>Cached Gemini features encode the meme content before training, keeping the task model compact and reproducible.</p>
+                </div>
+              </div>
+              <div class="column">
+                <div class="box">
+                  <h3 class="title is-5">Gated MLP</h3>
+                  <p>A lightweight classifier predicts the three hierarchical subtasks from the shared meme representation.</p>
+                </div>
+              </div>
+              <div class="column">
+                <div class="box">
+                  <h3 class="title is-5">Soft Labels</h3>
+                  <p>KL divergence targets empirical annotator distributions, with learned uncertainty weights balancing tasks.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Task Setting</h2>
+            <div class="content">
+              <p>
+                The EXIST 2026 meme dataset contains 3,984 training instances and 1,053 test instances across English and Spanish. The task follows the Learning with Disagreement setting, so systems predict annotator distributions instead of only majority labels.
+              </p>
+              <p>
+                The code expects the official EXIST dataset under the local <code>data/</code> directory. Gemini embedding caches are distributed separately on request through a GitHub issue.
+              </p>
+              <p>
+                Generated submission files are stored in <code>exist2026_aiwizards/</code>. The public repository also keeps a frozen copy of the official-format outputs used for evaluation and reproduction.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Official Results</h2>
+            <div class="content">
+              <p>The system was designed for the Soft-Soft setting and achieved its strongest result on Task 2.3, where the three submitted runs ranked first, second, and third.</p>
+              <table class="table is-fullwidth is-striped">
+                <thead>
+                  <tr>
+                    <th>Task</th>
+                    <th>System</th>
+                    <th>Rank</th>
+                    <th>ICM-Soft</th>
+                    <th>ICM-Soft Norm</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>2.1 Sexism identification</td>
+                    <td>aiwizards_3</td>
+                    <td>4</td>
+                    <td>0.2323</td>
+                    <td>0.5373</td>
+                  </tr>
+                  <tr>
+                    <td>2.2 Source intention</td>
+                    <td>aiwizards_1</td>
+                    <td>4</td>
+                    <td>-0.6720</td>
+                    <td>0.4285</td>
+                  </tr>
+                  <tr>
+                    <td>2.3 Sexism categorization</td>
+                    <td>aiwizards_2</td>
+                    <td>1</td>
+                    <td>-2.8881</td>
+                    <td>0.3469</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>On the local 10% test split, random-seed variance was most visible on the downstream tasks. Base MLP Run 2 was strongest for Task 2.3 soft-label prediction, while Run 1 was stronger for Task 2.2.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Repository</h2>
+            <div class="content">
+              <p>
+                The implementation includes the PyTorch Lightning training loop, dataset loading, soft-target construction, Gemini and SigLIP model variants, checkpoint prediction, and PyEvALL evaluation helpers.
+              </p>
+              <pre><code>uv sync
+uv run python train.py --model_name gemini --version final --epochs 50 --soft_gating
+uv run python predict.py --ckpt_path checkpoints/gemini_final/epoch=XX.ckpt --version gemini_final --output_dir exist2026_aiwizards</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Limitations</h2>
+            <div class="notification is-info is-light">
+              The system relies on Gemini Embedding 2 features, which are not bundled in this repository. They are provided separately on request so the paper code can remain public without distributing the embedding files.
+            </div>
+            <div class="content">
+              <p>The repository includes optional demographic and physiological ablations, but the public submission path uses the fixed Gemini embeddings and the hierarchical prediction heads described in the paper.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@misc{fasulo2026aiwizardsexist2026,
+  title={AI Wizards at EXIST 2026: Hierarchical Soft-Label Learning for Multimodal Sexism Identification in Memes},
+  author={Matteo Fasulo and Antonio Gravina and Luca Tedeschini and Luca Babboni},
+  year={2026},
+  eprint={2607.04410},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL},
+  url={https://arxiv.org/abs/2607.04410}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered">
+            <p>
+              Built from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> and adapted for the AI Wizards EXIST 2026 paper page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
