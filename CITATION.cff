@@ -1,6 +1,7 @@
 cff-version: 1.2.0
-message: "If you use this repository, please cite the associated arXiv paper."
+message: "If you use this repository, please cite the associated paper."
 title: "AI Wizards at EXIST 2026: Hierarchical Soft-Label Learning for Multimodal Sexism Identification in Memes"
+type: software
 authors:
   - family-names: Fasulo
     given-names: Matteo
@@ -10,10 +11,13 @@ authors:
     given-names: Luca
   - family-names: Babboni
     given-names: Luca
-date-released: 2026-07-07
+
 version: "0.1.0"
+date-released: 2026-07-07
+
 repository-code: "https://github.com/NLP-AI-Wizards/EXIST-2026"
-url: "https://arxiv.org/abs/2607.04410"
+url: "https://github.com/NLP-AI-Wizards/EXIST-2026"
+
 preferred-citation:
   type: article
   title: "AI Wizards at EXIST 2026: Hierarchical Soft-Label Learning for Multimodal Sexism Identification in Memes"
@@ -26,6 +30,9 @@ preferred-citation:
       given-names: Luca
     - family-names: Babboni
       given-names: Luca
+  journal: "arXiv"
   year: 2026
-  journal: arXiv
+  identifiers:
+    - type: arxiv
+      value: "2607.04410"
   url: "https://arxiv.org/abs/2607.04410"
